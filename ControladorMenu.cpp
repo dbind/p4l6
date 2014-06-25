@@ -23,40 +23,45 @@ ControladorMenu* ControladorMenu::instancia()
 
 ControladorMenu::ControladorMenu()
 {
-	this->Fabrica  = FabricaControladores::instancia();
-	this->cUsuario = Fabrica->controladorUsuario();
-	this->cSesion  = Fabrica->controladorSesion();
+	this->Fabrica = FabricaControladores::instancia();
+
+	this->cUsuario = this->Fabrica->controladorUsuario();
+	this->cSesion  = this->Fabrica->controladorSesion();
 }
 
-
+/**
+ * Inicia el sistema:
+ * 
+ * · exige autenticación al iniciar
+ * · ofrece en todo momento posterior la posibilidad de cerrar sesión
+ * · una vez autenticado, presenta opciones de acuerdo al perfil del usuario
+ * 
+ * Nota: aborta ejecución si ocurre una falla inesperada en el inicio de sesión.
+ */
 void ControladorMenu::iniciar()
 {
-//	bool salir; // Flag para terminar el programa
-//
-//	// Cargar el controlador de Menú (interfaz del programa) e iniciar programa
-//	while (!salir)
-//	{
-//		try
-//		{
-//			bool salir = Menu->iniciar();
-//		}
-//		catch (int e)
-//		{
-//			salir = false;
-//		}
-//	}
-
-	// No es posible continuar sin iniciar sesión
+	// Todas las acciones son actualmente reservadas a usuarios autenticados
 	this->login();
-	
+
+	// Verificar que la sesión fue creada, y dar la bienvenida al usuario ...
+	try
+	{
+		Usuario* usuario = this->cSesion->usuarioActivo();
+		cout << "Bienvenido, " << usuario->getNombre() << "\n\n";
+	}
+	// ... o abortar si falló el login
+	catch (...)
+	{
+		cout << "Error irrecuperable: fallo desconocido en inicio de sesión";
+		throw 1;
+	}
+
 	this->menuDeOpciones();
 }
 
 /**
  * Precondición: no hay una sesión activa en el sistema
  * Postcondición: se inició una sesión (y se asignó a this->cSesion)
- * 
- * Nota: aborta ejecución si ocurre una falla inesperada en el inicio de sesión
  */
 void ControladorMenu::login()
 {
@@ -76,17 +81,6 @@ void ControladorMenu::login()
 			// Por el momento, manejamos la excepción indistintamente
 		}
 	}
-
-	// Verificar que la sesión fue creada, y dar la bienvenida al usuario
-	try
-	{
-		Usuario* usuario = this->cSesion->usuarioActivo();
-		cout << "Bienvenido, " << usuario->getNombre() << "\n\n";
-	}
-	catch (...)
-	{
-		cout << "Error irrecuperable: fallo desconocido en inicio de sesión";
-	}
 }
 
 void ControladorMenu::logout()
@@ -97,5 +91,16 @@ void ControladorMenu::logout()
 
 void ControladorMenu::menuDeOpciones()
 {
-	cout << "Y éste es el menú!";
+	cout << "Elija una opción para continuar:\n\n";
+
+	// Listar acciones específicas dependientes del estado y/o tipo de usuario
+	vector<string> acciones = this->cUsuario->getAccionesHabilitadas();
+	vector<string>::iterator it = acciones.begin();
+
+	for (int i=1; i<=acciones.size(); i++, it++)
+	{
+		cout << i << ". " << (*it) << "\n";
+	}
+
+	cout << "\nq. Cerrar sesión:\n";
 }

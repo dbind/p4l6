@@ -72,3 +72,16 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 
 	return NULL;
 }
+	
+vector<string> ControladorUsuario::getAccionesHabilitadas()
+{
+	vector<string> acciones {};
+	vector<string>::iterator pos = acciones.begin();
+
+	acciones.insert(acciones.end(), "opción 1");
+	acciones.insert(acciones.end(), "opción 2");
+	acciones.insert(acciones.end(), "opción 3");
+	acciones.insert(acciones.end(), "opción 4");
+
+	return acciones;
+}

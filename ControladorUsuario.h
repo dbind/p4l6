@@ -24,9 +24,11 @@ public:
 
 	Usuario* crearMaster(string ci, string pass, string nombre);
 	
-	Usuario* findUsuario(string ci);
 	Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                     TipoSexo, Fecha, vector<Rol>);
+	Usuario* findUsuario(string ci);
+	
+	vector<string> getAccionesHabilitadas();
 
 private:
 	static ControladorUsuario* _instancia;
