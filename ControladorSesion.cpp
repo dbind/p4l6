@@ -41,9 +41,13 @@ ControladorSesion::ControladorSesion()
 {
 	// Referencia (por practicidad) al Controlador de Usuarios del sistema
 	FabricaControladores* Fabrica = FabricaControladores::instancia();
-	this->cUsuario = Fabrica->getControladorUsuario();
+	this->cUsuario = Fabrica->controladorUsuario();
 }
 
+
+/******************************************************************************/
+/********************************* P U B L I C ********************************/
+/******************************************************************************/
 
 
 bool ControladorSesion::iniciarSesion()
@@ -59,13 +63,23 @@ bool ControladorSesion::iniciarSesion()
 
 	// Pido al usuario que verifique que es él (contraseña)
 	
-	cout << "Usuario encontrado: " << this->usuario->getNombre();
+	cout << "Usuario encontrado: " << usuario->getNombre();
 
 	// Mantener puntero al usuario activo (sesión activa)
 	this->usuario = usuario;
 
 	return true;
 }
+
+void ControladorSesion::cerrarSesion()
+{
+	this->usuario = NULL;
+}
+
+
+/******************************************************************************/
+/******************************** P R I V A T E *******************************/
+/******************************************************************************/
 
 Usuario* ControladorSesion::pedirIdentificacion()
 {
@@ -82,18 +96,14 @@ Usuario* ControladorSesion::pedirIdentificacion()
 		cout << "(o presione Enter para volver atrás):\n";
 		cin >> ci;
 	}
-	
+
 	if (ci == "")
 	{
 		return NULL;
 	}
-	
-	// Buscar si existe el usuario con la cédula ingresada
-	FabricaControladores* Fabrica = FabricaControladores::instancia();
-	IControladorUsuario* cUsuario = Fabrica->getControladorUsuario();
 
-	Usuario* usuario = cUsuario->findUsuario(ci);
-	
+	Usuario* usuario = this->cUsuario->findUsuario(ci);
+
 	if (usuario == NULL)
 	{
 		cout << "No hay usuarios con esa cédula de identidad en el sistema.\n";

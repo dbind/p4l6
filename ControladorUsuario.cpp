@@ -70,9 +70,11 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 {
 	for(vector<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it)
 	{
-		if ((*it)->getCi() == ci)
+		Usuario* usuario = *it;
+
+		if (usuario->getCi() == ci)
 		{
-			return (*it);
+			return usuario;
 		}
 	}
 

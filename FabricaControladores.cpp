@@ -1,9 +1,10 @@
 #include "FabricaControladores.h"
 
+#include "ControladorMenu.h"
 #include "ControladorSesion.h"
-//#include "ControladorUsuario.h"
-//#include "ControladorConsulta.h"
-//#include "ControladorDiagnostico.h"
+#include "ControladorUsuario.h"
+#include "ControladorConsulta.h"
+#include "ControladorDiagnostico.h"
 
 
 /**
@@ -22,25 +23,29 @@ FabricaControladores* FabricaControladores::instancia()
 }
 
 
-/**
- * Fábrica
- */
-ControladorSesion* FabricaControladores::getControladorSesion()
+ControladorMenu* FabricaControladores::controladorMenu()
+{
+	return ControladorMenu::instancia();
+}
+
+
+ControladorSesion* FabricaControladores::controladorSesion()
 {
 	return ControladorSesion::instancia();
 }
 
-ControladorUsuario* FabricaControladores::getControladorUsuario()
+ControladorUsuario* FabricaControladores::controladorUsuario()
 {
 	return ControladorUsuario::instancia();
 }
 
-ControladorConsulta* FabricaControladores::getControladorConsulta()
+
+ControladorConsulta* FabricaControladores::controladorConsulta()
 {
 	return ControladorConsulta::instancia();
 }
 
-ControladorDiagnostico* FabricaControladores::getControladorDiagnostico()
+ControladorDiagnostico* FabricaControladores::controladorDiagnostico()
 {
 	return ControladorDiagnostico::instancia();
 }

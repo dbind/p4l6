@@ -1,17 +1,15 @@
-build/Debug/GNU-Linux-x86/ControladorSesion.o: ControladorSesion.cpp \
- ControladorSesion.h IControladorSesion.h FabricaControladores.h \
- IControladorMenu.h IControladorUsuario.h Usuario.h TipoSexo.h Fecha.h \
+build/Debug/GNU-Linux-x86/FabricaControladores.o: \
+ FabricaControladores.cpp FabricaControladores.h IControladorMenu.h \
+ IControladorSesion.h IControladorUsuario.h Usuario.h TipoSexo.h Fecha.h \
  Rol.h EstadoUsuario.h IControladorConsulta.h IControladorDiagnostico.h \
- ControladorMenu.h ControladorUsuario.h ControladorConsulta.h \
- ControladorDiagnostico.h
-
-ControladorSesion.h:
-
-IControladorSesion.h:
+ ControladorMenu.h ControladorSesion.h ControladorUsuario.h \
+ ControladorConsulta.h ControladorDiagnostico.h
 
 FabricaControladores.h:
 
 IControladorMenu.h:
+
+IControladorSesion.h:
 
 IControladorUsuario.h:
 
@@ -30,6 +28,8 @@ IControladorConsulta.h:
 IControladorDiagnostico.h:
 
 ControladorMenu.h:
+
+ControladorSesion.h:
 
 ControladorUsuario.h:
 

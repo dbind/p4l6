@@ -21,6 +21,7 @@ public:
 	void testControlador();
 
 	bool iniciarSesion();
+	void cerrarSesion();
 
 private:
 	static ControladorSesion* _instancia;

@@ -4,18 +4,14 @@
 #include <string>
 #include <vector>
 
+#include "Usuario.h"
 #include "TipoSexo.h"
 #include "Fecha.h"
 #include "Rol.h"
 
 
-class Usuario;
-
 class IControladorUsuario
 {
-
-protected:
-	vector<Usuario*> usuarios;
 
 public:
 	virtual ~IControladorUsuario(){};
@@ -26,6 +22,9 @@ public:
 	virtual Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                             TipoSexo, Fecha, vector<Rol>)=0;
 	virtual Usuario* findUsuario(string ci)=0;
+
+protected:
+	vector<Usuario*> usuarios;
 
 };
 

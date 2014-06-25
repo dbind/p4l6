@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/ControladorConsulta.o \
 	${OBJECTDIR}/ControladorDiagnostico.o \
+	${OBJECTDIR}/ControladorMenu.o \
 	${OBJECTDIR}/ControladorSesion.o \
 	${OBJECTDIR}/ControladorUsuario.o \
 	${OBJECTDIR}/FabricaControladores.o \
@@ -79,6 +80,11 @@ ${OBJECTDIR}/ControladorDiagnostico.o: ControladorDiagnostico.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorDiagnostico.o ControladorDiagnostico.cpp
+
+${OBJECTDIR}/ControladorMenu.o: ControladorMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorMenu.o ControladorMenu.cpp
 
 ${OBJECTDIR}/ControladorSesion.o: ControladorSesion.cpp 
 	${MKDIR} -p ${OBJECTDIR}
