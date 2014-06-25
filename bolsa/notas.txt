@@ -1,0 +1,28 @@
+Diagnósticos
+
+* Alta representación de diagnósticos									Representaciones
+* Listar representación diagnósticos									Representaciones
+
+
+Mutualista
+
+* Alta medicamento														Farmaco
+
+
+Consultas
+
+* Reserva consulta
+* Devolución de consulta
+* Registro consulta
+* Alta diagnósticos de una consulta
+- Cantidad de consultas por categoría de diagnóstico
+
+Usuarios, sesión
+
+* Iniciar sesión														Sesion, Usuario, Rol
+* Cerrar sesión															Sesion, Usuario
+* Alta/reactivación de usuario											Usuario, Rol
+* Obtener historial paciente											Usuario, Historial
+* Usuarios dados de alta												ControladorUsuario, Usuario, Rol (Admin)
++ Notificar médicos														Notificaciones, ControladorUsuario, Rol, Usuario
+- Estado de situación de un socio										Usuario, Consulta
