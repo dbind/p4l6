@@ -20,8 +20,10 @@ public:
 	
 	void testControlador();
 
-	bool iniciarSesion();
+	void iniciarSesion();
 	void cerrarSesion();
+
+	bool sesionIniciada();
 
 private:
 	static ControladorSesion* _instancia;
@@ -29,7 +31,7 @@ private:
 	~ControladorSesion(){};
 
 	Usuario* pedirIdentificacion();
-	bool pedirAutenticacion(Usuario*);
+	void autenticar(Usuario*);
 	bool esValidaCi(string);
 	bool esValidoPass(string);
 

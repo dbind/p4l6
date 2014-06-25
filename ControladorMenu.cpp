@@ -60,10 +60,28 @@ void ControladorMenu::iniciar()
 	this->menuDeOpciones();
 }
 
+/**
+ * Precondición: no hay una sesión activa en el sistema
+ * Postcondición: se inició una sesión (y se asignó a this->cSesion)
+ */
 void ControladorMenu::login()
 {
+	this->cSesion->cerrarSesion();
+
 	// Permitir intentos ilimitados de login, hasta que ponga datos correctos
-	while (!this->cSesion->iniciarSesion());
+	while (!this->cSesion->sesionIniciada())
+	{
+		try
+		{
+			this->cSesion->iniciarSesion();
+		}
+		catch (int e)
+		{
+			// e == 1: ci incorrecta | e == 0: usuario canceló
+			// Por el momento, manejamos la excepción indistintamente
+		}
+	}
+	
 }
 
 void ControladorMenu::logout()

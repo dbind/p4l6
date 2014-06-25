@@ -51,6 +51,7 @@ Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 	// Crear el usuario por defecto con los datos recibidos
 	Usuario* usuario = this->altaUsuario(ci, nombre, "", sexo, fecha, roles);
 	usuario->cambiarPass(pass);
+	usuario->activar();
 
 	return usuario;
 }

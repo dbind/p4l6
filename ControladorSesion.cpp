@@ -49,26 +49,25 @@ ControladorSesion::ControladorSesion()
 /********************************* P U B L I C ********************************/
 /******************************************************************************/
 
-
-bool ControladorSesion::iniciarSesion()
+/**
+ * Pide al usuario identificarse y autenticarse. En caso de éxito (credenciales
+ * correctas) se inicia la sesión. En caso contrario se tira una excepción.
+ * 
+ * Tira excepción int 0 si se cancela el login (q al ingresar CI o Pass)
+ * Tira excepción int 1 si se ingresa una cédula que no esté en el sistema
+ */
+void ControladorSesion::iniciarSesion()
 {
 	// Pido al usuario que se identifique (número de cédula)
 	Usuario* usuario = this->pedirIdentificacion();
 
-	// Si el usuario no existe, no hay más que hacer acá
-	if (usuario == NULL)
-	{
-		return false;
-	}
-
 	// Pido al usuario que verifique que es él (contraseña)
+	this->autenticar(usuario);
 	
 	cout << "Usuario encontrado: " << usuario->getNombre();
 
 	// Mantener puntero al usuario activo (sesión activa)
 	this->usuario = usuario;
-
-	return true;
 }
 
 void ControladorSesion::cerrarSesion()
@@ -76,30 +75,47 @@ void ControladorSesion::cerrarSesion()
 	this->usuario = NULL;
 }
 
+bool ControladorSesion::sesionIniciada()
+{
+	return this->usuario != NULL;
+}
+
 
 /******************************************************************************/
 /******************************** P R I V A T E *******************************/
 /******************************************************************************/
 
+/**
+ * Pide al usuario identificarse con su cédula de identidad.
+ * 
+ * · <<q>> para volver atrás
+ * · MASTER_CI (ver en ControladorUsuario) para ingresar como admin por defecto
+ * · otras cédulas para usuarios regulares
+ * 
+ * El proceso se repite hasta ingresar una cédula válida o cancelar
+ * 
+ * Tira excepción int 0 si cancela (q)
+ * Tira excepción int 1 si no existe en el sistema un usuario con esa CI
+ */
 Usuario* ControladorSesion::pedirIdentificacion()
 {
 	string ci;
 
 	cout << "Ingrese su CI (hasta 7 números, sin dígito de verificación) ";
-	cout << "(o presione Enter para volver atrás):\n";
+	cout << "(o escriba q para volver atrás):\n";
 	cin >> ci;
 
 	// Mientras la cédula ingresada no sea un entero, que vuelva a intentar
-	while ((ci != "") && !this->esValidaCi(ci))
+	while ((ci != "q") && !this->esValidaCi(ci))
 	{
 		cout << "La cédula ingresada no es válida. Inténtelo nuevamente ";
-		cout << "(o presione Enter para volver atrás):\n";
+		cout << "(o escriba q para volver atrás):\n";
 		cin >> ci;
 	}
 
-	if (ci == "")
+	if (ci == "q")
 	{
-		return NULL;
+		throw 0; // El usuario desea cancelar (i.e. volver a empezar)
 	}
 
 	Usuario* usuario = this->cUsuario->findUsuario(ci);
@@ -107,12 +123,23 @@ Usuario* ControladorSesion::pedirIdentificacion()
 	if (usuario == NULL)
 	{
 		cout << "No hay usuarios con esa cédula de identidad en el sistema.\n";
+		throw 1;
 	}
 
 	return usuario;
 }
 
-bool ControladorSesion::pedirAutenticacion(Usuario* usuario)
+/**
+ * Pide al usuario autenticarse con su contraseña.
+ * 
+ * · <<q>> para volver atrás
+ * · MASTER_PASS (ver en ControladorUsuario) si es el admin por defecto
+ * 
+ * El proceso se repite hasta ingresar la contraseña correcta o cancelar
+ * 
+ * Tira excepción int 0 si cancela (q)
+ */
+void ControladorSesion::autenticar(Usuario* usuario)
 {
 	string pass;
 
@@ -121,28 +148,28 @@ bool ControladorSesion::pedirAutenticacion(Usuario* usuario)
 	{
 		cout << "Usted ingresa por primera vez al sistema. ";
 		cout << "Escriba una contraseña alfanumérica de hasta 10 caracteres ";
-		cout << "(o presione Enter para volver atrás):\n";
+		cout << "(o escriba q para volver atrás):\n";
 	}
 	else if (usuario->esUn(Rol::master))
 	{
 		cout << "Ingrese la contraseña maestra, por favor ";
-		cout << "(o presione Enter para volver atrás):\n";
+		cout << "(o escriba q para volver atrás):\n";
 	}
 	else
 	{
 		cout << "Ingrese su contraseña, por favor ";
-		cout << "(o presione Enter para volver atrás):\n";
+		cout << "(o escriba q para volver atrás):\n";
 	}
 
 	cin >> pass;
 
 	// Validar contraseña, o pedirla nuevamente hasta que ingresa una válida
-	while ((pass != "") && (usuario->esNuevo() || !usuario->validarPass(pass)))
+	while ((pass != "q") && (usuario->esNuevo() || !usuario->validarPass(pass)))
 	{
 		if (!this->esValidoPass(pass))  // Formato incorrecto
 		{
 			cout << "La contraseña ingresada es inválida. Inténtelo nuevamente ";
-			cout << "(o presione Enter para volver atrás):\n";
+			cout << "(o escriba q para volver atrás):\n";
 			cin >> pass;
 		}
 		else if (usuario->esNuevo())    // Primera vez: actualizar y activar
@@ -154,12 +181,15 @@ bool ControladorSesion::pedirAutenticacion(Usuario* usuario)
 		else // pass != usuario->pass   // La contraseña ingresada no coincide
 		{
 			cout << "La contraseña ingresada no es correcta. Inténtelo nuevamente ";
-			cout << "(o presione Enter para volver atrás):\n";
+			cout << "(o escriba q para volver atrás):\n";
 			cin >> pass;
 		}
 	}
 
-	return (pass != "");
+	if (pass == "q")
+	{
+		throw 0; // El usuario desea cancelar (i.e. volver a empezar)
+	}
 }
 
 bool ControladorSesion::esValidaCi(string ci)
