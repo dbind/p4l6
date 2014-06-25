@@ -3,15 +3,7 @@ using namespace std;
 
 #include "ControladorMenu.h"
 #include "FabricaControladores.h"
-
-
-/**
- * Testea la creación de la instancia del controlador
- */
-void ControladorMenu::testControlador()
-{
-	cout << "test";
-}
+#include "Usuario.h"
 
 
 /**
@@ -63,9 +55,12 @@ void ControladorMenu::iniciar()
 /**
  * Precondición: no hay una sesión activa en el sistema
  * Postcondición: se inició una sesión (y se asignó a this->cSesion)
+ * 
+ * Nota: aborta ejecución si ocurre una falla inesperada en el inicio de sesión
  */
 void ControladorMenu::login()
 {
+	// Antes de iniciar sesión, cerarr sesión anterior si la hubiera
 	this->cSesion->cerrarSesion();
 
 	// Permitir intentos ilimitados de login, hasta que ponga datos correctos
@@ -81,7 +76,17 @@ void ControladorMenu::login()
 			// Por el momento, manejamos la excepción indistintamente
 		}
 	}
-	
+
+	// Verificar que la sesión fue creada, y dar la bienvenida al usuario
+	try
+	{
+		Usuario* usuario = this->cSesion->usuarioActivo();
+		cout << "Bienvenido, " << usuario->getNombre() << "\n\n";
+	}
+	catch (...)
+	{
+		cout << "Error irrecuperable: fallo desconocido en inicio de sesión";
+	}
 }
 
 void ControladorMenu::logout()

@@ -7,7 +7,6 @@ class IControladorDiagnostico
 
 public:
 	virtual ~IControladorDiagnostico(){};
-	virtual void testControlador()=0;
 
 };
 

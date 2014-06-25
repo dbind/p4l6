@@ -14,15 +14,6 @@ using namespace std;
 
 
 /**
- * Testea la creación de la instancia del controlador
- */
-void ControladorSesion::testControlador()
-{
-	cout << "test";
-}
-
-
-/**
  * Instanciación de singleton
  */
 ControladorSesion* ControladorSesion::_instancia = 0;
@@ -39,7 +30,6 @@ ControladorSesion* ControladorSesion::instancia()
 
 ControladorSesion::ControladorSesion()
 {
-	// Referencia (por practicidad) al Controlador de Usuarios del sistema
 	FabricaControladores* Fabrica = FabricaControladores::instancia();
 	this->cUsuario = Fabrica->controladorUsuario();
 }
@@ -49,24 +39,16 @@ ControladorSesion::ControladorSesion()
 /********************************* P U B L I C ********************************/
 /******************************************************************************/
 
-/**
- * Pide al usuario identificarse y autenticarse. En caso de éxito (credenciales
- * correctas) se inicia la sesión. En caso contrario se tira una excepción.
- * 
- * Tira excepción int 0 si se cancela el login (q al ingresar CI o Pass)
- * Tira excepción int 1 si se ingresa una cédula que no esté en el sistema
- */
 void ControladorSesion::iniciarSesion()
 {
 	// Pido al usuario que se identifique (número de cédula)
 	Usuario* usuario = this->pedirIdentificacion();
 
 	// Pido al usuario que verifique que es él (contraseña)
+	// Si falla tira una excepción, que forwardeamos implícitamente
 	this->autenticar(usuario);
-	
-	cout << "Usuario encontrado: " << usuario->getNombre();
 
-	// Mantener puntero al usuario activo (sesión activa)
+	// Logueo exitoso: mantener puntero al usuario identificado (sesión activa)
 	this->usuario = usuario;
 }
 
@@ -78,6 +60,16 @@ void ControladorSesion::cerrarSesion()
 bool ControladorSesion::sesionIniciada()
 {
 	return this->usuario != NULL;
+}
+
+Usuario* ControladorSesion::usuarioActivo()
+{
+	if (!this->sesionIniciada())
+	{
+		throw 1;
+	}
+
+	return this->usuario;
 }
 
 

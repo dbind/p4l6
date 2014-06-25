@@ -13,7 +13,6 @@ class IControladorMenu
 
 public:
 	virtual ~IControladorMenu(){};
-	virtual void testControlador()=0;
 
 	virtual void iniciar()=0;
 	

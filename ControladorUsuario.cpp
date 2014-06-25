@@ -10,15 +10,6 @@ const string MASTER_PASS = "p4";
 
 
 /**
- * Testea la creación de la instancia del controlador
- */
-void ControladorUsuario::testControlador()
-{
-	cout << "test";
-}
-
-
-/**
  * Instanciación de singleton
  */
 ControladorUsuario* ControladorUsuario::_instancia = 0;

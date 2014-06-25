@@ -3,14 +3,6 @@ using namespace std;
 
 #include "ControladorConsulta.h"
 
-/**
- * Testea la creación de la instancia del controlador
- */
-void ControladorConsulta::testControlador()
-{
-	cout << "test";
-}
-
 
 /**
  * Instanciación de singleton

@@ -15,7 +15,6 @@ class IControladorUsuario
 
 public:
 	virtual ~IControladorUsuario(){};
-	virtual void testControlador()=0;
 
 	virtual Usuario* crearMaster(string ci, string pass, string nombre)=0;
 

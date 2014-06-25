@@ -22,8 +22,6 @@ class ControladorUsuario : public IControladorUsuario
 public:
 	static ControladorUsuario* instancia();
 
-	void testControlador();
-
 	Usuario* crearMaster(string ci, string pass, string nombre);
 	
 	Usuario* findUsuario(string ci);

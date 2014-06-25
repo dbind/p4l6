@@ -17,13 +17,12 @@ class ControladorSesion : public IControladorSesion
 
 public:
 	static ControladorSesion* instancia();
-	
-	void testControlador();
 
 	void iniciarSesion();
 	void cerrarSesion();
 
 	bool sesionIniciada();
+	Usuario* usuarioActivo();
 
 private:
 	static ControladorSesion* _instancia;

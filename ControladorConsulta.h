@@ -12,8 +12,6 @@ class ControladorConsulta : public IControladorConsulta
 
 public:
 	static ControladorConsulta* instancia();
-	
-	void testControlador();
 
 private:
 	static ControladorConsulta* _instancia;

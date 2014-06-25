@@ -12,8 +12,6 @@ class ControladorDiagnostico : public IControladorDiagnostico
 
 public:
 	static ControladorDiagnostico* instancia();
-	
-	void testControlador();
 
 private:
 	static ControladorDiagnostico* _instancia;

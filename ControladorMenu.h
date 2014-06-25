@@ -9,8 +9,6 @@ class ControladorMenu : public IControladorMenu
 
 public:
 	static ControladorMenu* instancia();
-	
-	void testControlador();
 
 	void iniciar();
 

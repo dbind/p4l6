@@ -18,7 +18,6 @@ class IControladorConsulta
 
 public:
 	virtual ~IControladorConsulta(){};
-	virtual void testControlador()=0;
 
 //	vector<Consulta*> getConsultas();
 //	vector<Diagnostico*> getDiagnosticos();

@@ -3,14 +3,6 @@ using namespace std;
 
 #include "ControladorDiagnostico.h"
 
-/**
- * Testea la creación de la instancia del controlador
- */
-void ControladorDiagnostico::testControlador()
-{
-	cout << "test";
-}
-
 
 /**
  * Instanciación de singleton

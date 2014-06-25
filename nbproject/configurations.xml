@@ -12,8 +12,6 @@
       <itemPath>ControladorSesion.h</itemPath>
       <itemPath>ControladorUsuario.cpp</itemPath>
       <itemPath>ControladorUsuario.h</itemPath>
-      <itemPath>FabricaControladores.cpp</itemPath>
-      <itemPath>FabricaControladores.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
       <itemPath>EstadoUsuario.h</itemPath>
@@ -31,7 +29,11 @@
       <itemPath>IControladorSesion.h</itemPath>
       <itemPath>IControladorUsuario.h</itemPath>
     </logicalFolder>
-    <logicalFolder name="ResourceFiles" displayName="Mains" projectFiles="true">
+    <logicalFolder name="ResourceFiles"
+                   displayName="Main Files"
+                   projectFiles="true">
+      <itemPath>FabricaControladores.cpp</itemPath>
+      <itemPath>FabricaControladores.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles" displayName="Objects" projectFiles="true">
