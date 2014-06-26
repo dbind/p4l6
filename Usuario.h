@@ -13,6 +13,9 @@ using namespace std;
 //#include "Consulta.h"
 
 
+class Comando;
+
+
 class Usuario
 {
 
@@ -21,12 +24,15 @@ public:
 	        TipoSexo, Fecha, vector<Rol>);
 	virtual ~Usuario(){};
 
+	void cargarComandos();
+
 	string getCi();
 	string getNombre();
 	string getApellido();
 	TipoSexo getSexo();
 	Fecha getFechaNac();
-	vector<Rol> getRoles();
+	vector<Rol> roles();
+	vector<Comando> comandos();
 
 	void setNombre(string);
 	void setApellido(string);
@@ -60,6 +66,7 @@ private:
 	string _pass;
 	EstadoUsuario _estado;
 	vector<Rol> _roles;
+	vector<Comando> _comandos;
 };
 
 #endif // USUARIO_H

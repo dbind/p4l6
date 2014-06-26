@@ -30,3 +30,16 @@ bool Comando::habilitadoPara(Rol rol)
 
 	return false;
 }
+
+bool Comando::habilitadoPara(vector<Rol> roles)
+{
+	for(vector<Rol>::iterator it = roles.begin(); it != roles.end(); ++it)
+	{
+		if (this->habilitadoPara(*it))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}

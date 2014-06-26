@@ -100,8 +100,7 @@ void ControladorMenu::menuDeOpciones()
 		cout << "Elija una opción:\n\n";
 
 		// Pedir todos los comandos existentes y filtrar sólo los permitidos
-		vector<Rol> roles = this->cSesion->usuarioActivo()->getRoles();
-		vector<Comando> comandos = this->cUsuario->comandos(roles);
+		vector<Comando> comandos = this->cSesion->usuarioActivo()->comandos();
 		vector<Comando>::iterator it = comandos.begin();
 
 		for (int i=1; i<=comandos.size(); i++, it++)
@@ -118,7 +117,7 @@ void ControladorMenu::menuDeOpciones()
 		// Cambiar de usuario
 		if (opcion == "c")
 		{
-			this->login(); // Se cierra la sesión actual primero
+			this->login(); // Se cierra la sesión actual automáticamente
 		}
 		// Salir
 		if (opcion == "q")
@@ -136,6 +135,7 @@ void ControladorMenu::menuDeOpciones()
 		{
 			int idx;
 			istringstream(opcion) >> idx;
+
 			this->ejecutar(comandos.at(idx-1));
 		}
 	};
@@ -149,8 +149,8 @@ bool ControladorMenu::esValidaOpcion(string s_opcion, int max)
 	char c_opcion[s_opcion.length()+1];
 	int i_opcion;
 
-	istringstream(s_opcion) >> i_opcion;      // Filtro solo números
-	sprintf(c_opcion, "%d", i_opcion); // Casteo el número a string
+	istringstream(s_opcion) >> i_opcion;  // Filtro solo números
+	sprintf(c_opcion, "%d", i_opcion);    // Casteo el número a string
 
 	return (s_opcion == c_opcion && i_opcion > 0 && i_opcion <= max);
 }

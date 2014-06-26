@@ -92,10 +92,18 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 
 vector<Comando> ControladorUsuario::comandos(vector<Rol> roles)
 {
-	// Filtrar solo los comandos que se pueden ejecutar con los roles dados
-	// TODO
+	vector<Comando> comandos = _comandos;
 
-	return this->_comandos;
+	// Filtrar solo los comandos que se pueden ejecutar con los roles dados
+	vector<Comando>::iterator it = comandos.begin();
+
+    while (it != comandos.end())
+    {
+		Comando cmd = *it;
+		cmd.habilitadoPara(roles) ? ++it : comandos.erase(it);
+    }
+
+	return comandos;
 }
 
 void ControladorUsuario::ejecutar(Comando cmd)

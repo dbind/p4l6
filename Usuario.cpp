@@ -2,6 +2,9 @@
 
 #include "Usuario.h"
 
+#include "FabricaControladores.h"
+#include "Comando.h"
+
 
 Usuario::Usuario(string ci, string nombre, string apellido,
                  TipoSexo sexo, Fecha fecha, vector<Rol> roles)
@@ -14,6 +17,11 @@ Usuario::Usuario(string ci, string nombre, string apellido,
 	_roles    = roles;
 
 	_estado   = EstadoUsuario::nuevo;
+}
+
+void Usuario::cargarComandos()
+{
+	_comandos = FabricaControladores::instancia()->controladorUsuario()->comandos(_roles);
 }
 
 
@@ -42,9 +50,14 @@ Fecha Usuario::getFechaNac()
     return _fechaNac;
 }
 
-vector<Rol> Usuario::getRoles()
+vector<Rol> Usuario::roles()
 {
     return _roles;
+}
+
+vector<Comando> Usuario::comandos()
+{
+    return _comandos;
 }
 
 
@@ -71,8 +84,7 @@ void Usuario::setFechaNac(Fecha fecha)
 
 bool Usuario::esUn(Rol rol)
 {
-	vector<Rol>::iterator it = find(_roles.begin(), _roles.end(), rol);
-	return it != _roles.end();
+	return find(_roles.begin(), _roles.end(), rol) != _roles.end();
 }
 
 bool Usuario::esNuevo()

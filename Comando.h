@@ -18,6 +18,7 @@ class Comando
         string codigo();
         string nombre();
 		bool habilitadoPara(Rol);
+		bool habilitadoPara(vector<Rol>);
 
     private:
         string _codigo;

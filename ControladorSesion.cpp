@@ -50,6 +50,9 @@ void ControladorSesion::iniciarSesion()
 
 	// Logueo exitoso: mantener puntero al usuario identificado (sesión activa)
 	this->usuario = usuario;
+	
+	// Cargar lista de comandos habilitados (dado el o los roles del usuario)
+	this->usuario->cargarComandos();
 }
 
 void ControladorSesion::cerrarSesion()
