@@ -186,13 +186,13 @@ void ControladorSesion::autenticar(Usuario* usuario)
 
 bool ControladorSesion::esValidaCi(string ci)
 {
-	char ci_limpia[ci.length()+1]; // Máx: 9999999
+	char ci_limpia[ci.length()+1];
 	int ci_numeros;
 
 	istringstream(ci) >> ci_numeros;       // Filtro solo números del input
 	sprintf(ci_limpia, "%d", ci_numeros);  // Casteo a string el número solo
 
-	return (ci == ci_limpia && ci.length() <= 7);
+	return (ci == ci_limpia && ci.length() <= 7); // Máx: 9999999
 }
 
 bool ControladorSesion::esValidoPass(string pass)

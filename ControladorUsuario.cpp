@@ -1,7 +1,12 @@
+#include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 
 #include "ControladorUsuario.h"
+
+#include "ControladorSesion.h"
+#include "FabricaControladores.h"
 #include "Usuario.h"
 
 
@@ -76,6 +81,7 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 vector<string> ControladorUsuario::getAccionesHabilitadas()
 {
 	vector<string> acciones {};
+	
 	vector<string>::iterator pos = acciones.begin();
 
 	acciones.insert(acciones.end(), "opción 1");

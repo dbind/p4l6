@@ -10,6 +10,9 @@
 #include "Rol.h"
 
 
+class IControladorSesion;
+
+
 class IControladorUsuario
 {
 
@@ -25,6 +28,7 @@ public:
 	virtual vector<string> getAccionesHabilitadas()=0;
 
 protected:
+	Usuario* usuarioActivo;
 	vector<Usuario*> usuarios;
 
 };

@@ -18,9 +18,8 @@ public:
 	
 protected:
 	// Referencias a los principales Controladores
-	FabricaControladores* Fabrica;   // Fábrica central de Controladores
-	IControladorUsuario*  cUsuario;  // Controlador de Usuarios
-	IControladorSesion*   cSesion;   // Controlador de Usuarios
+	IControladorUsuario* cUsuario;  // Controlador de Usuarios
+	IControladorSesion*  cSesion;   // Controlador de Usuarios
 
 	virtual void menuDeOpciones()=0;
 

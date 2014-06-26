@@ -16,13 +16,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/x/lab6/Usuario.cpp</file>
             <file>file:/home/x/lab6/main.cpp</file>
             <file>file:/home/x/lab6/ControladorUsuario.cpp</file>
-            <file>file:/home/x/lab6/Usuario.h</file>
-            <file>file:/home/x/lab6/ControladorSesion.h</file>
-            <file>file:/home/x/lab6/Fecha.cpp</file>
+            <file>file:/home/x/lab6/ControladorMenu.cpp</file>
+            <file>file:/home/x/lab6/IControladorUsuario.h</file>
             <file>file:/home/x/lab6/ControladorSesion.cpp</file>
+            <file>file:/home/x/lab6/ControladorUsuario.h</file>
         </group>
     </open-files>
 </project-private>

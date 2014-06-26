@@ -21,6 +21,7 @@ private:
 	void logout();
 
 	void menuDeOpciones();
+	bool esValidaOpcion(string opcion, int max);
 
 };
 

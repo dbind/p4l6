@@ -1,3 +1,4 @@
+#include <sstream>
 #include <iostream>
 using namespace std;
 
@@ -23,10 +24,8 @@ ControladorMenu* ControladorMenu::instancia()
 
 ControladorMenu::ControladorMenu()
 {
-	this->Fabrica = FabricaControladores::instancia();
-
-	this->cUsuario = this->Fabrica->controladorUsuario();
-	this->cSesion  = this->Fabrica->controladorSesion();
+	this->cSesion  = FabricaControladores::instancia()->controladorSesion();
+	this->cUsuario = FabricaControladores::instancia()->controladorUsuario();
 }
 
 /**
@@ -91,16 +90,63 @@ void ControladorMenu::logout()
 
 void ControladorMenu::menuDeOpciones()
 {
-	cout << "Elija una opción para continuar:\n\n";
+	string opcion = "";
 
-	// Listar acciones específicas dependientes del estado y/o tipo de usuario
-	vector<string> acciones = this->cUsuario->getAccionesHabilitadas();
-	vector<string>::iterator it = acciones.begin();
-
-	for (int i=1; i<=acciones.size(); i++, it++)
+	while (true)
 	{
-		cout << i << ". " << (*it) << "\n";
-	}
+		cout << "Elija una opción:\n\n";
 
-	cout << "\nq. Cerrar sesión:\n";
+		// Listar acciones (dependientes y no del estado y/o rol del usuario)
+		vector<string> acciones = this->cUsuario->getAccionesHabilitadas();
+		vector<string>::iterator it = acciones.begin();
+
+		for (int i=1; i<=acciones.size(); i++, it++)
+		{
+			cout << i << ". " << (*it) << "\n";
+		}
+
+		cout << "\nc. Cambiar de usuario\n";
+		cout << "\nq. Salir\n";
+
+		cin >> opcion;
+		
+		// Cambiar de usuario
+		if (opcion == "c")
+		{
+			this->login(); // Se cierra la sesión actual primero
+		}
+		// Salir
+		if (opcion == "q")
+		{
+			cout << "\nThis is the end / my only friend / the end ...\n";
+			return;
+		}
+		// Opción incorrecta
+		else if (!this->esValidaOpcion(opcion, acciones.size()))
+		{
+			cout << "Opción inválida. Inténtelo nuevamente.\n";
+		}
+		// Opción correcta: ejecutar acción
+		else
+		{
+			int o;
+			istringstream(opcion) >> o;
+			cout << "Seleccionaste " << opcion << " (" << acciones.at(o) << ")\n";
+//			this->ejectuar(acciones);
+		}
+	};
+}
+
+/**
+ * Las opciones válidas son: números menores que 'max'.
+ */
+bool ControladorMenu::esValidaOpcion(string opcion, int max)
+{
+	char opcion_limpia[opcion.length()+1];
+	int opcion_numeros;
+
+	istringstream(opcion) >> opcion_numeros;      // Filtro solo números
+	sprintf(opcion_limpia, "%d", opcion_numeros); // Casteo el número a string
+
+	return (opcion == opcion_limpia && opcion.length() <= max);
 }
