@@ -58,7 +58,19 @@ void ControladorMenu::iniciar()
 		throw 1;
 	}
 
-	this->menuDeOpciones();
+	try
+	{
+		this->menuDeOpciones();
+	}
+	catch (int e)
+	{
+		if (e) throw e; // Excepciones para manejar (por el momento, ninguna)
+		else return;    // El usuario eligió terminar el programa
+	}
+	catch (...)
+	{
+		throw 1; // Unhandled exception
+	}
 }
 
 /**
@@ -90,55 +102,75 @@ void ControladorMenu::logout()
 	this->cSesion->cerrarSesion();
 }
 
-
 void ControladorMenu::menuDeOpciones()
 {
 	string opcion = "";
+	
+	// Lista de comandos que el usuario puede ejecutar según su(s) rol(es)
+	vector<Comando> comandosUsuario;
+	comandosUsuario = this->cSesion->usuarioActivo()->comandos();
+
+	// Imprimir menú solo con las opciones válidas para el usuario actual
+	this->imprimirMenu(comandosUsuario);
 
 	while (true)
 	{
-		cout << "Elija una opción:\n\n";
-
-		// Pedir todos los comandos existentes y filtrar sólo los permitidos
-		vector<Comando> comandos = this->cSesion->usuarioActivo()->comandos();
-		vector<Comando>::iterator it = comandos.begin();
-
-		for (int i=1; i<=comandos.size(); i++, it++)
-		{
-			Comando cmd = *it;
-			cout << i << ". " << cmd.codigo() << "\n";
-		}
-
-		cout << "\nc. Cambiar de usuario\n";
-		cout << "\nq. Salir\n";
-
+		// El usuario elije una opcion
 		cin >> opcion;
-		
-		// Cambiar de usuario
-		if (opcion == "c")
-		{
-			this->login(); // Se cierra la sesión actual automáticamente
-		}
-		// Salir
-		if (opcion == "q")
-		{
-			cout << "\nThis is the end / my only friend / the end ...\n";
-			return;
-		}
-		// Opción incorrecta
-		else if (!this->esValidaOpcion(opcion, comandos.size()))
-		{
-			cout << "Opción inválida. Inténtelo nuevamente.\n";
-		}
-		// Opción correcta: ejecutar acción
-		else
-		{
-			int idx;
-			istringstream(opcion) >> idx;
 
-			this->ejecutar(comandos.at(idx-1));
-		}
+		this->interpretarOpcion(opcion, comandosUsuario);
 	};
+}
+
+void ControladorMenu::interpretarOpcion(string opcion, vector<Comando> comandos)
+{
+		
+	// Opción general: Salir
+	if (opcion == "q")
+	{
+		cout << "\nThis is the end / my only friend / the end ...\n";
+		throw 0;
+	}
+	// Opción general: Cambiar de usuario
+	else if (opcion == "c")
+	{
+		this->login(); // Se cierra la sesión actual automáticamente
+
+		// Actualizar la lista de comandos, para el nuevo usuario logueado
+		comandos = this->cSesion->usuarioActivo()->comandos();
+		this->imprimirMenu(this->cSesion->usuarioActivo()->comandos());
+	}
+	// Opción correcta, específica del rol del usuario: ejecutar acción
+	else if (this->esValidaOpcion(opcion, comandos.size()))
+	{
+		int idx;
+		istringstream(opcion) >> idx;
+
+		this->ejecutar(comandos.at(idx-1));
+		this->imprimirMenu(comandos);
+	}
+	// Opción incorrecta
+	else
+	{
+		cout << "Opción inválida. Inténtelo nuevamente.\n";
+	}
+}
+
+void ControladorMenu::imprimirMenu(vector<Comando> comandos)
+{
+	cout << "Elija una opción:\n\n";
+
+	// Imprimir comandos pasados (parte personalizable del menú)
+	vector<Comando>::iterator it = comandos.begin();
+
+	for (int i=1; i<=comandos.size(); i++, it++)
+	{
+		Comando cmd = *it;
+		cout << i << ". " << cmd.codigo() << "\n";
+	}
+
+	cout << "\nc. Cambiar de usuario\n";
+	cout << "\nq. Salir\n";
 }
 
 /**

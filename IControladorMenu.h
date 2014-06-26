@@ -1,6 +1,10 @@
 #ifndef ICONTROLADORMENU_H
 #define	ICONTROLADORMENU_H
 
+using namespace std;
+
+#include <vector>
+
 
 class FabricaControladores;
 class IControladorUsuario;
@@ -24,6 +28,7 @@ protected:
 	IControladorSesion*  cSesion;   // Controlador de Usuarios
 
 	virtual void menuDeOpciones()=0;
+	virtual void imprimirMenu(vector<Comando>)=0;
 
 };
 

@@ -25,6 +25,9 @@ private:
 	void logout();
 
 	void menuDeOpciones();
+	void imprimirMenu(vector<Comando>);
+
+	void interpretarOpcion(string opcion, vector<Comando>);
 	bool esValidaOpcion(string opcion, int max);
 
 };
