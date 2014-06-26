@@ -1,6 +1,8 @@
 #ifndef ICONTROLADORCONSULTA_H
 #define	ICONTROLADORCONSULTA_H
 
+using namespace std;
+
 #include <vector>
 #include <string>
 

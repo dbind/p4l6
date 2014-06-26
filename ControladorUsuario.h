@@ -1,6 +1,8 @@
 #ifndef CONTROLADORUSUARIO_H
 #define	CONTROLADORUSUARIO_H
 
+using namespace std;
+
 #include <string>
 #include <vector>
 
@@ -9,6 +11,7 @@
 #include "TipoSexo.h"
 #include "Fecha.h"
 #include "Rol.h"
+#include "Comando.h"
 
 
 class Usuario;
@@ -29,7 +32,8 @@ public:
 	                     TipoSexo, Fecha, vector<Rol>);
 	Usuario* findUsuario(string ci);
 	
-	vector<string> getAccionesHabilitadas();
+	vector<Comando> comandos(vector<Rol>);
+	void ejecutar(Comando);
 
 private:
 	static ControladorUsuario* _instancia;

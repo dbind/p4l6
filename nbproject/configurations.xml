@@ -14,6 +14,8 @@
       <itemPath>ControladorUsuario.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
+      <itemPath>Comando.cpp</itemPath>
+      <itemPath>Comando.h</itemPath>
       <itemPath>EstadoUsuario.h</itemPath>
       <itemPath>Fecha.cpp</itemPath>
       <itemPath>Fecha.h</itemPath>
@@ -66,6 +68,10 @@
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
+      <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Comando.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorConsulta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorConsulta.h" ex="false" tool="3" flavor2="0">
@@ -141,6 +147,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Comando.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorConsulta.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorConsulta.h" ex="false" tool="3" flavor2="0">

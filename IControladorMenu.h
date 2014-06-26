@@ -2,10 +2,11 @@
 #define	ICONTROLADORMENU_H
 
 
-class Usuario;
 class FabricaControladores;
 class IControladorUsuario;
 class IControladorSesion;
+class Usuario;
+class Comando;
 
 
 class IControladorMenu
@@ -15,6 +16,7 @@ public:
 	virtual ~IControladorMenu(){};
 
 	virtual void iniciar()=0;
+	virtual void ejecutar(Comando)=0;
 	
 protected:
 	// Referencias a los principales Controladores

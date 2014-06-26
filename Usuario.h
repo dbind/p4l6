@@ -1,6 +1,8 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 
+using namespace std;
+
 #include <string>
 #include <vector>
 
@@ -9,8 +11,6 @@
 #include "Rol.h"
 #include "EstadoUsuario.h"
 //#include "Consulta.h"
-
-using namespace std;
 
 
 class Usuario
@@ -26,6 +26,7 @@ public:
 	string getApellido();
 	TipoSexo getSexo();
 	Fecha getFechaNac();
+	vector<Rol> getRoles();
 
 	void setNombre(string);
 	void setApellido(string);
@@ -37,7 +38,7 @@ public:
 	bool esNuevo();
 	bool estaActivo();
 	bool estaInactivo();
-	bool validarPass(string pass);
+	bool validarPass(string);
 	
 	void activar();
 	void desactivar();
@@ -51,14 +52,14 @@ public:
 //	Consulta obtenerConsulta();
 
 private:
-	string ci;
-	string nombre;
-	string apellido;
-	TipoSexo sexo;
-	Fecha fechaNac;
-	string pass;
-	EstadoUsuario estado;
-	vector<Rol> roles;
+	string _ci;
+	string _nombre;
+	string _apellido;
+	TipoSexo _sexo;
+	Fecha _fechaNac;
+	string _pass;
+	EstadoUsuario _estado;
+	vector<Rol> _roles;
 };
 
 #endif // USUARIO_H

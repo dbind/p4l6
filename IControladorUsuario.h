@@ -1,16 +1,21 @@
 #ifndef ICONTROLADORUSUARIO_H
 #define	ICONTROLADORUSUARIO_H
 
+using namespace std;
+
 #include <string>
 #include <vector>
 
-#include "Usuario.h"
 #include "TipoSexo.h"
-#include "Fecha.h"
 #include "Rol.h"
+
+class Usuario;
+class Fecha;
+class Comando;
 
 
 class IControladorSesion;
+class Comando;
 
 
 class IControladorUsuario
@@ -25,11 +30,16 @@ public:
 	                             TipoSexo, Fecha, vector<Rol>)=0;
 	virtual Usuario* findUsuario(string ci)=0;
 	
-	virtual vector<string> getAccionesHabilitadas()=0;
+	/**
+	 * Retorna un vector de comandos habilitados para los roles especificados
+     */
+	virtual vector<Comando> comandos(vector<Rol>)=0;
+	virtual void ejecutar(Comando)=0;
 
 protected:
 	Usuario* usuarioActivo;
 	vector<Usuario*> usuarios;
+	vector<Comando> _comandos;
 
 };
 

@@ -1,10 +1,13 @@
+using namespace std;
+
 #include <sstream>
 #include <iostream>
-using namespace std;
+#include <stdexcept>
 
 #include "ControladorMenu.h"
 #include "FabricaControladores.h"
 #include "Usuario.h"
+#include "Comando.h"
 
 
 /**
@@ -39,7 +42,7 @@ ControladorMenu::ControladorMenu()
  */
 void ControladorMenu::iniciar()
 {
-	// Todas las acciones son actualmente reservadas a usuarios autenticados
+	// Todos los comandos actualmente son reservados a usuarios autenticados
 	this->login();
 
 	// Verificar que la sesión fue creada, y dar la bienvenida al usuario ...
@@ -96,13 +99,15 @@ void ControladorMenu::menuDeOpciones()
 	{
 		cout << "Elija una opción:\n\n";
 
-		// Listar acciones (dependientes y no del estado y/o rol del usuario)
-		vector<string> acciones = this->cUsuario->getAccionesHabilitadas();
-		vector<string>::iterator it = acciones.begin();
+		// Pedir todos los comandos existentes y filtrar sólo los permitidos
+		vector<Rol> roles = this->cSesion->usuarioActivo()->getRoles();
+		vector<Comando> comandos = this->cUsuario->comandos(roles);
+		vector<Comando>::iterator it = comandos.begin();
 
-		for (int i=1; i<=acciones.size(); i++, it++)
+		for (int i=1; i<=comandos.size(); i++, it++)
 		{
-			cout << i << ". " << (*it) << "\n";
+			Comando cmd = *it;
+			cout << i << ". " << cmd.codigo() << "\n";
 		}
 
 		cout << "\nc. Cambiar de usuario\n";
@@ -122,17 +127,16 @@ void ControladorMenu::menuDeOpciones()
 			return;
 		}
 		// Opción incorrecta
-		else if (!this->esValidaOpcion(opcion, acciones.size()))
+		else if (!this->esValidaOpcion(opcion, comandos.size()))
 		{
 			cout << "Opción inválida. Inténtelo nuevamente.\n";
 		}
 		// Opción correcta: ejecutar acción
 		else
 		{
-			int o;
-			istringstream(opcion) >> o;
-			cout << "Seleccionaste " << opcion << " (" << acciones.at(o) << ")\n";
-//			this->ejectuar(acciones);
+			int idx;
+			istringstream(opcion) >> idx;
+			this->ejecutar(comandos.at(idx-1));
 		}
 	};
 }
@@ -140,13 +144,37 @@ void ControladorMenu::menuDeOpciones()
 /**
  * Las opciones válidas son: números menores que 'max'.
  */
-bool ControladorMenu::esValidaOpcion(string opcion, int max)
+bool ControladorMenu::esValidaOpcion(string s_opcion, int max)
 {
-	char opcion_limpia[opcion.length()+1];
-	int opcion_numeros;
+	char c_opcion[s_opcion.length()+1];
+	int i_opcion;
 
-	istringstream(opcion) >> opcion_numeros;      // Filtro solo números
-	sprintf(opcion_limpia, "%d", opcion_numeros); // Casteo el número a string
+	istringstream(s_opcion) >> i_opcion;      // Filtro solo números
+	sprintf(c_opcion, "%d", i_opcion); // Casteo el número a string
 
-	return (opcion == opcion_limpia && opcion.length() <= max);
+	return (s_opcion == c_opcion && i_opcion > 0 && i_opcion <= max);
+}
+
+void ControladorMenu::ejecutar(Comando cmd)
+{	
+	try
+	{
+		cout << "Ejecutando  " << cmd.codigo() << "... ";
+
+		this->cUsuario->ejecutar(cmd);
+
+		cout << "finalizado con éxito.\n";
+	}
+	catch (runtime_error& rt)
+	{
+		cout << rt.what() << '\n';
+	}
+	catch (logic_error& lg)
+	{
+		cout << lg.what() << '\n';
+	}
+	catch (exception& ex)
+	{
+		cout << ex.what() << '\n';
+	}
 }

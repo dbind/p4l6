@@ -6,103 +6,109 @@
 Usuario::Usuario(string ci, string nombre, string apellido,
                  TipoSexo sexo, Fecha fecha, vector<Rol> roles)
 {
-	this->ci       = ci;
-	this->nombre   = nombre;
-	this->apellido = apellido;
-	this->sexo     = sexo;
-	this->fechaNac = fecha;
-	this->roles    = roles;
+	_ci       = ci;
+	_nombre   = nombre;
+	_apellido = apellido;
+	_sexo     = sexo;
+	_fechaNac = fecha;
+	_roles    = roles;
 
-	this->estado   = EstadoUsuario::nuevo;
+	_estado   = EstadoUsuario::nuevo;
 }
 
 
 string Usuario::getCi()
 {
-    return this->ci;
+    return _ci;
 }
 
 string Usuario::getNombre()
 {
-    return this->nombre;
+    return _nombre;
 }
 
 string Usuario::getApellido()
 {
-    return this->apellido;
+    return _apellido;
 }
 
 TipoSexo Usuario::getSexo()
 {
-    return this->sexo;
+    return _sexo;
 }
 
 Fecha Usuario::getFechaNac()
 {
-    return this->fechaNac;
+    return _fechaNac;
 }
+
+vector<Rol> Usuario::getRoles()
+{
+    return _roles;
+}
+
 
 void Usuario::setNombre(string nombre)
 {
-    this->nombre = nombre;
+    _nombre = nombre;
 }
 
 void Usuario::setApellido(string apellido)
 {
-    this->apellido = apellido;
+    _apellido = apellido;
 }
 
 void Usuario::setSexo(TipoSexo sexo)
 {
-    this->sexo = sexo;
+    _sexo = sexo;
 }
 
 void Usuario::setFechaNac(Fecha fecha)
 {
-    this->fechaNac = fecha;
+    _fechaNac = fecha;
 }
 
 
 bool Usuario::esUn(Rol rol)
 {
-	vector<Rol>::iterator it = find(this->roles.begin(), this->roles.end(), rol);
-	return it != this->roles.end();
+	vector<Rol>::iterator it = find(_roles.begin(), _roles.end(), rol);
+	return it != _roles.end();
 }
 
 bool Usuario::esNuevo()
 {
-	return this->estado == EstadoUsuario::nuevo;
+	return _estado == EstadoUsuario::nuevo;
 }
 
 bool Usuario::estaActivo()
 {
-	return this->estado == EstadoUsuario::activo;
+	return _estado == EstadoUsuario::activo;
 }
 
 bool Usuario::estaInactivo()
 {
-	return !this->estaActivo();
+	return _estado != EstadoUsuario::activo;
 }
 
 bool Usuario::validarPass(string pass)
 {
-    return this->pass == pass;
+    return _pass == pass;
 }
 
 
 void Usuario::activar()
 {
-	this->estado = EstadoUsuario::activo;
+	_estado = EstadoUsuario::activo;
 }
 
 void Usuario::desactivar()
 {
-	this->estado = EstadoUsuario::inactivo;
+	_estado = EstadoUsuario::inactivo;
 }
 
 void Usuario::cambiarPass(string pass)
 {
-    this->pass = pass;
+    _pass = pass;
 }
 
 

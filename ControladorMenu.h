@@ -4,6 +4,9 @@
 #include "IControladorMenu.h"
 
 
+class Comando;
+
+
 class ControladorMenu : public IControladorMenu
 {
 
@@ -11,6 +14,7 @@ public:
 	static ControladorMenu* instancia();
 
 	void iniciar();
+	void ejecutar(Comando);
 
 private:
 	static ControladorMenu* _instancia;
