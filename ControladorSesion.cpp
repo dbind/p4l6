@@ -42,18 +42,22 @@ ControladorSesion::ControladorSesion()
 
 void ControladorSesion::iniciarSesion()
 {
-	// Pido al usuario que se identifique (número de cédula)
-	Usuario* usuario = this->pedirIdentificacion();
+	while (!this->sesionIniciada())
+	{
+		// Pido al usuario que se identifique (número de cédula)
+		Usuario* usuario = this->pedirIdentificacion();
 
-	// Pido al usuario que verifique que es él (contraseña)
-	// Si falla tira una excepción, que forwardeamos implícitamente
-	this->autenticar(usuario);
+		// Pido al usuario que verifique que es él (contraseña)
+		// Si falla tira una excepción, que forwardeamos implícitamente
+		if (this->autenticar(usuario))
+		{
+			// Logueo exitoso: mantener puntero al usuario identificado (sesión activa)
+			this->usuario = usuario;
 
-	// Logueo exitoso: mantener puntero al usuario identificado (sesión activa)
-	this->usuario = usuario;
-	
-	// Cargar lista de comandos habilitados (dado el o los roles del usuario)
-	this->usuario->cargarComandos();
+			// Cargar lista de comandos habilitados (dado el o los roles del usuario)
+			this->usuario->cargarComandos();
+		}
+	}
 }
 
 void ControladorSesion::cerrarSesion()
@@ -109,17 +113,18 @@ Usuario* ControladorSesion::pedirIdentificacion()
 		cin >> ci;
 	}
 
+	// El usuario desea cancelar (i.e. volver a empezar)
 	if (ci == "q")
 	{
-		throw 0; // El usuario desea cancelar (i.e. volver a empezar)
+		throw 0;
 	}
 
 	Usuario* usuario = this->cUsuario->findUsuario(ci);
 
+	// El usuario no está registrado en el sistema
 	if (usuario == NULL)
 	{
-		cout << "No hay usuarios con esa cédula de identidad en el sistema.\n";
-		throw 1;
+		cout << "No hay usuarios con esa CI en el sistema.\n";
 	}
 
 	return usuario;
@@ -135,7 +140,7 @@ Usuario* ControladorSesion::pedirIdentificacion()
  * 
  * Tira excepción int 0 si cancela (q)
  */
-void ControladorSesion::autenticar(Usuario* usuario)
+bool ControladorSesion::autenticar(Usuario* usuario)
 {
 	string pass;
 
@@ -182,10 +187,8 @@ void ControladorSesion::autenticar(Usuario* usuario)
 		}
 	}
 
-	if (pass == "q")
-	{
-		throw 0; // El usuario desea cancelar (i.e. volver a empezar)
-	}
+	// 2 formas de llegar hasta acá: o presionó q o la contraseña fue aceptada
+	return (pass != "q");
 }
 
 bool ControladorSesion::esValidaCi(string ci)

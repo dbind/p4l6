@@ -44,23 +44,14 @@ ControladorMenu::ControladorMenu()
 void ControladorMenu::iniciar()
 {
 	// Todos los comandos actualmente son reservados a usuarios autenticados
-	this->login();
-
-	// Verificar que la sesión fue creada, y dar la bienvenida al usuario ...
 	try
 	{
+		this->login();
+
+		// Verificar que la sesión fue creada, y dar la bienvenida al usuario ...
 		Usuario* usuario = this->cSesion->usuarioActivo();
 		cout << "Bienvenido, " << usuario->getNombre() << "\n\n";
-	}
-	// ... o abortar si falló el login
-	catch (...)
-	{
-		cout << "Error irrecuperable: fallo desconocido en inicio de sesión";
-		throw 1;
-	}
 
-	try
-	{
 		this->menuDeOpciones();
 	}
 	catch (int e)
@@ -70,6 +61,7 @@ void ControladorMenu::iniciar()
 	}
 	catch (...)
 	{
+		cout << "Error irrecuperable: fallo desconocido en inicio de sesión";
 		throw 1; // Unhandled exception
 	}
 }
@@ -80,22 +72,10 @@ void ControladorMenu::iniciar()
  */
 void ControladorMenu::login()
 {
-	// Antes de iniciar sesión, cerarr sesión anterior si la hubiera
+	// Antes de iniciar sesión, cerrar sesión anterior si la hubiera
 	this->cSesion->cerrarSesion();
 
-	// Permitir intentos ilimitados de login, hasta que ponga datos correctos
-	while (!this->cSesion->sesionIniciada())
-	{
-		try
-		{
-			this->cSesion->iniciarSesion();
-		}
-		catch (int e)
-		{
-			// e == 1: ci incorrecta | e == 0: usuario canceló
-			// Por el momento, manejamos la excepción indistintamente
-		}
-	}
+	this->cSesion->iniciarSesion();
 }
 
 void ControladorMenu::logout()

@@ -32,7 +32,7 @@ private:
 	~ControladorSesion(){};
 
 	Usuario* pedirIdentificacion();
-	void autenticar(Usuario*);
+	bool autenticar(Usuario*);
 	bool esValidaCi(string);
 	bool esValidoPass(string);
 
