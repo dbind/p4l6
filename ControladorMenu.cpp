@@ -2,6 +2,7 @@ using namespace std;
 
 #include <sstream>
 #include <iostream>
+#include <cstdio>
 #include <stdexcept>
 
 #include "ControladorMenu.h"
