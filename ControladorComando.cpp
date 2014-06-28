@@ -8,18 +8,47 @@ using namespace std;
 #include "Comando.h"
 #include "Rol.h"
 
+// Shortcut por practicidad
+typedef vector<Rol> Roles;
 
-ControladorComando::ControladorComando()
+/**
+ * Agregar nuevos comandos: this->agregar("codigo", "nombre", Roles{lista})
+ */
+void ControladorComando::registrarComandos()
 {
-	// Registrar comandos reconocidos por el controlador
-	this->_comandos = vector<Comando> {};
+	// Casos de uso
+	this->agregar("alta_usuario", "Alta/Reactivación de Usuario",
+	               Roles{Rol::admin});
+	this->agregar("alta_representacion", "Alta Representación de Diagnóstico",
+	               Roles{Rol::admin});
+	this->agregar("reserva_consulta", "Reserva Consulta",
+	               Roles{Rol::admin});
+	this->agregar("registro_consulta", "Registro Consulta",
+	               Roles{Rol::admin});
+	this->agregar("alta_diagnosticos", "Alta Diagnósticos de Consulta",
+	               Roles{Rol::admin});
+	this->agregar("alta_medicamento", "Alta Medicamento",
+	               Roles{Rol::admin});
+	this->agregar("devolucion_consulta", "Devolución de Consulta",
+	               Roles{Rol::admin});
+	this->agregar("listar_usuarios", "Usuarios Dados de Alta",
+	               Roles{Rol::admin});
+	this->agregar("listar_representaciones", "Listar Representaciones de Diagnósticos",
+	               Roles{Rol::admin});
+	this->agregar("ver_historial", "Obtener Historial Paciente",
+	               Roles{Rol::admin});
+	this->agregar("notificar_medico", "Notificar Médicos",
+	               Roles{Rol::admin});
 
-	// Agregar nuevos comandos: this->agregar(codigo, comando, roles);
-	this->agregar("cmd1", "Comando 1", vector<Rol> {Rol::admin});
-	this->agregar("cmd2", "Comando 2", vector<Rol> {Rol::admin, Rol::master});
-	this->agregar("cmd3", "Comando 3", vector<Rol> {Rol::master});
-	this->agregar("cmd4", "Comando 4", vector<Rol> {Rol::socio, Rol::medico});
-	this->agregar("cmd5", "Comando 5", vector<Rol> {Rol::socio});
+	// Solo para Master (admin por defecto)
+	this->agregar("set_time", "Modificar fecha del sistema",
+	              Roles{Rol::master});
+	this->agregar("load_test_data", "Cargar datos de prueba",
+	              Roles{Rol::master});
+
+	// Opciones específicas de la implementación (e.g. ver hora)
+	this->agregar("get_time", "Consultar fecha del sistema",
+	              Roles{Rol::admin, Rol::medico, Rol::socio});
 }
 
 void ControladorComando::ejecutar(Comando cmd)
@@ -43,7 +72,7 @@ void ControladorComando::ejecutar(Comando cmd)
 	
 	else
 	{
-		cout << "No hay manejador para la opción seleccionada\n";
+		cout << "No hay manejador para la opción seleccionada (" << cmd.nombre() << ")\n";
 	}
 }
 
@@ -65,6 +94,13 @@ ControladorComando* ControladorComando::instancia()
 	}
 	
 	return _instancia;
+}
+
+ControladorComando::ControladorComando()
+{
+	// Registrar comandos reconocidos por el controlador
+	this->_comandos = vector<Comando> {};
+	this->registrarComandos();
 }
 
 vector<Comando> ControladorComando::comandos(vector<Rol> roles)

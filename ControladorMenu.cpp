@@ -149,7 +149,7 @@ void ControladorMenu::imprimirMenu(vector<Comando> comandos)
 	for (int i=1; i<=comandos.size(); i++, it++)
 	{
 		Comando cmd = *it;
-		cout << i << ". " << cmd.codigo() << "\n";
+		cout << i << ". " << cmd.nombre() << "\n";
 	}
 
 	cout << "\nc. Cambiar de usuario\n";
