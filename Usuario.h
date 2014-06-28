@@ -24,8 +24,6 @@ public:
 	        TipoSexo, Fecha, vector<Rol>);
 	virtual ~Usuario(){};
 
-	void cargarComandos();
-
 	string getCi();
 	string getNombre();
 	string getApellido();

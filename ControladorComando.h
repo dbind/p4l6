@@ -36,6 +36,8 @@ private:
 	static ControladorComando* _instancia;
 	ControladorComando();
 
+	void agregar(string codigo, string nombre, vector<Rol>);
+
 };
 
 #endif	/* CONTROLADORCOMANDO_H */

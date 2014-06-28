@@ -17,10 +17,8 @@ Usuario::Usuario(string ci, string nombre, string apellido,
 	_roles    = roles;
 
 	_estado   = EstadoUsuario::nuevo;
-}
 
-void Usuario::cargarComandos()
-{
+	// Cargar lista de comandos habilitados (dado el o los roles del usuario)
 	_comandos = FabricaControladores::instancia()->controladorComando()->comandos(_roles);
 }
 
