@@ -59,17 +59,17 @@ void ControladorComando::ejecutar(Comando cmd)
 	{
 		cout << "Ejecuté cmd1!\n";
 	}
-	
+
 	else if (opcion == "cmd2")
 	{
 		cout << "Ejecuté cmd2!\n";
 	}
-	
+
 //	else if (opcion == "")
 //	{
 //		cout << "Ejecuto XXX... ";
 //	}
-	
+
 	else
 	{
 		cout << "No hay manejador para la opción seleccionada (" << cmd.nombre() << ")\n";

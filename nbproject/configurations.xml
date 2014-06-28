@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="90">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="f4" displayName="Commands" projectFiles="true" kind="ROOT">
-      <itemPath>ControladorComando.cpp</itemPath>
-      <itemPath>ControladorComando.h</itemPath>
-    </logicalFolder>
-    <logicalFolder name="f3" displayName="Controllers" projectFiles="true">
-      <itemPath>ControladorConsulta.cpp</itemPath>
-      <itemPath>ControladorConsulta.h</itemPath>
-      <itemPath>ControladorDiagnostico.cpp</itemPath>
-      <itemPath>ControladorDiagnostico.h</itemPath>
-      <itemPath>ControladorMenu.cpp</itemPath>
-      <itemPath>ControladorMenu.h</itemPath>
-      <itemPath>ControladorSesion.cpp</itemPath>
-      <itemPath>ControladorSesion.h</itemPath>
-      <itemPath>ControladorUsuario.cpp</itemPath>
-      <itemPath>ControladorUsuario.h</itemPath>
-    </logicalFolder>
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
       <itemPath>Comando.cpp</itemPath>
       <itemPath>Comando.h</itemPath>
@@ -31,9 +15,20 @@
     <logicalFolder name="f2" displayName="Interfaces" projectFiles="true">
       <itemPath>IControladorConsulta.h</itemPath>
       <itemPath>IControladorDiagnostico.h</itemPath>
+      <itemPath>IControladorFarmaco.h</itemPath>
       <itemPath>IControladorMenu.h</itemPath>
       <itemPath>IControladorSesion.h</itemPath>
       <itemPath>IControladorUsuario.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f3" displayName="Main Controllers" projectFiles="true">
+      <itemPath>ControladorComando.cpp</itemPath>
+      <itemPath>ControladorComando.h</itemPath>
+      <itemPath>ControladorMenu.cpp</itemPath>
+      <itemPath>ControladorMenu.h</itemPath>
+      <itemPath>ControladorSesion.cpp</itemPath>
+      <itemPath>ControladorSesion.h</itemPath>
+      <itemPath>ControladorUsuario.cpp</itemPath>
+      <itemPath>ControladorUsuario.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Main Files"
@@ -43,8 +38,18 @@
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles" displayName="Objects" projectFiles="true">
+      <itemPath>ControladorFarmaco.cpp</itemPath>
+      <itemPath>ControladorFarmaco.h</itemPath>
+      <itemPath>Farmaco.cpp</itemPath>
+      <itemPath>Farmaco.h</itemPath>
       <itemPath>Usuario.cpp</itemPath>
       <itemPath>Usuario.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f4" displayName="UseCase Controllers" projectFiles="true">
+      <itemPath>ControladorConsulta.cpp</itemPath>
+      <itemPath>ControladorConsulta.h</itemPath>
+      <itemPath>ControladorDiagnostico.cpp</itemPath>
+      <itemPath>ControladorDiagnostico.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -88,6 +93,10 @@
       </item>
       <item path="ControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ControladorFarmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ControladorFarmaco.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorMenu.h" ex="false" tool="3" flavor2="0">
@@ -106,6 +115,10 @@
       </item>
       <item path="FabricaControladores.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Farmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Farmaco.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Fecha.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Fecha.h" ex="false" tool="3" flavor2="0">
@@ -117,6 +130,8 @@
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IControladorFarmaco.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorMenu.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -171,6 +186,10 @@
       </item>
       <item path="ControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ControladorFarmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ControladorFarmaco.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorMenu.h" ex="false" tool="3" flavor2="0">
@@ -189,6 +208,10 @@
       </item>
       <item path="FabricaControladores.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Farmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Farmaco.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Fecha.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Fecha.h" ex="false" tool="3" flavor2="0">
@@ -200,6 +223,8 @@
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IControladorFarmaco.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorMenu.h" ex="false" tool="3" flavor2="0">
       </item>

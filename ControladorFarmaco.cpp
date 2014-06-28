@@ -1,54 +1,58 @@
+using namespace std;
+
 #include <string>
 #include <vector>
 
-#include "Farmaco.h"
 #include "ControladorFarmaco.h"
 
-using namespace std;
+#include "Farmaco.h"
+
 
 ControladorFarmaco* ControladorFarmaco::_instancia = 0;
 
 ControladorFarmaco* ControladorFarmaco::instancia()
-{   
+{
     if (_instancia == 0)
 	{
 		_instancia = new ControladorFarmaco();
 	}
-	
-	return _instancia;   
-    
+
+	return _instancia;
 }
+
+
+vector<Farmaco*> ControladorFarmaco::farmacos()
+{
+	return this->_farmacos;
+}
+
 
 bool ControladorFarmaco::darDeAltaFarmaco(string nombre)
 {
-    if (!ControladorFarmaco::memberFarmaco(nombre)) 
+    if (!this->memberFarmaco(nombre))
     {
-        Farmaco* f = new Farmaco(nombre);
-        farmacos.insert(this->farmacos.begin(), f);
-        return true; // el farmaco se dio de alta correctamente. 
-        
+        Farmaco* farmaco = new Farmaco(nombre);
+        this->_farmacos.insert(this->_farmacos.begin(), farmaco);
+
+		return true;
     }
-    else
-    {
-        return false; // en el main hay que pedirle que ingrese otro nombre o que cancele.        
-    }
+
+	return false;
 }
 
 bool ControladorFarmaco::memberFarmaco(string nombre)
 {
-    for(vector<Farmaco*>::iterator it = farmacos.begin(); it != farmacos.end(); ++it)
+	vector<Farmaco*>::iterator it;
+
+    for (it=this->_farmacos.begin(); it != this->_farmacos.end(); ++it)
     {
-        if ((*it)->getNombre() == nombre)
+		Farmaco* farmaco = *it;
+
+        if (farmaco->getNombre() == nombre)
         {
             return true;
         }
     }
-    
-    return false;
-}
 
-ControladorFarmaco::ControladorFarmaco()
-{
-    
-    
+    return false;
 }

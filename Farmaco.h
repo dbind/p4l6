@@ -1,9 +1,9 @@
 #ifndef FARMACO_H
 #define FARMACO_H
 
-#include <string>
-
 using namespace std;
+
+#include <string>
 
 
 class Farmaco
@@ -16,7 +16,6 @@ class Farmaco
         virtual ~Farmaco(){};
 
         string getNombre();
-        void setNombre(string nombre);
 };
 
 #endif // FARMACO_H

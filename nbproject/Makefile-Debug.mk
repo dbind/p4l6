@@ -39,10 +39,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/ControladorComando.o \
 	${OBJECTDIR}/ControladorConsulta.o \
 	${OBJECTDIR}/ControladorDiagnostico.o \
+	${OBJECTDIR}/ControladorFarmaco.o \
 	${OBJECTDIR}/ControladorMenu.o \
 	${OBJECTDIR}/ControladorSesion.o \
 	${OBJECTDIR}/ControladorUsuario.o \
 	${OBJECTDIR}/FabricaControladores.o \
+	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
 	${OBJECTDIR}/Usuario.o \
@@ -93,6 +95,11 @@ ${OBJECTDIR}/ControladorDiagnostico.o: ControladorDiagnostico.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorDiagnostico.o ControladorDiagnostico.cpp
 
+${OBJECTDIR}/ControladorFarmaco.o: ControladorFarmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorFarmaco.o ControladorFarmaco.cpp
+
 ${OBJECTDIR}/ControladorMenu.o: ControladorMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -112,6 +119,11 @@ ${OBJECTDIR}/FabricaControladores.o: FabricaControladores.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FabricaControladores.o FabricaControladores.cpp
+
+${OBJECTDIR}/Farmaco.o: Farmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Farmaco.o Farmaco.cpp
 
 ${OBJECTDIR}/Fecha.o: Fecha.cpp 
 	${MKDIR} -p ${OBJECTDIR}

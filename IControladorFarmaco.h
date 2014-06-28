@@ -1,22 +1,34 @@
-/* 
- * File:   IControladorMedicamento.h
- * Author: bruno
- *
- * Created on 25 de junio de 2014, 03:12 PM
- */
-
 #ifndef ICONTROLADORFARMACO_H
 #define	ICONTROLADORFARMACO_H
 
+using namespace std;
+
 #include <string>
+#include <vector>
+
+
+class Farmaco;
+
 
 class IControladorFarmaco
 {
 
 public: 
         virtual ~IControladorFarmaco(){};
-        virtual bool darDeAltaFarmaco(std::string nombre)=0;
-    
+
+        /**
+         * Ingresar fármacos
+         */
+        virtual bool darDeAltaFarmaco(string nombre)=0;
+        
+        /**
+         * Listar todos los fármacos que hay en el sistema
+         */
+        virtual vector<Farmaco*> farmacos()=0;
+
+protected:
+        vector<Farmaco*> _farmacos;
+
 };
 
 
