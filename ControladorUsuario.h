@@ -31,9 +31,6 @@ public:
 	Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                     TipoSexo, Fecha, vector<Rol>);
 	Usuario* findUsuario(string ci);
-	
-	vector<Comando> comandos(vector<Rol>);
-	void ejecutar(Comando);
 
 private:
 	static ControladorUsuario* _instancia;

@@ -1,11 +1,5 @@
 #include "FabricaControladores.h"
 
-#include "ControladorMenu.h"
-#include "ControladorSesion.h"
-#include "ControladorUsuario.h"
-#include "ControladorConsulta.h"
-#include "ControladorDiagnostico.h"
-
 
 /**
  * Instanciación de singleton
@@ -28,6 +22,11 @@ ControladorMenu* FabricaControladores::controladorMenu()
 	return ControladorMenu::instancia();
 }
 
+ControladorComando* FabricaControladores::controladorComando()
+{
+	return ControladorComando::instancia();
+}
+
 
 ControladorSesion* FabricaControladores::controladorSesion()
 {
@@ -39,6 +38,11 @@ ControladorUsuario* FabricaControladores::controladorUsuario()
 	return ControladorUsuario::instancia();
 }
 
+
+ControladorFarmaco* FabricaControladores::controladorFarmaco()
+{
+	return ControladorFarmaco::instancia();
+}
 
 ControladorConsulta* FabricaControladores::controladorConsulta()
 {

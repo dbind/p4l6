@@ -6,10 +6,7 @@ using namespace std;
 #include <vector>
 
 
-class FabricaControladores;
-class IControladorUsuario;
 class IControladorSesion;
-class Usuario;
 class Comando;
 
 
@@ -24,7 +21,6 @@ public:
 	
 protected:
 	// Referencias a los principales Controladores
-	IControladorUsuario* cUsuario;  // Controlador de Usuarios
 	IControladorSesion*  cSesion;   // Controlador de Usuarios
 
 	virtual void menuDeOpciones()=0;

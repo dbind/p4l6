@@ -21,7 +21,7 @@ Usuario::Usuario(string ci, string nombre, string apellido,
 
 void Usuario::cargarComandos()
 {
-	_comandos = FabricaControladores::instancia()->controladorUsuario()->comandos(_roles);
+	_comandos = FabricaControladores::instancia()->controladorComando()->comandos(_roles);
 }
 
 

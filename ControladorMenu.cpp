@@ -6,8 +6,11 @@ using namespace std;
 #include <stdexcept>
 
 #include "ControladorMenu.h"
+
 #include "FabricaControladores.h"
 #include "Usuario.h"
+
+#include "ControladorComando.h"
 #include "Comando.h"
 
 
@@ -29,7 +32,6 @@ ControladorMenu* ControladorMenu::instancia()
 ControladorMenu::ControladorMenu()
 {
 	this->cSesion  = FabricaControladores::instancia()->controladorSesion();
-	this->cUsuario = FabricaControladores::instancia()->controladorUsuario();
 }
 
 /**
@@ -172,11 +174,7 @@ void ControladorMenu::ejecutar(Comando cmd)
 {	
 	try
 	{
-		cout << "Ejecutando  " << cmd.codigo() << "... ";
-
-		this->cUsuario->ejecutar(cmd);
-
-		cout << "finalizado con éxito.\n";
+		FabricaControladores::instancia()->controladorComando()->ejecutar(cmd);
 	}
 	catch (runtime_error& rt)
 	{

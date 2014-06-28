@@ -32,18 +32,6 @@ ControladorUsuario* ControladorUsuario::instancia()
 ControladorUsuario::ControladorUsuario()
 {
 	this->crearMaster(MASTER_CI, MASTER_PASS, "Master");
-	
-	// Registrar comandos reconocidos por el controlador
-	vector<Comando> c {};
-	
-	vector<Comando>::iterator pos = c.begin();
-
-	c.insert(c.end(), Comando("cmd1", "Comando 1", vector<Rol> {Rol::admin}));
-	c.insert(c.end(), Comando("cmd2", "Comando 2", vector<Rol> {Rol::admin, Rol::master}));
-	c.insert(c.end(), Comando("cmd3", "Comando 3", vector<Rol> {Rol::master}));
-	c.insert(c.end(), Comando("cmd4", "Comando 4", vector<Rol> {Rol::socio}));
-	
-	this->_comandos = c;
 }
 
 
@@ -88,25 +76,4 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 	}
 
 	return NULL;
-}
-
-vector<Comando> ControladorUsuario::comandos(vector<Rol> roles)
-{
-	vector<Comando> comandos = _comandos;
-
-	// Filtrar solo los comandos que se pueden ejecutar con los roles dados
-	vector<Comando>::iterator it = comandos.begin();
-
-    while (it != comandos.end())
-    {
-		Comando cmd = *it;
-		cmd.habilitadoPara(roles) ? ++it : comandos.erase(it);
-    }
-
-	return comandos;
-}
-
-void ControladorUsuario::ejecutar(Comando cmd)
-{
-	// TODO
 }
