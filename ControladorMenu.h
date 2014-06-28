@@ -1,6 +1,10 @@
 #ifndef CONTROLADORMENU_H
 #define	CONTROLADORMENU_H
 
+using namespace std;
+
+#include <string>
+
 #include "IControladorMenu.h"
 
 

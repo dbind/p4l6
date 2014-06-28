@@ -1,12 +1,6 @@
 #ifndef FABRICACONTROLADORES_H
 #define	FABRICACONTROLADORES_H
 
-#include "IControladorMenu.h"
-#include "IControladorSesion.h"
-#include "IControladorUsuario.h"
-#include "IControladorConsulta.h"
-#include "IControladorDiagnostico.h"
-
 #include "ControladorMenu.h"
 #include "ControladorSesion.h"
 #include "ControladorUsuario.h"

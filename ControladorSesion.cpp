@@ -1,8 +1,9 @@
+using namespace std;
+
 #include <sstream>
 #include <cstdlib>
 #include <cstdio>
 #include <iostream>
-using namespace std;
 
 #include "ControladorSesion.h"
 #include "FabricaControladores.h"
