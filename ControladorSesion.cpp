@@ -102,14 +102,13 @@ Usuario* ControladorSesion::pedirIdentificacion()
 	string ci;
 
 	cout << "Ingrese su CI (hasta 7 números, sin dígito de verificación) ";
-	cout << "(o escriba q para volver atrás):\n";
+	cout << "(o escriba q para salir):\n";
 	cin >> ci;
 
 	// Mientras la cédula ingresada no sea un entero, que vuelva a intentar
 	while ((ci != "q") && !this->esValidaCi(ci))
 	{
-		cout << "La cédula ingresada no es válida. Inténtelo nuevamente ";
-		cout << "(o escriba q para volver atrás):\n";
+		cout << "La cédula ingresada no es válida. Inténtelo nuevamente:\n";
 		cin >> ci;
 	}
 
@@ -169,8 +168,7 @@ bool ControladorSesion::autenticar(Usuario* usuario)
 	{
 		if (!this->esValidoPass(pass))  // Formato incorrecto
 		{
-			cout << "La contraseña ingresada es inválida. Inténtelo nuevamente ";
-			cout << "(o escriba q para volver atrás):\n";
+			cout << "La contraseña ingresada es inválida. Inténtelo nuevamente:\n";
 			cin >> pass;
 		}
 		else if (usuario->esNuevo())    // Primera vez: actualizar y activar
@@ -181,8 +179,7 @@ bool ControladorSesion::autenticar(Usuario* usuario)
 		}
 		else // pass != usuario->pass   // La contraseña ingresada no coincide
 		{
-			cout << "La contraseña ingresada no es correcta. Inténtelo nuevamente ";
-			cout << "(o escriba q para volver atrás):\n";
+			cout << "La contraseña ingresada no es correcta. Inténtelo nuevamente:\n";
 			cin >> pass;
 		}
 	}
