@@ -29,12 +29,6 @@ ControladorSesion* ControladorSesion::instancia()
 	return _instancia;
 }
 
-ControladorSesion::ControladorSesion()
-{
-	FabricaControladores* Fabrica = FabricaControladores::instancia();
-	this->cUsuario = Fabrica->controladorUsuario();
-}
-
 
 /******************************************************************************/
 /********************************* P U B L I C ********************************/
@@ -77,6 +71,11 @@ Usuario* ControladorSesion::usuarioActivo()
 	return this->usuario;
 }
 
+void ControladorSesion::iniciarSesionInterno(Usuario* usuario)
+{
+	this->usuario = usuario;
+}
+
 
 /******************************************************************************/
 /******************************** P R I V A T E *******************************/
@@ -115,7 +114,8 @@ Usuario* ControladorSesion::pedirIdentificacion()
 		throw 0;
 	}
 
-	Usuario* usuario = this->cUsuario->findUsuario(ci);
+	Usuario* usuario = FabricaControladores::instancia()->controladorUsuario()
+	                                                    ->findUsuario(ci);
 
 	// El usuario no está registrado en el sistema
 	if (usuario == NULL)

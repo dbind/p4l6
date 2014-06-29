@@ -65,7 +65,25 @@ Usuario* ControladorUsuario::altaUsuario(string ci, string nombre, string apelli
 
 	_usuarios.insert(_usuarios.begin(), usuario);
 
+	if (FabricaControladores::instancia()->controladorSesion()->sesionIniciada())
+	{
+		FabricaControladores::instancia()->controladorSesion()->usuarioActivo()
+		                                 ->agregarDadoDeAlta(usuario);
+	}
+
 	return usuario;
+}
+
+void ControladorUsuario::reactivar(Usuario* usuario)
+{
+	usuario->activar();
+
+	// Registrar hecho en lista de usuarios reactivados por usuario actual
+	if (FabricaControladores::instancia()->controladorSesion()->sesionIniciada())
+	{
+		FabricaControladores::instancia()->controladorSesion()->usuarioActivo()
+		                                 ->agregarDadoDeAlta(usuario);
+	}
 }
 
 vector<Usuario*> ControladorUsuario::usuarios()

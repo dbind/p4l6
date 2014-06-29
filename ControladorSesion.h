@@ -26,9 +26,12 @@ public:
 	bool sesionIniciada();
 	Usuario* usuarioActivo();
 
+	void iniciarSesionInterno(Usuario*);
+
 private:
+
 	static ControladorSesion* _instancia;
-	ControladorSesion();
+	ControladorSesion(){};
 	~ControladorSesion(){};
 
 	Usuario* pedirIdentificacion();

@@ -30,9 +30,13 @@ public:
 	 * Tira excepción int 1 si no hay una sesión activa.
 	 */
 	virtual Usuario* usuarioActivo()=0;
+
+	/**
+	 * Forzar inicio de sesión directo (para tests y debugging)
+     */
+	virtual void iniciarSesionInterno(Usuario*)=0;
 	
 protected:
-	IControladorUsuario* cUsuario; // Controlador de Usuarios del sistema
 	Usuario* usuario;              // Usuario con sesión actualmente activa
 
 };

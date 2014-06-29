@@ -4,6 +4,7 @@
 using namespace std;
 
 #include <string>
+#include <vector>
 
 #include "IControladorMenu.h"
 
@@ -29,7 +30,7 @@ private:
 	void logout();
 
 	void menuDeOpciones();
-	void imprimirMenu(vector<Comando>);
+	void imprimirMenu();
 
 	void interpretarOpcion(string opcion, vector<Comando>);
 	bool esValidaOpcion(string opcion, int max);

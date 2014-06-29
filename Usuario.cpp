@@ -121,6 +121,22 @@ void Usuario::cambiarPass(string pass)
     _pass = pass;
 }
 
+void Usuario::agregarDadoDeAlta(Usuario* usuario)
+{
+	if (find(_dadosDeAlta.begin(), _dadosDeAlta.end(), usuario) != _dadosDeAlta.end())
+	{
+		_dadosDeAlta.insert(_dadosDeAlta.begin(), usuario);
+	}
+}
+
+void Usuario::agregarReactivado(Usuario* usuario)
+{
+	if (find(_reactivados.begin(), _reactivados.end(), usuario) != _reactivados.end())
+	{
+		_reactivados.insert(_reactivados.begin(), usuario);
+	}
+}
+
 
 int Usuario::calcularEdad()
 {

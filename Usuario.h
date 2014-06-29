@@ -36,7 +36,6 @@ public:
 	void setApellido(string);
 	void setSexo(Genero);
 	void setFechaNac(Fecha);
-
 	
 	bool esUn(Rol);
 	bool esNuevo();
@@ -47,6 +46,16 @@ public:
 	void activar();
 	void desactivar();
 	void cambiarPass(string);
+	
+	/**
+	 * Agrego usuarios a la lista de dados de alta por este usuario
+     */
+	void agregarDadoDeAlta(Usuario*);
+
+	/**
+	 * Agrego usuarios a la lista de reactivados por este usuario
+     */
+	void agregarReactivado(Usuario*);
 
 	int calcularEdad();
 	int calcularInasistencias();
@@ -64,7 +73,11 @@ private:
 	string _pass;
 	EstadoUsuario _estado;
 	Roles _roles;
+
 	vector<Comando> _comandos;
+
+	vector<Usuario*> _dadosDeAlta {};
+	vector<Usuario*> _reactivados {};
 };
 
 #endif // USUARIO_H

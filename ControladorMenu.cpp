@@ -95,7 +95,7 @@ void ControladorMenu::menuDeOpciones()
 	comandosUsuario = this->cSesion->usuarioActivo()->comandos();
 
 	// Imprimir menú solo con las opciones válidas para el usuario actual
-	this->imprimirMenu(comandosUsuario);
+	this->imprimirMenu();
 
 	while (true)
 	{
@@ -119,10 +119,7 @@ void ControladorMenu::interpretarOpcion(string opcion, vector<Comando> comandos)
 	else if (opcion == "c")
 	{
 		this->login(); // Se cierra la sesión actual automáticamente
-
-		// Actualizar la lista de comandos, para el nuevo usuario logueado
-		comandos = this->cSesion->usuarioActivo()->comandos();
-		this->imprimirMenu(this->cSesion->usuarioActivo()->comandos());
+		this->imprimirMenu();
 	}
 	// Opción correcta, específica del rol del usuario: ejecutar acción
 	else if (this->esValidaOpcion(opcion, comandos.size()))
@@ -131,7 +128,7 @@ void ControladorMenu::interpretarOpcion(string opcion, vector<Comando> comandos)
 		istringstream(opcion) >> idx;
 
 		this->ejecutar(comandos.at(idx-1));
-		this->imprimirMenu(comandos);
+		this->imprimirMenu();
 	}
 	// Opción incorrecta
 	else
@@ -140,8 +137,10 @@ void ControladorMenu::interpretarOpcion(string opcion, vector<Comando> comandos)
 	}
 }
 
-void ControladorMenu::imprimirMenu(vector<Comando> comandos)
+void ControladorMenu::imprimirMenu()
 {
+	vector<Comando> comandos = this->cSesion->usuarioActivo()->comandos();
+		
 	cout << "Elija una opción:\n\n";
 
 	// Imprimir comandos pasados (parte personalizable del menú)

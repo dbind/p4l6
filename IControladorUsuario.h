@@ -25,7 +25,9 @@ public:
 
 	virtual Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                             Genero, Fecha, Roles)=0;
-        
+
+	virtual void reactivar(Usuario*)=0;
+
 	virtual vector<Usuario*> usuarios()=0;
 	virtual Usuario* findUsuario(string ci)=0;
 

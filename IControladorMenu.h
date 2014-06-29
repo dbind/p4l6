@@ -3,8 +3,6 @@
 
 using namespace std;
 
-#include <vector>
-
 
 class IControladorSesion;
 class Comando;
@@ -24,7 +22,7 @@ protected:
 	IControladorSesion*  cSesion;   // Controlador de Usuarios
 
 	virtual void menuDeOpciones()=0;
-	virtual void imprimirMenu(vector<Comando>)=0;
+	virtual void imprimirMenu()=0;
 
 };
 

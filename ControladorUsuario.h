@@ -30,6 +30,8 @@ public:
 	
 	Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                     Genero, Fecha, Roles);
+
+	void reactivar(Usuario* usuario);
         
 	vector<Usuario*> usuarios();
 	Usuario* findUsuario(string ci);
