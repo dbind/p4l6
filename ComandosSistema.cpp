@@ -13,9 +13,9 @@ using namespace std;
 //#include "Diagnostico.h"
 //#include "Consulta.h"
 #include "Farmaco.h"
-//#include "Tratamiento.h"
-//#include "TratamientoFarmacologico.h"
-//#include "TratamientoQuirurgico.h"
+#include "Tratamiento.h"
+#include "TratamientoFarmacologico.h"
+#include "TratamientoQuirurgico.h"
 
 #include "Genero.h"
 #include "Rol.h"
