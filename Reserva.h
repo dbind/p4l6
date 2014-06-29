@@ -8,6 +8,8 @@
 #ifndef RESERVA_H
 #define	RESERVA_H
 
+#include "FechaHora.h"
+
 class Reserva 
 {
     public:
