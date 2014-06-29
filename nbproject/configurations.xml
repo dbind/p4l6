@@ -12,11 +12,13 @@
       <itemPath>Rol.h</itemPath>
       <itemPath>TipoSexo.h</itemPath>
     </logicalFolder>
-    <logicalFolder name="f5" displayName="Handlers" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f5" displayName="Handlers" projectFiles="true">
       <itemPath>ComandosConsulta.cpp</itemPath>
       <itemPath>ComandosConsulta.h</itemPath>
       <itemPath>ComandosDiagnostico.cpp</itemPath>
       <itemPath>ComandosDiagnostico.h</itemPath>
+      <itemPath>ComandosFarmaco.cpp</itemPath>
+      <itemPath>ComandosFarmaco.h</itemPath>
       <itemPath>ComandosNotificacion.cpp</itemPath>
       <itemPath>ComandosNotificacion.h</itemPath>
       <itemPath>ComandosSistema.cpp</itemPath>
@@ -100,6 +102,10 @@
       <item path="ComandosDiagnostico.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ComandosDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosFarmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosFarmaco.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ComandosNotificacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -213,6 +219,10 @@
       <item path="ComandosDiagnostico.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ComandosDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosFarmaco.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosFarmaco.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ComandosNotificacion.cpp" ex="false" tool="1" flavor2="0">
       </item>

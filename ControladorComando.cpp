@@ -105,7 +105,7 @@ void ControladorComando::ejecutar(Comando cmd)
 	}
 	else if (opcion == "devolucion_reserva")
 	{
-		ComandosConsulta::devolucionReserva();
+		ComandosConsulta::cancelarReserva();
 	}
 	else if (opcion == "registro_consulta")
 	{
@@ -135,17 +135,17 @@ void ControladorComando::ejecutar(Comando cmd)
 	// Opciones específicas de la implementación (e.g. ver hora)
 	else if (opcion == "set_time")
 	{
-		ComandosSistema::cambiarHoraSistema();
+		ComandosSistema::setTime();
 	}
 	else if (opcion == "get_time")
 	{
-		ComandosSistema::obtenerHoraSistema();
+		ComandosSistema::getTime();
 	}
 
 	// Solo para Master (debug, tests)
 	else if (opcion == "load_test_data")
 	{
-		ComandosSistema::cargarDatosPrueba();
+		ComandosSistema::loadTestData();
 	}
 
 	// Opciones en desarrollo (todavía no implementadas)

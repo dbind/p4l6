@@ -4,20 +4,20 @@ using namespace std;
 #include <vector>
 #include <string>
 
-#include "ComandosSistema.h";
+#include "ComandosSistema.h"
 
 
-void ComandosSistema::set_time()
+void ComandosSistema::setTime()
 {
 	
 }
 
-void ComandosSistema::get_time()
+void ComandosSistema::getTime()
 {
 	
 }
 
-void ComandosSistema::load_test_data()
+void ComandosSistema::loadTestData()
 {
 	
 }

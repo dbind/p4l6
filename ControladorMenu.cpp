@@ -3,6 +3,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 #include <cstdio>
+#include <cstdlib>
 #include <stdexcept>
 
 #include "ControladorMenu.h"
@@ -175,6 +176,9 @@ void ControladorMenu::ejecutar(Comando cmd)
 	try
 	{
 		FabricaControladores::instancia()->controladorComando()->ejecutar(cmd);
+
+		system("pause");
+		cout << "\n";
 	}
 	catch (runtime_error& rt)
 	{

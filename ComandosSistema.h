@@ -12,17 +12,17 @@ public:
 	/**
 	 * Caso de uso Modificar fecha del Sistema
      */
-	static void set_time();
+	static void setTime();
 
 	/**
 	 * Caso de uso Consultar fecha del sistema
      */
-	static void get_time();
+	static void getTime();
 
 	/**
 	 * Caso de uso Cargar datos de prueba
      */
-	static void load_test_data();
+	static void loadTestData();
 
 };
 

@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Comando.o \
 	${OBJECTDIR}/ComandosConsulta.o \
 	${OBJECTDIR}/ComandosDiagnostico.o \
+	${OBJECTDIR}/ComandosFarmaco.o \
 	${OBJECTDIR}/ComandosNotificacion.o \
 	${OBJECTDIR}/ComandosSistema.o \
 	${OBJECTDIR}/ComandosUsuario.o \
@@ -94,6 +95,11 @@ ${OBJECTDIR}/ComandosDiagnostico.o: ComandosDiagnostico.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosDiagnostico.o ComandosDiagnostico.cpp
+
+${OBJECTDIR}/ComandosFarmaco.o: ComandosFarmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosFarmaco.o ComandosFarmaco.cpp
 
 ${OBJECTDIR}/ComandosNotificacion.o: ComandosNotificacion.cpp 
 	${MKDIR} -p ${OBJECTDIR}

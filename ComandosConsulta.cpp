@@ -4,25 +4,25 @@ using namespace std;
 #include <vector>
 #include <string>
 
-#include "ComandosConsulta.h";
+#include "ComandosConsulta.h"
 
 
-void ComandosConsulta::reserva_consulta()
+void ComandosConsulta::reservarConsulta()
 {
 	
 }
 
-void ComandosConsulta::devolucion_reserva()
+void ComandosConsulta::cancelarReserva()
 {
 	
 }
 
-void ComandosConsulta::registro_consulta()
+void ComandosConsulta::registrarConsulta()
 {
 	
 }
 
-void ComandosConsulta::alta_diagnosticos()
+void ComandosConsulta::altaDiagnosticosConsulta()
 {
 	
 }

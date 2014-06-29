@@ -4,15 +4,15 @@ using namespace std;
 #include <vector>
 #include <string>
 
-#include "ComandosNotificacion.h";
+#include "ComandosNotificacion.h"
 
 
-void ComandosNotificacion::suscribirse_paciente()
+void ComandosNotificacion::seguirPaciente()
 {
 	
 }
 
-void ComandosNotificacion::notificar_medicos()
+void ComandosNotificacion::notificarMedicos()
 {
 	
 }

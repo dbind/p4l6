@@ -6,7 +6,7 @@ class ComandosFarmaco
 {
     public:
         //Caso de uso Alta Medicamento.
-        static void altaMedicamento();    
+        static void altaFarmaco();    
 };
 
 

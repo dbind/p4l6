@@ -1,3 +1,5 @@
+using namespace std;
+
 #include <iostream>
 #include <string>
 
@@ -5,9 +7,7 @@
 #include "IControladorFarmaco.h"
 #include "FabricaControladores.h"
 
-using namespace std;
-
-void ComandosFarmaco::altaMedicamento()
+void ComandosFarmaco::altaFarmaco()
 {
     string m;
     bool exito;

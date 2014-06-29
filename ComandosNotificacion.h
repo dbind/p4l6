@@ -12,12 +12,12 @@ public:
 	/**
 	 * Caso de uso Subscribirse a Notificaciones del Paciente
      */
-	static void suscribirse_paciente();
+	static void seguirPaciente();
 
 	/**
 	 * Caso de uso Notificar Médicos
      */
-	static void notificar_medicos();
+	static void notificarMedicos();
 
 };
 

@@ -13,22 +13,22 @@ public:
 	/**
 	 * Caso de uso Reserva Consulta
      */
-	static void reserva_consulta();
+	static void reservarConsulta();
 
 	/**
 	 * Caso de uso Devolución de Reserva
      */
-	static void devolucion_reserva();
+	static void cancelarReserva();
 
 	/**
 	 * Caso de uso Registro Consulta
      */
-	static void registro_consulta();
+	static void registrarConsulta();
 
 	/**
 	 * Caso de uso Alta Diagnósticos de Consulta
      */
-	static void alta_diagnosticos();
+	static void altaDiagnosticosConsulta();
 
 };
 
