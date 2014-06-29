@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
+CND_PLATFORM=MinGW_TDM-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -53,6 +53,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
+	${OBJECTDIR}/Reserva.o \
 	${OBJECTDIR}/Usuario.o \
 	${OBJECTDIR}/main.o
 
@@ -75,11 +76,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Comando.o: Comando.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -171,6 +172,11 @@ ${OBJECTDIR}/FechaHora.o: FechaHora.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FechaHora.o FechaHora.cpp
 
+${OBJECTDIR}/Reserva.o: Reserva.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Reserva.o Reserva.cpp
+
 ${OBJECTDIR}/Usuario.o: Usuario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -187,7 +193,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 
 # Subprojects
 .clean-subprojects:

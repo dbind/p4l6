@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="90">
+<configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
       <itemPath>Comando.cpp</itemPath>
@@ -9,8 +9,8 @@
       <itemPath>Fecha.h</itemPath>
       <itemPath>FechaHora.cpp</itemPath>
       <itemPath>FechaHora.h</itemPath>
-      <itemPath>Rol.h</itemPath>
       <itemPath>Genero.h</itemPath>
+      <itemPath>Rol.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="Handlers" projectFiles="true">
       <itemPath>ComandosConsulta.cpp</itemPath>
@@ -56,6 +56,8 @@
       <itemPath>ControladorFarmaco.h</itemPath>
       <itemPath>Farmaco.cpp</itemPath>
       <itemPath>Farmaco.h</itemPath>
+      <itemPath>Reserva.cpp</itemPath>
+      <itemPath>Reserva.h</itemPath>
       <itemPath>Usuario.cpp</itemPath>
       <itemPath>Usuario.h</itemPath>
     </logicalFolder>
@@ -165,6 +167,8 @@
       </item>
       <item path="FechaHora.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
@@ -177,9 +181,11 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Rol.h" ex="false" tool="3" flavor2="0">
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -282,6 +288,8 @@
       </item>
       <item path="FechaHora.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
@@ -294,9 +302,11 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Rol.h" ex="false" tool="3" flavor2="0">
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>
