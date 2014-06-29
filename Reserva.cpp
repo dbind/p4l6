@@ -7,7 +7,7 @@
 
 #include "Reserva.h"
 
-Reserva::Reserva(FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente) 
+Reserva::Reserva(FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Medico, Usuario* Paciente) 
 {
     this->fechaConsulta = fechaConsulta;
     this->fechaReserva = fechaReserva;
