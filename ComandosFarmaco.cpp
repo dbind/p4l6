@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "ComandosFarmaco.h"
 #include "IControladorFarmaco.h"
@@ -13,7 +14,7 @@ void ComandosFarmaco::altaMedicamento()
         
     do
     {   
-        cout << "Ingrese el nombre del medicamento que desea dar de alta (o q para salir): " << endl;
+        cout << "Ingrese el nombre del medicamento que desea dar de alta (o q para cancelar): " << endl;
         cin >> m;
     
         if (m=="q")
@@ -32,7 +33,7 @@ void ComandosFarmaco::altaMedicamento()
             }
             else
             {
-                cout << "El nombre ingresado ya existe en el sitema." << endl;
+                cout << "El medicamento ingresado ya existe en el sistema." << endl;
               
             }
         }
