@@ -36,6 +36,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Comando.o \
+	${OBJECTDIR}/ComandosConsulta.o \
+	${OBJECTDIR}/ComandosDiagnostico.o \
+	${OBJECTDIR}/ComandosNotificacion.o \
+	${OBJECTDIR}/ComandosSistema.o \
+	${OBJECTDIR}/ComandosUsuario.o \
 	${OBJECTDIR}/ControladorComando.o \
 	${OBJECTDIR}/ControladorConsulta.o \
 	${OBJECTDIR}/ControladorDiagnostico.o \
@@ -79,6 +84,31 @@ ${OBJECTDIR}/Comando.o: Comando.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Comando.o Comando.cpp
+
+${OBJECTDIR}/ComandosConsulta.o: ComandosConsulta.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosConsulta.o ComandosConsulta.cpp
+
+${OBJECTDIR}/ComandosDiagnostico.o: ComandosDiagnostico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosDiagnostico.o ComandosDiagnostico.cpp
+
+${OBJECTDIR}/ComandosNotificacion.o: ComandosNotificacion.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosNotificacion.o ComandosNotificacion.cpp
+
+${OBJECTDIR}/ComandosSistema.o: ComandosSistema.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosSistema.o ComandosSistema.cpp
+
+${OBJECTDIR}/ComandosUsuario.o: ComandosUsuario.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosUsuario.o ComandosUsuario.cpp
 
 ${OBJECTDIR}/ControladorComando.o: ControladorComando.cpp 
 	${MKDIR} -p ${OBJECTDIR}

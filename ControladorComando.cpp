@@ -8,71 +8,151 @@ using namespace std;
 #include "Comando.h"
 #include "Rol.h"
 
+#include "ComandosUsuario.h"
+#include "ComandosDiagnostico.h"
+#include "ComandosConsulta.h"
+#include "ComandosFarmaco.h"
+#include "ComandosNotificacion.h"
+#include "ComandosSistema.h"
+
+
 // Shortcut por practicidad
 typedef vector<Rol> Roles;
 
+
 /**
- * Agregar nuevos comandos: this->agregar("codigo", "nombre", Roles{lista})
+ * Agregar nuevos comandos: agregar("codigo", "nombre", Roles{lista})
  */
 void ControladorComando::registrarComandos()
 {
-	// Casos de uso
-	this->agregar("alta_usuario", "Alta/Reactivación de Usuario",
-	               Roles{Rol::admin});
-	this->agregar("alta_representacion", "Alta Representación de Diagnóstico",
-	               Roles{Rol::admin});
-	this->agregar("reserva_consulta", "Reserva Consulta",
-	               Roles{Rol::admin});
-	this->agregar("registro_consulta", "Registro Consulta",
-	               Roles{Rol::admin});
-	this->agregar("alta_diagnosticos", "Alta Diagnósticos de Consulta",
-	               Roles{Rol::admin});
-	this->agregar("alta_medicamento", "Alta Medicamento",
-	               Roles{Rol::admin});
-	this->agregar("devolucion_consulta", "Devolución de Consulta",
-	               Roles{Rol::admin});
-	this->agregar("listar_usuarios", "Usuarios Dados de Alta",
-	               Roles{Rol::admin});
-	this->agregar("listar_representaciones", "Listar Representaciones de Diagnósticos",
-	               Roles{Rol::admin});
-	this->agregar("ver_historial", "Obtener Historial Paciente",
-	               Roles{Rol::admin});
-	this->agregar("notificar_medico", "Notificar Médicos",
-	               Roles{Rol::admin});
+	// Casos de uso: Usuarios
+	agregar("alta_usuario", "Alta/Reactivación de Usuario",
+	        Roles{Rol::admin});
+	agregar("altas_reactivaciones", "Usuarios Dados de Alta o Reactivados",
+	        Roles{Rol::admin});
+	agregar("ver_historial", "Obtener Historial Paciente",
+	        Roles{Rol::medico});
 
-	// Solo para Master (admin por defecto)
-	this->agregar("set_time", "Modificar fecha del sistema",
-	              Roles{Rol::master});
-	this->agregar("load_test_data", "Cargar datos de prueba",
-	              Roles{Rol::master});
+	// Casos de uso: Diagnósticos
+	agregar("alta_representacion", "Alta Representación de Diagnóstico",
+	        Roles{Rol::admin});
+	agregar("listar_representaciones", "Listar Representaciones de Diagnósticos",
+	        Roles{Rol::admin, Rol::medico});
+
+	// Casos de uso: Consultas
+	agregar("reserva_consulta", "Reserva Consulta",
+	        Roles{Rol::socio});
+	agregar("devolucion_reserva", "Devolución de Reserva",
+	        Roles{Rol::socio});
+	agregar("registro_consulta", "Registro Consulta",
+	        Roles{Rol::admin});
+	agregar("alta_diagnosticos", "Alta Diagnósticos de Consulta",
+	        Roles{Rol::medico});
+
+	// Casos de uso: Medicamentos
+	agregar("alta_farmaco", "Alta Medicamento",
+	        Roles{Rol::admin});
+
+	// Casos de uso: Notificaciones
+	agregar("suscribirse_paciente", "Subscribirse a Notificaciones del Paciente",
+	        Roles{Rol::admin});
+	agregar("notificar_medicos", "Notificar Médicos",
+	        Roles{Rol::admin});
 
 	// Opciones específicas de la implementación (e.g. ver hora)
-	this->agregar("get_time", "Consultar fecha del sistema",
-	              Roles{Rol::admin, Rol::medico, Rol::socio});
+	agregar("set_time", "Modificar fecha del Sistema",
+	        Roles{Rol::master});
+	agregar("get_time", "Consultar fecha del sistema",
+	        Roles{Rol::admin, Rol::medico, Rol::socio});
+
+	// Solo para Master (debug, tests)
+	agregar("load_test_data", "Cargar datos de prueba",
+	        Roles{Rol::master});
 }
 
 void ControladorComando::ejecutar(Comando cmd)
 {
 	string opcion = cmd.codigo();
 
-	if (opcion == "cmd1")
+	// Casos de uso: Usuarios
+	if (opcion == "alta_usuario")
 	{
-		cout << "Ejecuté cmd1!\n";
+		ComandosUsuario::altaReactivacionUsuario();
+	}
+	else if (opcion == "altas_reactivaciones")
+	{
+		ComandosUsuario::listarAltasReactivaciones();
+	}
+	else if (opcion == "ver_historial")
+	{
+		ComandosUsuario::verHistorial();
 	}
 
-	else if (opcion == "cmd2")
+	// Casos de uso: Diagnósticos
+	else if (opcion == "alta_representacion")
 	{
-		cout << "Ejecuté cmd2!\n";
+		ComandosDiagnostico::altaRepresentacion();
+	}
+	else if (opcion == "listar_representaciones")
+	{
+		ComandosDiagnostico::listarRepresentaciones();
 	}
 
-//	else if (opcion == "")
-//	{
-//		cout << "Ejecuto XXX... ";
-//	}
+	// Casos de uso: Consultas
+	else if (opcion == "reserva_consulta")
+	{
+		ComandosConsulta::reservarConsulta();
+	}
+	else if (opcion == "devolucion_reserva")
+	{
+		ComandosConsulta::devolucionReserva();
+	}
+	else if (opcion == "registro_consulta")
+	{
+		ComandosConsulta::registrarConsulta();
+	}
+	else if (opcion == "alta_diagnosticos")
+	{
+		ComandosConsulta::altaDiagnosticosConsulta();
+	}
 
+	// Casos de uso: Medicamentos
+	else if (opcion == "alta_farmaco")
+	{
+		ComandosFarmaco::altaFarmaco();
+	}
+
+	// Casos de uso: Notificaciones
+	else if (opcion == "suscribirse_paciente")
+	{
+		ComandosNotificacion::seguirPaciente();
+	}
+	else if (opcion == "notificar_medicos")
+	{
+		ComandosNotificacion::notificarMedicos();
+	}
+
+	// Opciones específicas de la implementación (e.g. ver hora)
+	else if (opcion == "set_time")
+	{
+		ComandosSistema::cambiarHoraSistema();
+	}
+	else if (opcion == "get_time")
+	{
+		ComandosSistema::obtenerHoraSistema();
+	}
+
+	// Solo para Master (debug, tests)
+	else if (opcion == "load_test_data")
+	{
+		ComandosSistema::cargarDatosPrueba();
+	}
+
+	// Opciones en desarrollo (todavía no implementadas)
 	else
 	{
-		cout << "No hay manejador para la opción seleccionada (" << cmd.nombre() << ")\n";
+		cout << "No hay manejador para la opción seleccionada "
+		     << "(" << cmd.nombre() << ": " << cmd.nombre() << ")\n";
 	}
 }
 

@@ -12,6 +12,18 @@
       <itemPath>Rol.h</itemPath>
       <itemPath>TipoSexo.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="f5" displayName="Handlers" projectFiles="true" kind="ROOT">
+      <itemPath>ComandosConsulta.cpp</itemPath>
+      <itemPath>ComandosConsulta.h</itemPath>
+      <itemPath>ComandosDiagnostico.cpp</itemPath>
+      <itemPath>ComandosDiagnostico.h</itemPath>
+      <itemPath>ComandosNotificacion.cpp</itemPath>
+      <itemPath>ComandosNotificacion.h</itemPath>
+      <itemPath>ComandosSistema.cpp</itemPath>
+      <itemPath>ComandosSistema.h</itemPath>
+      <itemPath>ComandosUsuario.cpp</itemPath>
+      <itemPath>ComandosUsuario.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="f2" displayName="Interfaces" projectFiles="true">
       <itemPath>IControladorConsulta.h</itemPath>
       <itemPath>IControladorDiagnostico.h</itemPath>
@@ -80,6 +92,26 @@
       <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Comando.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosConsulta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosConsulta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosDiagnostico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosNotificacion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosNotificacion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosSistema.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosSistema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosUsuario.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -173,6 +205,26 @@
       <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Comando.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosConsulta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosConsulta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosDiagnostico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosDiagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosNotificacion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosNotificacion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosSistema.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosSistema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ComandosUsuario.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>

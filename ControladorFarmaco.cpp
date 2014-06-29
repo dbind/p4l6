@@ -23,7 +23,7 @@ ControladorFarmaco* ControladorFarmaco::instancia()
 
 vector<Farmaco*> ControladorFarmaco::farmacos()
 {
-	return this->_farmacos;
+	return _farmacos;
 }
 
 
@@ -32,7 +32,7 @@ bool ControladorFarmaco::darDeAltaFarmaco(string nombre)
     if (!this->memberFarmaco(nombre))
     {
         Farmaco* farmaco = new Farmaco(nombre);
-        this->_farmacos.insert(this->_farmacos.begin(), farmaco);
+        _farmacos.insert(_farmacos.begin(), farmaco);
 
 		return true;
     }
@@ -44,7 +44,7 @@ bool ControladorFarmaco::memberFarmaco(string nombre)
 {
 	vector<Farmaco*>::iterator it;
 
-    for (it=this->_farmacos.begin(); it != this->_farmacos.end(); ++it)
+    for (it=_farmacos.begin(); it != _farmacos.end(); ++it)
     {
 		Farmaco* farmaco = *it;
 

@@ -16,10 +16,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/x/lab6/Comando.cpp</file>
-            <file>file:/home/x/lab6/ControladorUsuario.cpp</file>
-            <file>file:/home/x/lab6/ControladorMenu.cpp</file>
-            <file>file:/home/x/lab6/Comando.h</file>
+            <file>file:/C:/p4/lab6_d/ControladorFarmaco.h</file>
+            <file>file:/C:/p4/lab6_d/IControladorFarmaco.h</file>
+            <file>file:/C:/p4/lab6_d/main.cpp</file>
+            <file>file:/C:/p4/lab6_d/ControladorComando.cpp</file>
         </group>
     </open-files>
 </project-private>

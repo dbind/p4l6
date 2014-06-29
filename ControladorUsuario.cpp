@@ -56,16 +56,26 @@ Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 Usuario* ControladorUsuario::altaUsuario(string ci, string nombre, string apellido,
 	                                     TipoSexo sexo, Fecha fecha, vector<Rol> roles)
 {
+	if (this->findUsuario(ci))
+	{
+		return NULL;
+	}
+
 	Usuario* usuario = new Usuario(ci, nombre, apellido, sexo, fecha, roles);
 
-	this->usuarios.insert(this->usuarios.begin(), usuario);
+	_usuarios.insert(_usuarios.begin(), usuario);
 
 	return usuario;
 }
 
+vector<Usuario*> ControladorUsuario::usuarios()
+{
+	return _usuarios;
+}
+
 Usuario* ControladorUsuario::findUsuario(string ci)
 {
-	for(vector<Usuario*>::iterator it = usuarios.begin(); it != usuarios.end(); ++it)
+	for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
 	{
 		Usuario* usuario = *it;
 

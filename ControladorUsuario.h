@@ -30,6 +30,8 @@ public:
 	
 	Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                     TipoSexo, Fecha, vector<Rol>);
+        
+	vector<Usuario*> usuarios();
 	Usuario* findUsuario(string ci);
 
 private:

@@ -25,11 +25,13 @@ public:
 
 	virtual Usuario* altaUsuario(string ci, string nombre, string apellido,
 	                             TipoSexo, Fecha, vector<Rol>)=0;
+        
+	virtual vector<Usuario*> usuarios()=0;
 	virtual Usuario* findUsuario(string ci)=0;
 
 protected:
 	Usuario* usuarioActivo;
-	vector<Usuario*> usuarios;
+	vector<Usuario*> _usuarios;
 
 };
 
