@@ -18,14 +18,14 @@ class ControladorFarmaco : public IControladorFarmaco
 public:
         static ControladorFarmaco* instancia();
 
-        bool darDeAltaFarmaco(string nombre);
+        Farmaco* darDeAltaFarmaco(string nombre);
+        bool memberFarmaco(string nombre);
+
         vector<Farmaco*> farmacos();
 
 private:
 	static ControladorFarmaco* _instancia;
 	ControladorFarmaco(){};
-
-        bool memberFarmaco(string nombre);
 
 };
 

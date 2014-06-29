@@ -10,8 +10,10 @@ using namespace std;
 void ComandosFarmaco::altaFarmaco()
 {
     string m;
-    bool exito;
-        
+    bool exito = false;
+
+	IControladorFarmaco* cm = FabricaControladores::instancia()->controladorFarmaco();
+
     do
     {   
         cout << "Ingrese el nombre del medicamento que desea dar de alta (o q para cancelar): " << endl;
@@ -24,17 +26,14 @@ void ComandosFarmaco::altaFarmaco()
     
         else
         {
-            IControladorFarmaco* cm = FabricaControladores::instancia()->controladorFarmaco();
-            exito = cm->darDeAltaFarmaco(m);
-    
-            if (exito) 
+            if (!cm->memberFarmaco(m)) 
             {
+				cm->darDeAltaFarmaco(m);
                 cout << "El medicamento ha sido agregado correctamente." << endl;
             }
             else
             {
                 cout << "El medicamento ingresado ya existe en el sistema." << endl;
-              
             }
         }
     }

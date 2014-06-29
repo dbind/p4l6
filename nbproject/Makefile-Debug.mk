@@ -49,6 +49,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/ControladorMenu.o \
 	${OBJECTDIR}/ControladorSesion.o \
 	${OBJECTDIR}/ControladorUsuario.o \
+	${OBJECTDIR}/Diagnostico.o \
 	${OBJECTDIR}/FabricaControladores.o \
 	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
@@ -152,6 +153,11 @@ ${OBJECTDIR}/ControladorUsuario.o: ControladorUsuario.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorUsuario.o ControladorUsuario.cpp
 
+${OBJECTDIR}/Diagnostico.o: Diagnostico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Diagnostico.o Diagnostico.cpp
+
 ${OBJECTDIR}/FabricaControladores.o: FabricaControladores.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -194,6 +200,7 @@ ${OBJECTDIR}/main.o: main.cpp
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe
 
 # Subprojects
 .clean-subprojects:

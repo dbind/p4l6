@@ -1,5 +1,6 @@
 using namespace std;
 
+#include <exception>
 #include <string>
 #include <vector>
 
@@ -27,17 +28,20 @@ vector<Farmaco*> ControladorFarmaco::farmacos()
 }
 
 
-bool ControladorFarmaco::darDeAltaFarmaco(string nombre)
+/**
+ * Precondición: no existe el medicamento en el sistema
+ */
+Farmaco* ControladorFarmaco::darDeAltaFarmaco(string nombre)
 {
-    if (!this->memberFarmaco(nombre))
+    if (this->memberFarmaco(nombre))
     {
-        Farmaco* farmaco = new Farmaco(nombre);
-        _farmacos.insert(_farmacos.begin(), farmaco);
+		throw;
+	}
 
-		return true;
-    }
+	Farmaco* farmaco = new Farmaco(nombre);
+	_farmacos.insert(_farmacos.begin(), farmaco);
 
-	return false;
+	return farmaco;
 }
 
 bool ControladorFarmaco::memberFarmaco(string nombre)

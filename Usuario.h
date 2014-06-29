@@ -6,12 +6,11 @@ using namespace std;
 #include <string>
 #include <vector>
 
+#include "Comando.h"
 #include "Genero.h"
 #include "Fecha.h"
 #include "Rol.h"
 #include "EstadoUsuario.h"
-//#include "Consulta.h"
-
 #include "Comando.h"
 
 
