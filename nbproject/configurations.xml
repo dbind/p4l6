@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="90">
+<configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
       <itemPath>Comando.cpp</itemPath>
@@ -9,8 +9,8 @@
       <itemPath>Fecha.h</itemPath>
       <itemPath>FechaHora.cpp</itemPath>
       <itemPath>FechaHora.h</itemPath>
-      <itemPath>Rol.h</itemPath>
       <itemPath>Genero.h</itemPath>
+      <itemPath>Rol.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="Handlers" projectFiles="true">
       <itemPath>ComandosConsulta.cpp</itemPath>
@@ -52,10 +52,18 @@
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles" displayName="Objects" projectFiles="true">
-      <itemPath>ControladorFarmaco.cpp</itemPath>
-      <itemPath>ControladorFarmaco.h</itemPath>
+      <itemPath>Consulta.h</itemPath>
+      <itemPath>Diagnostico.cpp</itemPath>
+      <itemPath>Diagnostico.h</itemPath>
       <itemPath>Farmaco.cpp</itemPath>
       <itemPath>Farmaco.h</itemPath>
+      <itemPath>Representacion.h</itemPath>
+      <itemPath>Tratamiento.cpp</itemPath>
+      <itemPath>Tratamiento.h</itemPath>
+      <itemPath>TratamientoFarmacologico.cpp</itemPath>
+      <itemPath>TratamientoFarmacologico.h</itemPath>
+      <itemPath>TratamientoQuirurgico.cpp</itemPath>
+      <itemPath>TratamientoQuirurgico.h</itemPath>
       <itemPath>Usuario.cpp</itemPath>
       <itemPath>Usuario.h</itemPath>
     </logicalFolder>
@@ -64,6 +72,8 @@
       <itemPath>ControladorConsulta.h</itemPath>
       <itemPath>ControladorDiagnostico.cpp</itemPath>
       <itemPath>ControladorDiagnostico.h</itemPath>
+      <itemPath>ControladorFarmaco.cpp</itemPath>
+      <itemPath>ControladorFarmaco.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -119,6 +129,8 @@
       </item>
       <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Consulta.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorComando.h" ex="false" tool="3" flavor2="0">
@@ -147,6 +159,10 @@
       </item>
       <item path="ControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Diagnostico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Diagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="EstadoUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="FabricaControladores.cpp" ex="false" tool="1" flavor2="0">
@@ -165,6 +181,8 @@
       </item>
       <item path="FechaHora.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
@@ -177,9 +195,21 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Representacion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      <item path="Tratamiento.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Tratamiento.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TratamientoFarmacologico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TratamientoFarmacologico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TratamientoQuirurgico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TratamientoQuirurgico.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -236,6 +266,8 @@
       </item>
       <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Consulta.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ControladorComando.h" ex="false" tool="3" flavor2="0">
@@ -264,6 +296,10 @@
       </item>
       <item path="ControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Diagnostico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Diagnostico.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="EstadoUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="FabricaControladores.cpp" ex="false" tool="1" flavor2="0">
@@ -282,6 +318,8 @@
       </item>
       <item path="FechaHora.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="IControladorConsulta.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorDiagnostico.h" ex="false" tool="3" flavor2="0">
@@ -294,9 +332,21 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Representacion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Genero.h" ex="false" tool="3" flavor2="0">
+      <item path="Tratamiento.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Tratamiento.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TratamientoFarmacologico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TratamientoFarmacologico.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TratamientoQuirurgico.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TratamientoQuirurgico.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>

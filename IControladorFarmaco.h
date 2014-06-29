@@ -19,7 +19,12 @@ public:
         /**
          * Ingresar fármacos
          */
-        virtual bool darDeAltaFarmaco(string nombre)=0;
+        virtual Farmaco* darDeAltaFarmaco(string nombre)=0;
+
+		/**
+		 * Verificar si el medicamento ya existe
+         */
+		virtual bool memberFarmaco(string nombre)=0;
         
         /**
          * Listar todos los fármacos que hay en el sistema

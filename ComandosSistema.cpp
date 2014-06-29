@@ -8,7 +8,18 @@ using namespace std;
 
 #include "FabricaControladores.h"
 #include "Usuario.h"
+//#include "Categoria.h"
+//#include "Representacion.h"
+//#include "Diagnostico.h"
+//#include "Consulta.h"
+#include "Farmaco.h"
+//#include "Tratamiento.h"
+//#include "TratamientoFarmacologico.h"
+//#include "TratamientoQuirurgico.h"
+
+#include "Genero.h"
 #include "Rol.h"
+
 
 
 void ComandosSistema::setTime()
@@ -25,9 +36,11 @@ void ComandosSistema::loadTestData()
 {
 	FabricaControladores* Fabrica = FabricaControladores::instancia();
 	
-	IControladorSesion*   cSesion   = Fabrica->controladorSesion();
-	IControladorUsuario*  cUsuario  = Fabrica->controladorUsuario();
-	IControladorConsulta* cConsulta = Fabrica->controladorConsulta();
+	IControladorSesion*      cSesion      = Fabrica->controladorSesion();
+	IControladorUsuario*     cUsuario     = Fabrica->controladorUsuario();
+	IControladorConsulta*    cConsulta    = Fabrica->controladorConsulta();
+	IControladorFarmaco*     cFarmaco     = Fabrica->controladorFarmaco();
+	IControladorDiagnostico* cDiagnostico = Fabrica->controladorDiagnostico();
 
 	// Usuarios
 	Genero M = Genero::masculino;
@@ -36,26 +49,61 @@ void ComandosSistema::loadTestData()
 	// Los casos de uso deben aparecer como ejecutados por James Peer
 	Usuario* uLogueado = cSesion->usuarioActivo();
 
-	cUsuario->altaUsuario("34567645", "James" , "Peer"    , M, Fecha(28, 12, 1988), Roles{Rol::socio});
-	cSesion->iniciarSesionInterno(cUsuario->findUsuario("34567645"));
+	Usuario* JA = cUsuario->altaUsuario("34567645", "James" , "Peer"    , M, Fecha(28, 12, 1988), Roles{Rol::socio});
+	cSesion->iniciarSesionInterno(JA);
 
-	cUsuario->altaUsuario("34562345", "Tifany", "McKensey", F, Fecha( 1,  1, 1990), Roles{Rol::socio});
-	cUsuario->altaUsuario("12345435", "Diego" , "Perez"   , M, Fecha( 3,  3, 1980), Roles{Rol::socio});
-	cUsuario->altaUsuario("65436667", "Juan"  , "Montoya" , M, Fecha( 7,  4, 1970), Roles{Rol::socio, Rol::medico});
-	cUsuario->altaUsuario("43521343", "Debora", "Corral"  , F, Fecha(13,  7, 1993), Roles{Rol::medico});
-	cUsuario->altaUsuario("98056743", "Ana"   , "Lopez"   , F, Fecha(24,  9, 1981), Roles{Rol::medico});
+	Usuario* TM = cUsuario->altaUsuario("34562345", "Tifany", "McKensey", F, Fecha( 1,  1, 1990), Roles{Rol::socio});
+	Usuario* DP = cUsuario->altaUsuario("12345435", "Diego" , "Perez"   , M, Fecha( 3,  3, 1980), Roles{Rol::socio});
+	Usuario* JM = cUsuario->altaUsuario("65436667", "Juan"  , "Montoya" , M, Fecha( 7,  4, 1970), Roles{Rol::socio, Rol::medico});
+	Usuario* DC = cUsuario->altaUsuario("43521343", "Debora", "Corral"  , F, Fecha(13,  7, 1993), Roles{Rol::medico});
+	Usuario* AL = cUsuario->altaUsuario("98056743", "Ana"   , "Lopez"   , F, Fecha(24,  9, 1981), Roles{Rol::medico});
 
-	// Restaurar sesión previa
-	cSesion->iniciarSesionInterno(uLogueado);
+	cSesion->iniciarSesionInterno(uLogueado); // Restaurar sesión previa
 
 
 	// Consultas
+//	cConsulta->
+
+
+	// Categorías (Código, Etiqueta)
+//	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
+//	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato digestivo");
+
+
+	// Representaciones (Categoría, Código, Descripción)
+//	Representacion* R1 = cDiagnostico->altaRepresentacion(X1, "01", "Asma");
+//	Representacion* R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestión");
+//	Representacion* R3 = cDiagnostico->altaRepresentacion(X2, "01", "Nauseas");
 	
-	// Representaciones
-	
-	// Diagnósticos
-	
-	// Tratamientos
-	
+
+	// Diagnósticos (Consulta, Representación, Descripción)
+//	Diagnostico* D1 = cDiagnostico->altaDiagnostico(C1, R2, "Desc 1");
+//	Diagnostico* D2 = cDiagnostico->altaDiagnostico(C1, R3, "Desc 2");
+//	Diagnostico* D3 = cDiagnostico->altaDiagnostico(C3, R2, "Desc 3");
+//	Diagnostico* D4 = cDiagnostico->altaDiagnostico(U1, R3, "Desc 4");
+//	Diagnostico* D5 = cDiagnostico->altaDiagnostico(U2, R1, "Desc 5");
+//	Diagnostico* D6 = cDiagnostico->altaDiagnostico(U2, R2, "Desc 6");
+
+
+	// Fármacos (Nombre)
+	Farmaco* M1 = cFarmaco->darDeAltaFarmaco("M1");
+	Farmaco* M2 = cFarmaco->darDeAltaFarmaco("M2");
+	Farmaco* M3 = cFarmaco->darDeAltaFarmaco("M3");
+
+
+	// Tratamientos (Diagnóstico, Fármaco, Descripción)
+//	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, M1, "Desc 1");
+//	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, M2, "Desc 2");
+//	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, M3, "Desc 3");
+//	TratamientoFarmacologico* F4 = cDiagnostico->agregarTratamientoFarmacologico(D4, M1, "Desc 4");
+//	TratamientoFarmacologico* F5 = cDiagnostico->agregarTratamientoFarmacologico(D5, M2, "Desc 5");
+//	TratamientoFarmacologico* F6 = cDiagnostico->agregarTratamientoFarmacologico(D6, M3, "Desc 6");
+
+//	TratamientoQuirurgico* Q1 = cDiagnostico->agregarTratamientoQuirurgico(D1, M1, "Desc 1");
+//	TratamientoQuirurgico* Q2 = cDiagnostico->agregarTratamientoQuirurgico(D1, M1, "Desc 1");
+
+
 	// Suscripciones
+//	Suscripcion* S1 = cUsuario->suscribir(JM, TM, Fecha(22, 3, 2013));
+//	Suscripcion* S2 = cUsuario->suscribir(JM, TM, Fecha(25, 6, 2014));
 }

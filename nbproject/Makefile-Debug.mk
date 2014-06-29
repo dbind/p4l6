@@ -49,10 +49,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/ControladorMenu.o \
 	${OBJECTDIR}/ControladorSesion.o \
 	${OBJECTDIR}/ControladorUsuario.o \
+	${OBJECTDIR}/Diagnostico.o \
 	${OBJECTDIR}/FabricaControladores.o \
 	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
+	${OBJECTDIR}/Tratamiento.o \
+	${OBJECTDIR}/TratamientoFarmacologico.o \
+	${OBJECTDIR}/TratamientoQuirurgico.o \
 	${OBJECTDIR}/Usuario.o \
 	${OBJECTDIR}/main.o
 
@@ -75,11 +79,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Comando.o: Comando.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -151,6 +155,11 @@ ${OBJECTDIR}/ControladorUsuario.o: ControladorUsuario.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorUsuario.o ControladorUsuario.cpp
 
+${OBJECTDIR}/Diagnostico.o: Diagnostico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Diagnostico.o Diagnostico.cpp
+
 ${OBJECTDIR}/FabricaControladores.o: FabricaControladores.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -171,6 +180,21 @@ ${OBJECTDIR}/FechaHora.o: FechaHora.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FechaHora.o FechaHora.cpp
 
+${OBJECTDIR}/Tratamiento.o: Tratamiento.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tratamiento.o Tratamiento.cpp
+
+${OBJECTDIR}/TratamientoFarmacologico.o: TratamientoFarmacologico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TratamientoFarmacologico.o TratamientoFarmacologico.cpp
+
+${OBJECTDIR}/TratamientoQuirurgico.o: TratamientoQuirurgico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TratamientoQuirurgico.o TratamientoQuirurgico.cpp
+
 ${OBJECTDIR}/Usuario.o: Usuario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -187,7 +211,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6_d.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe
 
 # Subprojects
 .clean-subprojects:
