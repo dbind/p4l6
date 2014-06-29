@@ -12,7 +12,7 @@ using namespace std;
 #include "EstadoUsuario.h"
 //#include "Consulta.h"
 
-//class Comando;
+#include "Comando.h"
 
 
 class Usuario

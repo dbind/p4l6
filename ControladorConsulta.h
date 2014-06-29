@@ -2,7 +2,7 @@
 #define	CONTROLADORCONSULTA_H
 
 #include "IControladorConsulta.h"
-
+#include "Reserva.h"
 
 /**
  * Realiza IControladorConsulta como Singleton

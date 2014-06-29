@@ -50,7 +50,7 @@ protected:
 //	vector<Diagnostico*> diagnosticos;
 //	vector<ConsultaAsistida> consultasAsistidas;
 //	Consulta consultaSeleccionada;
-    vector<Reserva*> reservas;
+        vector<Reserva*> reservas;
 
 };
 
