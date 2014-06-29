@@ -40,8 +40,8 @@ ControladorUsuario::ControladorUsuario()
  */
 Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 {
-	vector<Rol> roles {Rol::master, Rol::admin};
-	TipoSexo sexo = TipoSexo::indeterminado;
+	Roles roles {Rol::master, Rol::admin};
+	Genero sexo = Genero::indeterminado;
 	Fecha fecha = Fecha(); // Fecha indefinida, no es relevante para Master
 
 	// Crear el usuario por defecto con los datos recibidos
@@ -54,7 +54,7 @@ Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 
 
 Usuario* ControladorUsuario::altaUsuario(string ci, string nombre, string apellido,
-	                                     TipoSexo sexo, Fecha fecha, vector<Rol> roles)
+	                                     Genero sexo, Fecha fecha, Roles roles)
 {
 	if (this->findUsuario(ci))
 	{

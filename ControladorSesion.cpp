@@ -8,7 +8,7 @@ using namespace std;
 #include "ControladorSesion.h"
 #include "FabricaControladores.h"
 
-#include "TipoSexo.h"
+#include "Genero.h"
 #include "Fecha.h"
 #include "Rol.h"
 #include "Usuario.h"
@@ -98,7 +98,7 @@ Usuario* ControladorSesion::pedirIdentificacion()
 {
 	string ci;
 
-	cout << "Ingrese su CI (hasta 7 números, sin dígito de verificación) ";
+	cout << "Ingrese su CI (hasta 8 números, sin dígito de verificación) ";
 	cout << "(o escriba q para salir):\n";
 	cin >> ci;
 
@@ -193,7 +193,7 @@ bool ControladorSesion::esValidaCi(string ci)
 	istringstream(ci) >> ci_numeros;       // Filtro solo números del input
 	sprintf(ci_limpia, "%d", ci_numeros);  // Casteo a string el número solo
 
-	return (ci == ci_limpia && ci.length() <= 7); // Máx: 9999999
+	return (ci == ci_limpia && ci.length() <= 8); // Máx: 9999999
 }
 
 bool ControladorSesion::esValidoPass(string pass)

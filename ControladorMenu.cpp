@@ -32,7 +32,7 @@ ControladorMenu* ControladorMenu::instancia()
 
 ControladorMenu::ControladorMenu()
 {
-	this->cSesion  = FabricaControladores::instancia()->controladorSesion();
+	this->cSesion = FabricaControladores::instancia()->controladorSesion();
 }
 
 /**

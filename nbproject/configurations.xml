@@ -10,7 +10,7 @@
       <itemPath>FechaHora.cpp</itemPath>
       <itemPath>FechaHora.h</itemPath>
       <itemPath>Rol.h</itemPath>
-      <itemPath>TipoSexo.h</itemPath>
+      <itemPath>Genero.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="Handlers" projectFiles="true">
       <itemPath>ComandosConsulta.cpp</itemPath>
@@ -179,7 +179,7 @@
       </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="TipoSexo.h" ex="false" tool="3" flavor2="0">
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -296,7 +296,7 @@
       </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="TipoSexo.h" ex="false" tool="3" flavor2="0">
+      <item path="Genero.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
       </item>

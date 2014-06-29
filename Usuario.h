@@ -6,7 +6,7 @@ using namespace std;
 #include <string>
 #include <vector>
 
-#include "TipoSexo.h"
+#include "Genero.h"
 #include "Fecha.h"
 #include "Rol.h"
 #include "EstadoUsuario.h"
@@ -21,20 +21,20 @@ class Usuario
 
 public:
 	Usuario(string ci, string nombre, string apellido,
-	        TipoSexo, Fecha, vector<Rol>);
+	        Genero, Fecha, Roles);
 	virtual ~Usuario(){};
 
 	string getCi();
 	string getNombre();
 	string getApellido();
-	TipoSexo getSexo();
+	Genero getSexo();
 	Fecha getFechaNac();
-	vector<Rol> roles();
+	Roles roles();
 	vector<Comando> comandos();
 
 	void setNombre(string);
 	void setApellido(string);
-	void setSexo(TipoSexo);
+	void setSexo(Genero);
 	void setFechaNac(Fecha);
 
 	
@@ -59,11 +59,11 @@ private:
 	string _ci;
 	string _nombre;
 	string _apellido;
-	TipoSexo _sexo;
+	Genero _sexo;
 	Fecha _fechaNac;
 	string _pass;
 	EstadoUsuario _estado;
-	vector<Rol> _roles;
+	Roles _roles;
 	vector<Comando> _comandos;
 };
 

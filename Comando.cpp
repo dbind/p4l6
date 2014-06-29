@@ -1,7 +1,7 @@
 #include "Comando.h"
 
 
-Comando::Comando(string codigo, string nombre, vector<Rol> roles)
+Comando::Comando(string codigo, string nombre, Roles roles)
 {
 	this->_codigo = codigo;
 	this->_nombre = nombre;
@@ -20,7 +20,7 @@ string Comando::nombre()
 
 bool Comando::habilitadoPara(Rol rol)
 {
-	for(vector<Rol>::iterator it = _roles.begin(); it != _roles.end(); ++it)
+	for(Roles::iterator it = _roles.begin(); it != _roles.end(); ++it)
 	{
 		if (*it == rol)
 		{
@@ -31,9 +31,9 @@ bool Comando::habilitadoPara(Rol rol)
 	return false;
 }
 
-bool Comando::habilitadoPara(vector<Rol> roles)
+bool Comando::habilitadoPara(Roles roles)
 {
-	for(vector<Rol>::iterator it = roles.begin(); it != roles.end(); ++it)
+	for(Roles::iterator it = roles.begin(); it != roles.end(); ++it)
 	{
 		if (this->habilitadoPara(*it))
 		{

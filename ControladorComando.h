@@ -25,7 +25,7 @@ public:
 	/**
 	 * Retorna un vector de comandos habilitados para los roles especificados
         */
-	vector<Comando> comandos(vector<Rol>);
+	vector<Comando> comandos(Roles);
 	
 	/**
 	 * Deriva el comando especificado a quién le corresponda atenderlo
@@ -37,7 +37,7 @@ private:
 	ControladorComando();
 
         void registrarComandos();
-	void agregar(string codigo, string nombre, vector<Rol>);
+	void agregar(string codigo, string nombre, Roles);
 
 };
 

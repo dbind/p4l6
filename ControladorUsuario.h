@@ -8,7 +8,7 @@ using namespace std;
 
 #include "IControladorUsuario.h"
 
-#include "TipoSexo.h"
+#include "Genero.h"
 #include "Fecha.h"
 #include "Rol.h"
 #include "Comando.h"
@@ -29,7 +29,7 @@ public:
 	Usuario* crearMaster(string ci, string pass, string nombre);
 	
 	Usuario* altaUsuario(string ci, string nombre, string apellido,
-	                     TipoSexo, Fecha, vector<Rol>);
+	                     Genero, Fecha, Roles);
         
 	vector<Usuario*> usuarios();
 	Usuario* findUsuario(string ci);

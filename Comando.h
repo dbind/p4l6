@@ -13,17 +13,17 @@ class Comando
 {
 
     public:
-		Comando(string codigo, string nombre, vector<Rol>);
+		Comando(string codigo, string nombre, Roles);
 
         string codigo();
         string nombre();
 		bool habilitadoPara(Rol);
-		bool habilitadoPara(vector<Rol>);
+		bool habilitadoPara(Roles);
 
     private:
         string _codigo;
         string _nombre;
-		vector<Rol> _roles; // Roles habilitados para ejecutar este comando
+		Roles _roles; // Roles habilitados para ejecutar este comando
 
 };
 

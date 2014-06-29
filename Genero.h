@@ -1,9 +1,9 @@
-#ifndef TIPOSEXO_H
-#define	TIPOSEXO_H
+#ifndef GENERO_H
+#define	GENERO_H
 
 
-enum class TipoSexo {masculino, femenino, indeterminado};
+enum class Genero {masculino, femenino, indeterminado};
 
 
-#endif	/* TIPOSEXO_H */
+#endif	/* GENERO_H */
 

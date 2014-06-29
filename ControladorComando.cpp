@@ -16,10 +16,6 @@ using namespace std;
 #include "ComandosSistema.h"
 
 
-// Shortcut por practicidad
-typedef vector<Rol> Roles;
-
-
 /**
  * Agregar nuevos comandos: agregar("codigo", "nombre", Roles{lista})
  */
@@ -183,7 +179,7 @@ ControladorComando::ControladorComando()
 	this->registrarComandos();
 }
 
-vector<Comando> ControladorComando::comandos(vector<Rol> roles)
+vector<Comando> ControladorComando::comandos(Roles roles)
 {
 	vector<Comando> comandos = _comandos;
 
@@ -204,7 +200,7 @@ vector<Comando> ControladorComando::comandos(vector<Rol> roles)
 /******************************** P R I V A T E *******************************/
 /******************************************************************************/
 
-void ControladorComando::agregar(string codigo, string nombre, vector<Rol> roles)
+void ControladorComando::agregar(string codigo, string nombre, Roles roles)
 {
 	this->_comandos.insert(this->_comandos.end(), Comando(codigo, nombre, roles));
 }

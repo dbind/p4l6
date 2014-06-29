@@ -7,7 +7,7 @@
 
 
 Usuario::Usuario(string ci, string nombre, string apellido,
-                 TipoSexo sexo, Fecha fecha, vector<Rol> roles)
+                 Genero sexo, Fecha fecha, Roles roles)
 {
 	_ci       = ci;
 	_nombre   = nombre;
@@ -38,7 +38,7 @@ string Usuario::getApellido()
     return _apellido;
 }
 
-TipoSexo Usuario::getSexo()
+Genero Usuario::getSexo()
 {
     return _sexo;
 }
@@ -48,7 +48,7 @@ Fecha Usuario::getFechaNac()
     return _fechaNac;
 }
 
-vector<Rol> Usuario::roles()
+Roles Usuario::roles()
 {
     return _roles;
 }
@@ -69,7 +69,7 @@ void Usuario::setApellido(string apellido)
     _apellido = apellido;
 }
 
-void Usuario::setSexo(TipoSexo sexo)
+void Usuario::setSexo(Genero sexo)
 {
     _sexo = sexo;
 }

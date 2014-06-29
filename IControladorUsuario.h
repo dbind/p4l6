@@ -6,7 +6,7 @@ using namespace std;
 #include <string>
 #include <vector>
 
-#include "TipoSexo.h"
+#include "Genero.h"
 #include "Rol.h"
 
 
@@ -24,7 +24,7 @@ public:
 	virtual Usuario* crearMaster(string ci, string pass, string nombre)=0;
 
 	virtual Usuario* altaUsuario(string ci, string nombre, string apellido,
-	                             TipoSexo, Fecha, vector<Rol>)=0;
+	                             Genero, Fecha, Roles)=0;
         
 	virtual vector<Usuario*> usuarios()=0;
 	virtual Usuario* findUsuario(string ci)=0;
