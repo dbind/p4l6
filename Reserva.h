@@ -9,11 +9,13 @@
 #define	RESERVA_H
 
 #include "FechaHora.h"
+#include "Usuario.h"
 
 class Reserva 
 {
     public:
-        Reserva(FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente);
+        Reserva(FechaHora 
+        fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente);
         virtual ~Reserva();
     private:
         Usuario* Medico;
