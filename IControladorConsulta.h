@@ -5,6 +5,7 @@ using namespace std;
 
 #include <vector>
 #include <string>
+#include "Reserva.h"
 
 //#include "Consulta.h"
 //#include "ConsultaAsistida.h"
