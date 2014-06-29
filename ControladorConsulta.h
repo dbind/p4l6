@@ -2,7 +2,7 @@
 #define	CONTROLADORCONSULTA_H
 
 #include "IControladorConsulta.h"
-
+#include "Reserva.h"
 
 /**
  * Realiza IControladorConsulta como Singleton
@@ -12,6 +12,7 @@ class ControladorConsulta : public IControladorConsulta
 
 public:
 	static ControladorConsulta* instancia();
+        vector<Reserva*> getReservas();
 
 private:
 	static ControladorConsulta* _instancia;

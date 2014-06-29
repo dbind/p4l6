@@ -67,6 +67,8 @@ void ComandosSistema::loadTestData()
 
 	// Categorías (Código, Etiqueta)
 //	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
+//	Categoria X2 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
+//	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
 //	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato digestivo");
 
 

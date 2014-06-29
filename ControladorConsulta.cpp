@@ -18,3 +18,8 @@ ControladorConsulta* ControladorConsulta::instancia()
 	
 	return _instancia;
 }
+
+//vector<Reserva*> ControladorConsulta::getReservas()
+//{
+//    return reservas;
+//}

@@ -15,7 +15,8 @@ class Diagnostico
 
 public:
 	Diagnostico(Consulta*, Representacion*, string descripcion);
-	virtual ~Diagnostico(){};
+	Diagnostico(string descripcion);
+        virtual ~Diagnostico(){};
 
 	Consulta* consulta();
 	Representacion* representacion();

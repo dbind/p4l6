@@ -6,7 +6,7 @@ class FechaHora
 {
 
     public:
-		FechaHora(int dia, int mes, int anyo, int hora, int minuto);
+        FechaHora(int dia, int mes, int anyo, int hora, int minuto);
 
         int dia();
         int mes();

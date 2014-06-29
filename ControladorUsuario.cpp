@@ -105,3 +105,18 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 
 	return NULL;
 }
+
+vector<Usuario*> ControladorUsuario::listarMedicos()
+{
+        for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
+	{
+		vector<Usuario*> medicos;
+                Usuario* usuario = *it;
+                if (usuario->esUn(Rol::medico))
+		{
+                        medicos.push_back(usuario);
+                }
+                return medicos;
+        }
+    
+}

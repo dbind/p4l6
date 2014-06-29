@@ -11,6 +11,7 @@ using namespace std;
 #include "Fecha.h"
 #include "Rol.h"
 #include "EstadoUsuario.h"
+#include "Comando.h"
 
 
 class Usuario
