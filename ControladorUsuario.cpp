@@ -114,7 +114,7 @@ vector<Usuario*> ControladorUsuario::listarMedicos()
                 Usuario* usuario = *it;
                 if (usuario->esUn(Rol::medico))
 		{
-                        medicos::push_back(usuario);
+                        medicos.push_back(usuario);
                 }
                 return medicos;
         }

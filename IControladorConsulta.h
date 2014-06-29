@@ -44,11 +44,12 @@ public:
 //	registrarConsultaComun(FechaHora fechaReserva, FechaHora fechaConsulta);
 //	registrarConsultaEmergencia(string motivo, FechaHora fechaConsulta);
 
-private:
+protected:
 //	vector<Consulta*> consultas;
 //	vector<Diagnostico*> diagnosticos;
 //	vector<ConsultaAsistida> consultasAsistidas;
 //	Consulta consultaSeleccionada;
+    vector<Reserva*> reservas;
 
 };
 
