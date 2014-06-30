@@ -143,7 +143,7 @@ void ComandosUsuario::altaReactivacionUsuario()
 			}
 
 			Usuario* newUser = cUsuario->altaUsuario(ci, nombre, apellido, genero, fechaNac, roles); // POR AHORA SOLO PUEDE INGRESAR UN ROL.
-
+			
 			if (newUser != NULL)
 				cout << "El usuario fue dado de alta con exito" << endl;
 			else
