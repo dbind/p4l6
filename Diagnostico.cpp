@@ -14,7 +14,7 @@ Diagnostico::Diagnostico(Representacion representacion, string descripcion)
 Diagnostico::Diagnostico(Representacion representacion)
 {
     _representacion = representacion;
-    _descripcion = "No hay descipcion";
+    _descripcion = "No hay descripcion";
 }
 
 Representacion Diagnostico::representacion()
