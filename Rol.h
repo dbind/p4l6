@@ -15,7 +15,7 @@ enum class Rol {master, admin, medico, socio};
 typedef vector<Rol> Roles;
 
 
-inline ostream& operator<<(ostream& os, const Rol rol)
+inline ostream& operator<<(ostream& os, const Rol& rol)
 {
 	     if (rol == Rol::master) os << "master";
 	else if (rol == Rol::admin ) os << "admin";

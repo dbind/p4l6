@@ -177,14 +177,15 @@ void ComandosSistema::listarUsuarios()
 	for (; it != l.end(); ++it)
 	{
 		Usuario* item = *it;
-		cout << item->getNombre() << " " << item->getApellido() << " (CI " << item->getCi() << ")" << endl;
+		cout << item->getNombre() << " " << item->getApellido()
+		     << ", " << item->edad() << " años"
+		     << " (CI " << item->getCi() << ")" << endl;
 
 		cout << "Rol(es):";
 
-		Roles::iterator itr = item->roles().begin();
-		for (; itr != item->roles().end(); ++itr)
+		for (Roles::iterator itr = item->roles().begin(); itr != item->roles().end(); ++itr)
 		{
-			cout << " " << (*itr);
+			cout << " " << *itr;
 		}
 
 		cout << endl << endl;

@@ -49,6 +49,7 @@ Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 
 	// Crear el usuario por defecto con los datos recibidos
 	Usuario* usuario = this->altaUsuario(ci, nombre, "", sexo, fecha, roles);
+
 	usuario->cambiarPass(pass);
 	usuario->activar();
 
@@ -66,7 +67,7 @@ Usuario* ControladorUsuario::altaUsuario(string ci, string nombre, string apelli
 
 	Usuario* usuario = new Usuario(ci, nombre, apellido, sexo, fecha, roles);
 
-	_usuarios.insert(_usuarios.begin(), usuario);
+	_usuarios.push_back(usuario);
 
 	if (FabricaControladores::instancia()->controladorSesion()->sesionIniciada())
 	{
@@ -143,5 +144,6 @@ void ControladorUsuario::reset()
 	_usuarioActivo = NULL;
 
 	_usuarios.clear();
-	_usuarios.push_back(this->crearMaster(MASTER_CI, MASTER_PASS, "Master"));
+
+	this->crearMaster(MASTER_CI, MASTER_PASS, "Master");
 }

@@ -60,8 +60,8 @@ void ControladorComando::registrarComandos()
 	        Roles{Rol::master});
 	agregar("get_time", "Consultar fecha del sistema",
 	        Roles{Rol::admin, Rol::medico, Rol::socio});
-			
-	agregar("listar_reservas", "Debug: Listar Reservas",
+
+	agregar("listar_reservas", "Debug: Listar Reservas Activas",
 		     Roles{Rol::master});
 			 
 	agregar("listar_consultas", "Debug: Listar Consultas",
