@@ -29,6 +29,7 @@ public:
 	void altaReserva (Reserva*);
 	void altaConsulta (Consulta*);
 
+	vector<Reserva*> listarReservasDia(Fecha);
 	vector<Consulta*> listarConsultasDia(Fecha);
 
 	void removeReserva(Reserva*);

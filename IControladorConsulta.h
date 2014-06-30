@@ -24,8 +24,9 @@ public:
 	virtual void altaReserva(Reserva*)=0;
 	virtual void altaConsulta(Consulta*)=0;
 
+	virtual vector<Reserva*> listarReservasDia(Fecha)=0;
 	virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
-
+        
 	virtual void removeReserva(Reserva*)=0;
 
 	virtual void reset()=0;
