@@ -46,16 +46,32 @@ vector<Reserva*> ControladorConsulta::reservas()
 
 void ControladorConsulta::removeReserva(Reserva* reserva)
 {
-    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
+	for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
 	{
-		if (reserva = (*it))
+		if (reserva == (*it))
 		{
 			_reservas.erase(it);
-			delete reserva;
 		}
 	}
 }
 
+
+vector<Reserva*> ControladorConsulta::listarReservasDia(Fecha fecha)
+{
+	vector<Reserva*> reservasDia;
+		
+    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
+	{
+		Reserva* reserva = *it;
+
+		if (reserva->fechaReserva() == fecha)
+		{
+			reservasDia.push_back(reserva);
+		}
+	}
+
+	return reservasDia;
+}
 
 vector<Consulta*> ControladorConsulta::listarConsultasDia(Fecha fecha)
 {

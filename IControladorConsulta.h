@@ -24,15 +24,16 @@ public:
         virtual void altaReserva(Reserva* reserva)=0;
         virtual void altaConsulta(Consulta* consulta)=0;
 
-	virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
-
+	virtual vector<Reserva*> listarReservasDia(Fecha)=0;
+        virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
+        
 	virtual void removeReserva(Reserva*)=0;
 
 	virtual void reset()=0;
 
 protected:
-	vector<Reserva*> _reservas;
-	vector<Consulta*> _consultas;
+	vector<Reserva*> _reservas{};
+	vector<Consulta*> _consultas{};
 
 };
 

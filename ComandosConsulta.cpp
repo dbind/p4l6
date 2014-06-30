@@ -120,6 +120,7 @@ void ComandosConsulta::cancelarReserva()
 		
 		Reserva* aDevolver = reservas.at(i-1);
 		cc->removeReserva(aDevolver);
+	
 		
 //        cc->removeReserva(medico, paciente, fechaConsulta, fechaReserva);
 //        reserva::~Reserva();
@@ -135,52 +136,69 @@ void ComandosConsulta::registrarConsulta()
     string ciMedico, ciPaciente, tipoConsulta, motivo;
     int diaReserva, diaConsulta, mesReserva, mesConsulta, anoReserva, anoConsulta;
     
-    cout << "Ingresa la cedula del medico de la consulta :";
+    cout << "Ingresa la cedula del medico de la consulta: ";
     cin >> ciMedico;
-    cout << endl << "Ingresa la cedula del paciente de la consulta :";
+    cout << endl << "Ingresa la cedula del paciente de la consulta: ";
     cin >> ciPaciente;
     
     Usuario* medico = cu->findUsuario(ciMedico);
     Usuario* paciente = cu->findUsuario(ciPaciente);
     
-    cout << "Ingresa el tipo de consulta a registrar (comun o emergencia)" << endl;
+    cout << "Ingresa el tipo de consulta a registrar (comun o emergencia): " << endl;
     cin >> tipoConsulta;
     
     if (tipoConsulta == "comun")
     {
-        cout << "Ingresa el dia de la reserva" << endl;
+        cout << "Ingresa el dia de la reserva: " << endl;
         cin >> diaReserva;
-        cout << "Ingresa el mes de la reserva" << endl;
+        cout << "Ingresa el mes de la reserva: " << endl;
         cin >> mesReserva;
-        cout << "Ingresa el ano de la reserva" << endl;
+        cout << "Ingresa el ano de la reserva: " << endl;
         cin >> anoReserva;
          
-        cout << "Ingresa el dia de la consulta" << endl;
+        cout << "Ingresa el dia de la consulta: " << endl;
         cin >> diaConsulta;
-        cout << "Ingresa el mes de la consulta" << endl;
+        cout << "Ingresa el mes de la consulta: " << endl;
         cin >> mesConsulta;
-        cout << "Ingresa el ano de la consulta" << endl;
+        cout << "Ingresa el ano de la consulta: " << endl;
         cin >> anoConsulta;
         
         Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
         Fecha fechaReserva = Fecha(diaReserva, mesReserva, anoReserva);
         
-        ConsultaComun* comun = new ConsultaComun(medico, paciente, fechaConsulta, fechaReserva);
-        cc->consultas().push_back(comun);
-        
-        cout << "La consulta comun fue registrada con exito." << endl;
+		vector<Reserva*> reservasFecha = cc->listarReservasDia(fechaReserva);
+		
+		bool exito = false;
+		
+		for(vector<Reserva*>::iterator it = reservasFecha.begin(); it != reservasFecha.end(); ++it)
+		{
+			Reserva* reserva = *it;
+			if ((reserva->medico()->getCi() == ciMedico) && (reserva->paciente()->getCi()==ciPaciente))
+			{
+				ConsultaComun* comun = new ConsultaComun(medico, paciente, fechaConsulta, fechaReserva);
+				cc->consultas().push_back(comun);// Creo la consulta. 
+				reserva->asistir();
+				exito = true;
+			}
+		}
+		
+        if (exito)
+			cout << "La consulta comun fue registrada con exito." << endl;
+		else
+			cout << "No existen reservas con los datos proporcionados." << endl;
+		
     }
     
     else if (tipoConsulta == "emergencia")
     {
-        cout << "Ingresa el dia de la consulta" << endl;
+        cout << "Ingresa el dia de la consulta: " << endl;
         cin >> diaConsulta;
-        cout << "Ingresa el mes de la consulta" << endl;
+        cout << "Ingresa el mes de la consulta: " << endl;
         cin >> mesConsulta;
-        cout << "Ingresa el ano de la consulta" << endl;
+        cout << "Ingresa el ano de la consulta: " << endl;
         cin >> anoConsulta;
         
-        cout << "Ingresa el motivo de la emergencia";
+        cout << "Ingresa el motivo de la emergencia: ";
         cin >> motivo;
         
         Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
