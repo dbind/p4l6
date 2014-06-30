@@ -1,5 +1,6 @@
 using namespace std;
 
+#include <iostream>
 #include <vector>
 
 #include "ControladorConsulta.h"
@@ -46,11 +47,15 @@ vector<Reserva*> ControladorConsulta::reservas()
 
 void ControladorConsulta::removeReserva(Reserva* reserva)
 {
-	for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
+    for(vector<Reserva*>::iterator it=_reservas.begin(); it != _reservas.end(); ++it)
 	{
-		if (reserva == (*it))
+		if ((reserva->medico()        == (*it)->medico())
+		 && (reserva->paciente()      == (*it)->paciente())
+		 && (reserva->fechaReserva()  == (*it)->fechaReserva())
+		 && (reserva->fechaConsulta() == (*it)->fechaConsulta()))
 		{
 			_reservas.erase(it);
+			return;
 		}
 	}
 }
