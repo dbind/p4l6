@@ -14,6 +14,9 @@ class IControladorConsulta
 public:
 	virtual ~IControladorConsulta(){};
 
+	virtual vector<Reserva*> reservas()=0;
+	virtual void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)=0;
+
 	virtual void reset()=0;
 
 protected:
