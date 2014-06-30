@@ -3,6 +3,7 @@ using namespace std;
 #include <vector>
 
 #include "ControladorSistema.h"
+#include "FabricaControladores.h"
 
 /**
  * Instanciación de singleton
@@ -33,6 +34,10 @@ Fecha ControladorSistema::getFechaDelSistema()
 void ControladorSistema::setFechaDelSistema(Fecha fecha)
 {
 	_fecha = fecha;
+
+	// Triggers del cambio de hora
+	FabricaControladores::instancia()->controladorConsulta()->consultas();
+	
 }
 
 void ControladorSistema::reset()

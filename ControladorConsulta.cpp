@@ -4,6 +4,8 @@ using namespace std;
 
 #include "ControladorConsulta.h"
 #include "Reserva.h"
+#include "Consulta.h"
+#include "Usuario.h"
 
 
 /**
@@ -21,15 +23,17 @@ ControladorConsulta* ControladorConsulta::instancia()
 	return _instancia;
 }
 
+
+vector<Consulta*> ControladorConsulta::consultas()
+{
+    return _consultas;
+}
+
 vector<Reserva*> ControladorConsulta::reservas()
 {
     return _reservas;
 }
 
-vector<Consulta> ControladorConsulta::consultas()
-{
-    return _consultas;
-}
 
 void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
 {
@@ -37,14 +41,33 @@ void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fech
 	{
 		Reserva* reserva = *it;
 
-		if ((reserva->paciente()        == paciente)
-		 && (reserva->medico()          == medico)
-		 && (reserva->fechaConsulta()   == fechaConsulta)
-		 && (reserva->fechaReserva()    == fechaReserva))
+		if ((reserva->medico()        == medico)
+		 && (reserva->paciente()      == paciente)
+		 && (reserva->fechaConsulta() == fechaConsulta)
+		 && (reserva->fechaReserva()  == fechaReserva))
 		{
+			delete reserva;
 			_reservas.erase(it);
 		}
 	}
+}
+
+
+vector<Consulta*> ControladorConsulta::listarConsultasDia(Fecha fecha)
+{
+	vector<Consulta*> consultasDia;
+		
+    for(vector<Consulta*>::iterator it = _consultas.begin(); it != _consultas.end(); ++it)
+	{
+		Consulta* consulta = *it;
+
+		if (consulta->fechaConsulta() == fecha)
+		{
+			consultasDia.push_back(consulta);
+		}
+	}
+
+	return consultasDia;
 }
 
 
@@ -56,19 +79,4 @@ void ControladorConsulta::reset()
 	}
 
 	_reservas = vector<Reserva*> {};
-}
-
-vector<Consulta> ControladorConsulta::listarConsultasDia(Fecha fecha)
-{
-    for(vector<Consulta>::iterator it = _consultas.begin(); it != _consultas.end(); ++it)
-	{
-		Consulta consulta = *it;
-                vector<Consulta> consultasDia;
-
-		if (consulta.fechaConsulta()   == fecha)
-		{
-			consultasDia.push_back(consulta);
-		}
-                return consultasDia;
-        }
 }
