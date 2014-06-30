@@ -32,8 +32,8 @@ public:
 	virtual void reset()=0;
 
 protected:
-	vector<Reserva*> _reservas{};
-	vector<Consulta*> _consultas{};
+	vector<Reserva*> _reservas {};
+	vector<Consulta*> _consultas {};
 
 };
 

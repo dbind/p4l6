@@ -7,9 +7,9 @@ using namespace std;
 
 Fecha::Fecha()
 {
-	_dia  = 0;
-	_mes  = 0;
-	_anyo = 0;
+	_dia  = 1;
+	_mes  = 1;
+	_anyo = 2014;
 }
 
 Fecha::Fecha(int dia, int mes, int anyo)

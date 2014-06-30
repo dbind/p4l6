@@ -42,7 +42,7 @@ void ControladorSistema::setFechaDelSistema(Fecha fecha)
 
 	vector<Reserva*> reservas = cConsulta->reservas();
 
-    for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
+	for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
 	{
 		Reserva* reserva = *it;
 
@@ -52,8 +52,6 @@ void ControladorSistema::setFechaDelSistema(Fecha fecha)
 			cConsulta->removeReserva(reserva);
 		}
 	}
-	
-	
 }
 
 void ControladorSistema::reset()

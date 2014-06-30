@@ -90,10 +90,10 @@ void ComandosSistema::loadTestData()
 
 
 	// Consultas
-	Consulta* C1 = new ConsultaComun(JM, TM, Fecha(), Fecha());
-	Consulta* C2 = new ConsultaComun(DC, TM, Fecha(), Fecha());
-	Consulta* C3 = new ConsultaComun(DC, JM, Fecha(), Fecha());
-	Consulta* C4 = new ConsultaComun(AL, DP, Fecha(), Fecha());
+	Consulta* C1 = new ConsultaComun(JM, TM, Fecha(23, 6, 2014), Fecha(21, 6, 2014));
+	Consulta* C2 = new ConsultaComun(DC, TM, Fecha(22, 6, 2014), Fecha(22, 5, 2014));
+	Consulta* C3 = new ConsultaComun(DC, JM, Fecha(16, 3, 2014), Fecha(15, 3, 2014));
+	Consulta* C4 = new ConsultaComun(AL, DP, Fecha( 1, 3, 2014), Fecha(28, 2, 2014));
 	Consulta* U1 = new ConsultaUrgencia(JM, TM, Fecha(23, 5, 2014), "Fiebre alta");
 	Consulta* U2 = new ConsultaUrgencia(DC, JM, Fecha(24, 5, 2014), "Asma");
 	Consulta* U3 = new ConsultaUrgencia(AL, JM, Fecha( 3, 3, 2014), "Mareos");
@@ -142,9 +142,26 @@ void ComandosSistema::loadTestData()
 	cUsuario->suscribir(JM, TM, Fecha(25, 6, 2014));
 }
 
+
 void ComandosSistema::listarReservas()
 {
+	vector<Reserva*> l = FabricaControladores::instancia()->controladorConsulta()->reservas();
+	vector<Reserva*>::iterator it = l.begin();
 	
+	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+
+	for (; it != l.end(); ++it)
+	{
+		string asistencia = ((*it)->fechaConsulta() < fecha)
+			? ((*it)->asistio() ? "Si" : "No")
+			: "No corresponde (reserva pendiente)";
+
+		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
+		     << "Fecha Reserva: " << (*it)->fechaReserva() << endl
+		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
+		     << "Asistió: " << asistencia << endl << endl;
+	}
 }
 
 void ComandosSistema::listarConsultas()
@@ -160,14 +177,15 @@ void ComandosSistema::listarUsuarios()
 	for (; it != l.end(); ++it)
 	{
 		Usuario* item = *it;
-		cout << item->getNombre() << " " << item->getApellido() << " (CI " << item->getCi() << ")" << endl;
+		cout << item->getNombre() << " " << item->getApellido()
+		     << ", " << item->edad() << " años"
+		     << " (CI " << item->getCi() << ")" << endl;
 
 		cout << "Rol(es):";
 
-		Roles::iterator itr = item->roles().begin();
-		for (; itr != item->roles().end(); ++itr)
+		for (Roles::iterator itr = item->roles().begin(); itr != item->roles().end(); ++itr)
 		{
-			cout << " " << (*itr);
+			cout << " " << *itr;
 		}
 
 		cout << endl << endl;
@@ -187,10 +205,23 @@ void ComandosSistema::listarFarmacos()
 
 void ComandosSistema::listarCategorias()
 {
-	
+	vector<Categoria> l = FabricaControladores::instancia()->controladorDiagnostico()->categorias();
+	vector<Categoria>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		cout << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
+	}
 }
 
 void ComandosSistema::listarRepresentaciones()
 {
-	
+	vector<Representacion> l = FabricaControladores::instancia()->controladorDiagnostico()->representaciones();
+	vector<Representacion>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		cout << "[" << (*it).categoria().codigo() << "] "
+		     << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
+	}
 }

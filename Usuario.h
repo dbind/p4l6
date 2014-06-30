@@ -33,7 +33,7 @@ public:
 	string getApellido();
 	Genero getGenero();
 	Fecha getFechaNac();
-	Roles roles();
+	Roles &roles();
 
 	vector<Comando> comandos();
 

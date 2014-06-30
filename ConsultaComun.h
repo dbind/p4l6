@@ -3,6 +3,7 @@
 
 #include "Consulta.h"
 
+#include "Reserva.h"
 #include "Usuario.h"
 #include "Fecha.h"
 
@@ -11,12 +12,13 @@ class ConsultaComun : public Consulta
 {
 
 public:
+	ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Reserva* reserva);
 	ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Fecha reserva);
 
-	Fecha fechaReserva();
+	Reserva* reserva();
 
 protected:
-	Fecha _reserva;
+	Reserva* _reserva;
 
 };
 
