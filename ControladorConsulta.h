@@ -14,6 +14,7 @@ public:
 	static ControladorConsulta* instancia();
         vector<Reserva*> getReservas();
 
+
 private:
 	static ControladorConsulta* _instancia;
 	ControladorConsulta(){};
