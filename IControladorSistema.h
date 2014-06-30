@@ -10,8 +10,11 @@ class IControladorSistema
 public:
 	virtual ~IControladorSistema(){};
 
-private:
-	Fecha _actual;
+	virtual Fecha getFechaDelSistema()=0;
+	virtual void setFechaDelSistema(Fecha)=0;
+
+protected:
+	Fecha _fecha;
 
 };
 

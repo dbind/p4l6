@@ -21,4 +21,16 @@ ControladorSistema* ControladorSistema::instancia()
 
 ControladorSistema::ControladorSistema()
 {
+	_fecha = Fecha();
+}
+
+
+Fecha ControladorSistema::getFechaDelSistema()
+{
+	return _fecha;
+}
+
+void ControladorSistema::setFechaDelSistema(Fecha fecha)
+{
+	_fecha = fecha;
 }

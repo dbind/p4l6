@@ -6,6 +6,7 @@
 #include "Consulta.h"
 
 #include "Comando.h"
+#include "ControladorSistema.h"
 
 
 Usuario::Usuario(string ci, string nombre, string apellido,
@@ -23,7 +24,7 @@ Usuario::Usuario(string ci, string nombre, string apellido,
 	// Cargar lista de comandos habilitados (dado el o los roles del usuario)
 	_comandos = FabricaControladores::instancia()->controladorComando()->comandos(_roles);
 
-	_alta         = Fecha();
+	_alta         = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
 	_reactivacion = Fecha();
 }
 
@@ -127,7 +128,7 @@ void Usuario::activar()
 {
 	if (_estado == EstadoUsuario::inactivo)
 	{
-		_reactivacion = Fecha();
+		_reactivacion = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
 	}
 
 	_estado = EstadoUsuario::activo;

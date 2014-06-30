@@ -2,6 +2,7 @@
 #define	CONTROLADORSISTEMA_H
 
 #include "IControladorSistema.h"
+#include "Fecha.h"
 
 
 /**
@@ -13,11 +14,12 @@ class ControladorSistema : public IControladorSistema
 public:
 	static ControladorSistema* instancia();
 
+	Fecha getFechaDelSistema();
+	void setFechaDelSistema(Fecha);
+
 private:
 	static ControladorSistema* _instancia;
 	ControladorSistema();
-
-	Fecha actual;
 
 };
 
