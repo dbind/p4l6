@@ -98,6 +98,14 @@ void ComandosSistema::loadTestData()
 	Consulta* U2 = new ConsultaUrgencia(DC, JM, Fecha(24, 5, 2014), "Asma");
 	Consulta* U3 = new ConsultaUrgencia(AL, JM, Fecha( 3, 3, 2014), "Mareos");
 
+	cConsulta->altaConsulta(C1);
+	cConsulta->altaConsulta(C2);
+	cConsulta->altaConsulta(C3);
+	cConsulta->altaConsulta(C4);
+	cConsulta->altaConsulta(U1);
+	cConsulta->altaConsulta(U2);
+	cConsulta->altaConsulta(U3);
+
 
 	// Categorías (Código, Etiqueta)
 	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
