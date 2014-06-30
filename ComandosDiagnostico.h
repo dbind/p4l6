@@ -13,6 +13,8 @@ public:
 	 * Caso de uso Alta Representación de Diagnóstico
      */
 	static void altaRepresentacion();
+//        static void agregarCategoria();
+        static void listarCategorias();
 
 	/**
 	 * Caso de uso Listar Representaciones de Diagnósticos
