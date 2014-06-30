@@ -166,7 +166,16 @@ void ComandosSistema::listarReservas()
 
 void ComandosSistema::listarConsultas()
 {
-	
+	vector<Consulta*> l = FabricaControladores::instancia()->controladorConsulta()->consultas();
+	vector<Consulta*>::iterator it = l.begin();
+        
+        for (; it != l.end(); ++it)
+	{
+		cout << "Medico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
+		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl << endl;
+		     
+	}
 }
 
 void ComandosSistema::listarUsuarios()

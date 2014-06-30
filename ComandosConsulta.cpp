@@ -298,7 +298,7 @@ void ComandosConsulta::altaDiagnosticosConsulta()
                 {
                         Representacion representacion = *it;
                                 
-                        if (representacion.codigo().at(0) == cod)
+                        if (representacion.categoria().codigo() == cod)
                         {
                             diagnosticosAsociados.push_back(representacion);
                             cout << representacion.codigo() << " " << representacion.etiqueta() << endl;
@@ -306,7 +306,7 @@ void ComandosConsulta::altaDiagnosticosConsulta()
                         }
                 }      
     
-                cout << "Entrega el codigo (letra + numero) de la etiqueta del diagnostico que quieres dar de alta" << endl;
+                cout << "Entrega el codigo (solo numero) de la etiqueta del diagnostico que quieres dar de alta" << endl;
                 string codDiag;
                 cin >> codDiag;
                 Representacion representacionElegida;
