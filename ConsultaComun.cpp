@@ -4,9 +4,10 @@
 #include "Usuario.h"
 #include "Fecha.h"
 #include "ConsultaComun.h"
+#include "FabricaControladores.h"
 
 
-ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Fecha reserva)
+ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Reserva* reserva)
 {
 	_medico   = medico;
 	_paciente = paciente;
@@ -16,8 +17,19 @@ ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta,
 	_tipo = TipoConsulta::comun;
 }
 
+ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Fecha reserva)
+{
+	_medico   = medico;
+	_paciente = paciente;
+	_consulta = consulta;
 
-Fecha ConsultaComun::fechaReserva()
+	_tipo = TipoConsulta::comun;
+
+	_reserva = new Reserva(medico, paciente, consulta, reserva);
+	FabricaControladores::instancia()->controladorConsulta()->altaReserva(_reserva);
+}
+
+Reserva* ConsultaComun::reserva()
 {
 	return _reserva;
 }
