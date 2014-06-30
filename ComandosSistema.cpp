@@ -1,5 +1,6 @@
 using namespace std;
 
+#include <sstream>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,12 +27,30 @@ using namespace std;
 
 void ComandosSistema::setTime()
 {
-	
+	string s_dia, s_mes, s_anyo;
+	int i_dia, i_mes, i_anyo;
+
+	cout << "Ingrese el día:" << endl;
+	cin >> s_dia;
+	istringstream(s_dia) >> i_dia;
+
+	cout << "Ingrese el mes:" << endl;
+	cin >> s_mes;
+	istringstream(s_mes) >> i_mes;
+
+	cout << "Ingrese el anyo:" << endl;
+	cin >> s_anyo;
+	istringstream(s_anyo) >> i_anyo;
+
+	Fecha fecha = Fecha(i_dia, i_mes, i_anyo);
+	FabricaControladores::instancia()->controladorSistema()->setFechaDelSistema(fecha);
 }
 
 void ComandosSistema::getTime()
 {
-	
+	cout << "La fecha actual es: "
+	     << FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema()
+	     << endl;
 }
 
 void ComandosSistema::loadTestData()
