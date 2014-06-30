@@ -58,7 +58,7 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 		if ((representacion.codigo() == codigo)
 		&& (representacion.categoria().codigo() == categoria.codigo()))
 		{
-			return representacion;
+			throw;
 		}
     }
 
