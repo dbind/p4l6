@@ -26,12 +26,12 @@ ControladorConsulta* ControladorConsulta::instancia()
 
 void ControladorConsulta::altaReserva(Reserva* reserva)
 {
-	_reservas.insert(_reservas.begin(), reserva);
+	_reservas.push_back(reserva);
 }
 
 void ControladorConsulta::altaConsulta(Consulta* consulta)
 {
-	_consultas.insert(_consultas.begin(), consulta);
+	_consultas.push_back(consulta);
 }
 
 vector<Consulta*> ControladorConsulta::consultas()
