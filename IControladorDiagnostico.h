@@ -18,6 +18,7 @@ public:
 
 	virtual Categoria agregarCategoria(char codigo, string etiqueta)=0;
 	virtual Representacion altaRepresentacion(Categoria, string codigo, string etiqueta)=0;
+        virtual vector<Categoria> categorias()=0;
 
 protected:
 	vector<Categoria> _categorias;
