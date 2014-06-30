@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void ComandosDiagnostico::altaRepresentacion()
+void ComandosDiagnostico::altaRepresentacion() // Alta Representacion Estandarizada de diagnostico. 
 {
 	IControladorDiagnostico* cd = FabricaControladores::instancia()->controladorDiagnostico();
 	char letra;
@@ -98,6 +98,12 @@ void ComandosDiagnostico::listarCategorias()
 {
 	vector<Categoria> categorias = FabricaControladores::instancia()->controladorDiagnostico()
 	                                                                ->categorias();
+	
+	if (categorias.empty())
+	{
+		cout << "No hay categorías para listar." << endl;
+		return;
+	}
 	vector<Categoria>::iterator it;
 	Categoria categoria;
 	
@@ -117,8 +123,45 @@ void ComandosDiagnostico::listarCategorias()
     }
 }
 
-void ComandosDiagnostico::listarRepresentaciones()
+void ComandosDiagnostico::listarRepresentaciones() // Listar representaciones estandarizadas. 
 {
+	vector<Categoria> categorias = FabricaControladores::instancia()->controladorDiagnostico()
+	                                                                ->categorias();
 	
+	vector<Representacion> representaciones = FabricaControladores::instancia()->
+											controladorDiagnostico()->representaciones();
+	
+	vector<Categoria>::iterator itCat;
+	vector<Representacion>::iterator itRep;
+	
+	Categoria categoria;
+	Representacion representacion;
+	
+	for (itCat=categorias.begin(); itCat != categorias.end(); ++itCat)
+    {
+		stringstream ss;
+		string s;
+		categoria = *itCat;
+		ss << categoria.codigo();
+		ss >> s;
+		
+		cout << s << " " << categoria.etiqueta() << endl;
+		
+		for (itRep=representaciones.begin(); itRep != representaciones.end(); ++itRep)
+		{
+			stringstream ss1;
+			string s1;
+			representacion = *itRep;
+			ss1 << representacion.categoria().codigo();
+			ss1 >> s1;
+						
+			if (s1 == s)// Si la representacion tiene la misma categoria que la categoria. 
+			{
+				cout << s << representacion.codigo() << " " << representacion.etiqueta() << endl;
+			}
+			ss1.str(string());
+		}
+		ss.str(string());
+	}
 }
 		
