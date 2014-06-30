@@ -73,59 +73,70 @@ void ComandosConsulta::cancelarReserva()
     IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
 	Usuario* userActivo = FabricaControladores::instancia()->controladorSesion()->usuarioActivo();
     vector<Reserva*> reservas = cc->reservas();
-    
-    if (reservas.empty())
-	{
-		cout << "No hay reservas." << endl;
-	}
-    else
-    {
-		int contador = 1;
-		cout << "Lista de las reservas: " << endl;
-		for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
-		{
-			Reserva* reserva = *it;
-			Usuario* paciente;
-			Usuario* medico;
-			Fecha fechaConsulta, fechaReserva;
-			string nombrePaciente, apellidoPaciente, nombreMedico, apellidoMedico, ciPaciente, ciMedico;
+    vector<Reserva*> reservasUsuario {};
 
-			paciente = reserva->paciente();
-			medico = reserva->medico();
-			fechaConsulta = reserva->fechaConsulta();
-			fechaReserva = reserva->fechaReserva();
-			ciPaciente = paciente->getCi();
-			nombreMedico = medico->getNombre();
-			apellidoMedico = medico->getApellido();
-			ciMedico = medico->getCi();
-			
-			if (ciPaciente == userActivo->getCi())
-			{	
-				cout << contador << "- ";
-				cout << "Medico: " << nombreMedico << " " << apellidoMedico << endl;
-				cout << "Fecha de consulta: " << fechaConsulta << endl;
-				cout << "Fecha de reserva: " << fechaReserva <<  endl;
-				contador++;				
-			}
+	int contador = 1;
+	cout << "Lista de las reservas:" << endl;
+
+	for (vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
+	{
+		Reserva* reserva = *it;
+		Usuario* paciente;
+		Usuario* medico;
+		Fecha fechaConsulta, fechaReserva;
+		string nombrePaciente, apellidoPaciente, nombreMedico, apellidoMedico, ciPaciente, ciMedico;
+
+		paciente = reserva->paciente();
+		medico = reserva->medico();
+		fechaConsulta = reserva->fechaConsulta();
+		fechaReserva = reserva->fechaReserva();
+		ciPaciente = paciente->getCi();
+		nombreMedico = medico->getNombre();
+		apellidoMedico = medico->getApellido();
+		ciMedico = medico->getCi();
+
+		if (ciPaciente == userActivo->getCi())
+		{	
+			cout << contador << "- ";
+			cout << "Medico: " << nombreMedico << " " << apellidoMedico << endl;
+			cout << "Fecha de consulta: " << fechaConsulta << endl;
+			cout << "Fecha de reserva: " << fechaReserva <<  endl;
+			contador++;
+
+			reservasUsuario.push_back(reserva);
 		}
-       
-        cout << "Escribe el numero correspondiente a la consulta a devolver: " << endl;
+	}
+
+	if (reservasUsuario.size() == 0)
+	{
+		cout << "No se encontraron reservas activas" << endl;
+	}
+	else
+	{
+		cout << "Escriba el número correspondiente a la consulta a devolver (q para volver atrás)" << endl;
 		string s;
 		cin >> s;
-		
+
+		if (s == "q")
+		{
+			return;
+		}
+
 		char *cstr = new char[s.length() + 1];
 		strcpy(cstr, s.c_str());
 		int i = atoi(cstr);
 		delete [] cstr;
-		
-		Reserva* aDevolver = reservas.at(i-1);
-		cc->removeReserva(aDevolver);
-	
-		
-//        cc->removeReserva(medico, paciente, fechaConsulta, fechaReserva);
-//        reserva::~Reserva();
-		cout << "La reserva de la consulta fue cancelada con exito!" << endl;
-    }
+
+		if (i > 0 && i <= reservasUsuario.size())
+		{
+			cc->removeReserva(reservasUsuario.at(i-1));
+			cout << "La reserva de la consulta fue cancelada con exito!" << endl;
+		}
+		else
+		{
+			cout << "No existe una reserva con ese índice" << endl;
+		}
+	}
 }
 
 void ComandosConsulta::registrarConsulta()
