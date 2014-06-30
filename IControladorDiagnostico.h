@@ -8,6 +8,11 @@ using namespace std;
 
 #include "Categoria.h"
 #include "Representacion.h"
+#include "Diagnostico.h"
+#include "Consulta.h"
+#include "Usuario.h"
+
+#include "Fecha.h"
 
 
 class IControladorDiagnostico
@@ -18,6 +23,12 @@ public:
 
 	virtual Categoria agregarCategoria(char codigo, string etiqueta)=0;
 	virtual Representacion altaRepresentacion(Categoria, string codigo, string etiqueta)=0;
+	virtual Diagnostico* altaDiagnostico(Consulta*, Representacion, string descripcion)=0;
+	virtual TratamientoFarmacologico* agregarTratamientoFarmacologico(Diagnostico*, Farmaco*, string descripcion)=0;
+	virtual TratamientoQuirurgico* agregarTratamientoQuirurgico(Diagnostico*, Usuario* medico, Fecha, string descripcion)=0;
+	
+
+	virtual vector<Categoria> categorias()=0;
 
 protected:
 	vector<Categoria> _categorias;

@@ -32,10 +32,11 @@ public:
 	                     Genero, Fecha, Roles);
 
 	void reactivar(Usuario* usuario);
+	void suscribir(Usuario* medico, Usuario* paciente, Fecha);
         
 	vector<Usuario*> usuarios();
 	Usuario* findUsuario(string ci);
-        vector<Usuario*> listarMedicos();
+	vector<Usuario*> listarMedicos();
 
 private:
 	static ControladorUsuario* _instancia;

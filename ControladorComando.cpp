@@ -50,10 +50,10 @@ void ControladorComando::registrarComandos()
 	        Roles{Rol::admin});
 
 	// Casos de uso: Notificaciones
-	agregar("suscribirse_paciente", "Subscribirse a Notificaciones del Paciente",
+	agregar("suscribirse_paciente", "Subscribirse a un Paciente",
 	        Roles{Rol::admin});
-	agregar("notificar_medicos", "Notificar Médicos",
-	        Roles{Rol::admin});
+	agregar("ver_notificaciones", "Ver Notificaciones",
+	        Roles{Rol::admin, Rol::medico});
 
 	// Opciones específicas de la implementación (e.g. ver hora)
 	agregar("set_time", "Modificar fecha del Sistema",
@@ -123,9 +123,9 @@ void ControladorComando::ejecutar(Comando cmd)
 	{
 		ComandosNotificacion::seguirPaciente();
 	}
-	else if (opcion == "notificar_medicos")
+	else if (opcion == "ver_notificaciones")
 	{
-		ComandosNotificacion::notificarMedicos();
+		ComandosNotificacion::verNotificaciones();
 	}
 
 	// Opciones específicas de la implementación (e.g. ver hora)

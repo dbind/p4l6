@@ -1,14 +1,16 @@
 #ifndef CONSULTA_H
 #define CONSULTA_H
 
-#include <string>
+using namespace std;
+
 #include <vector>
 
-#include "Usuario.h"
-#include "Diagnostico.h"
-#include "FechaHora.h"
-//#include "Hora.h"
-//#include "TipoAsis.h"
+#include "Fecha.h"
+
+
+class Diagnostico;
+class Usuario;
+
 
 class Consulta
 {
@@ -31,9 +33,24 @@ class Consulta
         setFecha(FechaHora fecha);
         setAsistio(TipoAsis asis);
 
-        string getCiPaciente();
-        string getCiMedico();
-  
+public:
+	Consulta(){};
+	virtual ~Consulta(){};
+
+	Usuario* medico();
+	Usuario* paciente();
+	Fecha fechaConsulta();
+
+	vector<Diagnostico*> diagnosticos();
+	void agregarDiagnostico(Diagnostico*);
+
+protected:
+	Usuario* _medico;
+	Usuario* _paciente;
+	Fecha _consulta;
+
+	vector<Diagnostico*> _diagnosticos;
+
 };
 
 #endif // CO

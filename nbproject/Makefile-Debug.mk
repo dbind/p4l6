@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Categoria.o \
 	${OBJECTDIR}/Comando.o \
 	${OBJECTDIR}/ComandosConsulta.o \
 	${OBJECTDIR}/ComandosDiagnostico.o \
@@ -82,6 +83,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Categoria.o: Categoria.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Categoria.o Categoria.cpp
 
 ${OBJECTDIR}/Comando.o: Comando.cpp 
 	${MKDIR} -p ${OBJECTDIR}

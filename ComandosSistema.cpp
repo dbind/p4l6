@@ -9,8 +9,10 @@ using namespace std;
 #include "FabricaControladores.h"
 #include "Usuario.h"
 #include "Representacion.h"
-//#include "Diagnostico.h"
-//#include "Consulta.h"
+#include "Diagnostico.h"
+#include "Consulta.h"
+#include "ConsultaComun.h"
+#include "ConsultaUrgencia.h"
 #include "Farmaco.h"
 #include "Tratamiento.h"
 #include "TratamientoFarmacologico.h"
@@ -62,7 +64,13 @@ void ComandosSistema::loadTestData()
 
 
 	// Consultas
-//	cConsulta->
+	Consulta* C1 = new ConsultaComun(JM, TM, Fecha(), Fecha());
+	Consulta* C2 = new ConsultaComun(DC, TM, Fecha(), Fecha());
+	Consulta* C3 = new ConsultaComun(DC, JM, Fecha(), Fecha());
+	Consulta* C4 = new ConsultaComun(AL, DP, Fecha(), Fecha());
+	Consulta* U1 = new ConsultaUrgencia(JM, TM, Fecha(), "Fiebre alta");
+	Consulta* U2 = new ConsultaUrgencia(DC, JM, Fecha(), "Asma");
+	Consulta* U3 = new ConsultaUrgencia(AL, JM, Fecha(), "Mareos");
 
 
 	// Categorías (Código, Etiqueta)
@@ -77,12 +85,12 @@ void ComandosSistema::loadTestData()
 	
 
 	// Diagnósticos (Consulta, Representación, Descripción)
-//	Diagnostico* D1 = cDiagnostico->altaDiagnostico(C1, R2, "Desc 1");
-//	Diagnostico* D2 = cDiagnostico->altaDiagnostico(C1, R3, "Desc 2");
-//	Diagnostico* D3 = cDiagnostico->altaDiagnostico(C3, R2, "Desc 3");
-//	Diagnostico* D4 = cDiagnostico->altaDiagnostico(U1, R3, "Desc 4");
-//	Diagnostico* D5 = cDiagnostico->altaDiagnostico(U2, R1, "Desc 5");
-//	Diagnostico* D6 = cDiagnostico->altaDiagnostico(U2, R2, "Desc 6");
+	Diagnostico* D1 = cDiagnostico->altaDiagnostico(C1, R2, "Desc 1");
+	Diagnostico* D2 = cDiagnostico->altaDiagnostico(C1, R3, "Desc 2");
+	Diagnostico* D3 = cDiagnostico->altaDiagnostico(C3, R2, "Desc 3");
+	Diagnostico* D4 = cDiagnostico->altaDiagnostico(U1, R3, "Desc 4");
+	Diagnostico* D5 = cDiagnostico->altaDiagnostico(U2, R1, "Desc 5");
+	Diagnostico* D6 = cDiagnostico->altaDiagnostico(U2, R2, "Desc 6");
 
 
 	// Fármacos (Nombre)
@@ -92,18 +100,18 @@ void ComandosSistema::loadTestData()
 
 
 	// Tratamientos (Diagnóstico, Fármaco, Descripción)
-//	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, M1, "Desc 1");
-//	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, M2, "Desc 2");
-//	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, M3, "Desc 3");
-//	TratamientoFarmacologico* F4 = cDiagnostico->agregarTratamientoFarmacologico(D4, M1, "Desc 4");
-//	TratamientoFarmacologico* F5 = cDiagnostico->agregarTratamientoFarmacologico(D5, M2, "Desc 5");
-//	TratamientoFarmacologico* F6 = cDiagnostico->agregarTratamientoFarmacologico(D6, M3, "Desc 6");
+	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, M1, "Desc 1");
+	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, M2, "Desc 2");
+	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, M3, "Desc 3");
+	TratamientoFarmacologico* F4 = cDiagnostico->agregarTratamientoFarmacologico(D4, M1, "Desc 4");
+	TratamientoFarmacologico* F5 = cDiagnostico->agregarTratamientoFarmacologico(D5, M2, "Desc 5");
+	TratamientoFarmacologico* F6 = cDiagnostico->agregarTratamientoFarmacologico(D6, M3, "Desc 6");
 
-//	TratamientoQuirurgico* Q1 = cDiagnostico->agregarTratamientoQuirurgico(D1, M1, "Desc 1");
-//	TratamientoQuirurgico* Q2 = cDiagnostico->agregarTratamientoQuirurgico(D1, M1, "Desc 1");
+	TratamientoQuirurgico* Q1 = cDiagnostico->agregarTratamientoQuirurgico(D2, JM, Fecha(25, 7, 2014), "Desc 11");
+	TratamientoQuirurgico* Q2 = cDiagnostico->agregarTratamientoQuirurgico(D3, DC, Fecha( 1, 2, 2015), "Desc 22");
 
 
 	// Suscripciones
-//	Suscripcion* S1 = cUsuario->suscribir(JM, TM, Fecha(22, 3, 2013));
-//	Suscripcion* S2 = cUsuario->suscribir(JM, TM, Fecha(25, 6, 2014));
+	cUsuario->suscribir(JM, TM, Fecha(22, 3, 2013));
+	cUsuario->suscribir(JM, TM, Fecha(25, 6, 2014));
 }
