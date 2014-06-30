@@ -34,7 +34,7 @@ private:
 	void menuDeOpciones();
 	void imprimirMenu();
 
-	void interpretarOpcion(string opcion, vector<Comando>);
+	void interpretarOpcion(string opcion);
 	bool esValidaOpcion(string opcion, int max);
 
 };

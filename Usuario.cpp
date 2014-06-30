@@ -190,6 +190,14 @@ void Usuario::notificarObserver(Consulta* consulta)
 	_notificador->notificar(consulta);
 }
 
+vector<string> Usuario::notificaciones()
+{
+	vector<string> vacio = vector<string> {};
+
+	return (_notificador == NULL) ? vacio : _notificador->notificaciones();
+}
+
+
 vector<Usuario*> Usuario::dadosDeAlta()
 {
 	return _dadosDeAlta;

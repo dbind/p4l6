@@ -19,7 +19,7 @@ public:
 	virtual vector<string> notificaciones()=0;
 
 protected:
-	vector<string> _notificaciones;
+	vector<string> _notificaciones {};
 
 };
 

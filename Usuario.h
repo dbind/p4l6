@@ -69,6 +69,7 @@ public:
 	void agregarSuscriptor(Usuario* medico, Fecha); // Suscribir observers
 	void notificarSujeto(Consulta*);                // Consulta avisa a paciente
 	void notificarObserver(Consulta*);              // Paciente avisa a médico
+	vector<string> notificaciones();                // Lista de notificaciones
 
 	vector<Usuario*> dadosDeAlta();
 	vector<Usuario*> reactivados();
@@ -96,7 +97,7 @@ private:
 	vector<Usuario*> _reactivados {};
 
 	vector<Usuario*> _suscriptores {};
-	IStrategyNotificaciones* _notificador;
+	IStrategyNotificaciones* _notificador = NULL;
 };
 
 #endif // USUARIO_H
