@@ -15,7 +15,8 @@ class Diagnostico
 {
 
 public:
-	Diagnostico(Representacion, string descripcion);
+	Diagnostico(Representacion representacion, string descripcion);
+        Diagnostico(Representacion representacion);
 	virtual ~Diagnostico(){};
 
 	Representacion representacion();
