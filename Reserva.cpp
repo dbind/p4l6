@@ -30,3 +30,13 @@ Fecha Reserva::fechaReserva()
 {
     return _reserva;
 }
+
+bool Reserva::asistio()
+{
+	return _asistio;
+}
+
+void Reserva::asistir()
+{
+	_asistio = true;
+}

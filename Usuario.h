@@ -17,6 +17,9 @@ using namespace std;
 #include "IStrategyNotificaciones.h"
 
 
+const int MAX_INASISTENCIAS = 3;
+
+
 class Usuario
 {
 
@@ -77,6 +80,7 @@ public:
 
 	int edad();
 	int inasistencias();
+	void faltoConsulta();
 
 private:
 	string _ci;
@@ -87,6 +91,8 @@ private:
 	string _pass;
 	EstadoUsuario _estado;
 	Roles _roles;
+
+	int _inasistencias = 0;
 
 	Fecha _alta;
 	Fecha _reactivacion;

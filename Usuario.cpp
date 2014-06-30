@@ -129,6 +129,7 @@ void Usuario::activar()
 	if (_estado == EstadoUsuario::inactivo)
 	{
 		_reactivacion = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+		_inasistencias = 0;
 	}
 
 	_estado = EstadoUsuario::activo;
@@ -221,5 +222,15 @@ int Usuario::edad()
 
 int Usuario::inasistencias()
 {
-    return 0; // TODO
+    return _inasistencias;
+}
+
+void Usuario::faltoConsulta()
+{
+	++_inasistencias;
+	
+	if (_inasistencias > MAX_INASISTENCIAS)
+	{
+		this->desactivar();
+	}
 }

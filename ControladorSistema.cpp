@@ -38,9 +38,20 @@ void ControladorSistema::setFechaDelSistema(Fecha fecha)
 	_fecha = fecha;
 
 	// Triggers del cambio de hora
-	vector<Reserva*> reservas = FabricaControladores::instancia()->controladorConsulta()
-	                                                             ->reservas();
+	IControladorConsulta* cConsulta = FabricaControladores::instancia()->controladorConsulta();
 
+	vector<Reserva*> reservas = cConsulta->reservas();
+
+    for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
+	{
+		Reserva* reserva = *it;
+
+		if (reserva->fechaConsulta() < fecha && !reserva->asistio())
+		{
+			reserva->paciente()->faltoConsulta();
+			cConsulta->removeReserva(reserva);
+		}
+	}
 	
 	
 }
