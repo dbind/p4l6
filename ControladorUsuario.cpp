@@ -142,10 +142,6 @@ void ControladorUsuario::reset()
 {
 	_usuarioActivo = NULL;
 
-	for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
-	{
-		delete *it;
-	}
-
-	_usuarios = vector<Usuario*> {this->crearMaster(MASTER_CI, MASTER_PASS, "Master")};
+	_usuarios.clear();
+	_usuarios.push_back(this->crearMaster(MASTER_CI, MASTER_PASS, "Master"));
 }
