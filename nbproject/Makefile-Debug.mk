@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Categoria.o \
 	${OBJECTDIR}/Comando.o \
 	${OBJECTDIR}/ComandosConsulta.o \
 	${OBJECTDIR}/ComandosDiagnostico.o \
@@ -54,6 +55,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
+	${OBJECTDIR}/Representacion.o \
 	${OBJECTDIR}/Tratamiento.o \
 	${OBJECTDIR}/TratamientoFarmacologico.o \
 	${OBJECTDIR}/TratamientoQuirurgico.o \
@@ -84,6 +86,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Categoria.o: Categoria.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Categoria.o Categoria.cpp
 
 ${OBJECTDIR}/Comando.o: Comando.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -179,6 +186,11 @@ ${OBJECTDIR}/FechaHora.o: FechaHora.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FechaHora.o FechaHora.cpp
+
+${OBJECTDIR}/Representacion.o: Representacion.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Representacion.o Representacion.cpp
 
 ${OBJECTDIR}/Tratamiento.o: Tratamiento.cpp 
 	${MKDIR} -p ${OBJECTDIR}

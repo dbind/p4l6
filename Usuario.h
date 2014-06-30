@@ -6,12 +6,13 @@ using namespace std;
 #include <string>
 #include <vector>
 
+#include "Consulta.h"
+
 #include "Comando.h"
 #include "Genero.h"
 #include "Fecha.h"
 #include "Rol.h"
 #include "EstadoUsuario.h"
-#include "Comando.h"
 
 
 class Usuario
@@ -55,6 +56,12 @@ public:
      */
 	void agregarReactivado(Usuario*);
 
+	/**
+	 * Notificaciones
+	 */
+	void agregarSuscriptor(Usuario* medico, Fecha); // Para pacientes
+	void notificar(Consulta*);                      // Para médicos
+
 	int calcularEdad();
 	int calcularInasistencias();
 //	vector<Consulta> listarConsultas();
@@ -76,6 +83,8 @@ private:
 
 	vector<Usuario*> _dadosDeAlta {};
 	vector<Usuario*> _reactivados {};
+
+	vector<Usuario*> _suscriptores {};
 };
 
 #endif // USUARIO_H

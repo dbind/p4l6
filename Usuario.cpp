@@ -138,6 +138,20 @@ void Usuario::agregarReactivado(Usuario* usuario)
 }
 
 
+void Usuario::agregarSuscriptor(Usuario* medico, Fecha fecha)
+{
+	if (find(_suscriptores.begin(), _suscriptores.end(), medico) != _suscriptores.end())
+	{
+		_suscriptores.insert(_suscriptores.begin(), medico);
+	}
+}
+
+void Usuario::notificar(Consulta*)
+{
+	
+}
+
+
 int Usuario::calcularEdad()
 {
     return 0; // TODO

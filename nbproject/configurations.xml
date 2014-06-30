@@ -2,6 +2,8 @@
 <configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="DataTypes" projectFiles="true">
+      <itemPath>Categoria.cpp</itemPath>
+      <itemPath>Categoria.h</itemPath>
       <itemPath>Comando.cpp</itemPath>
       <itemPath>Comando.h</itemPath>
       <itemPath>EstadoUsuario.h</itemPath>
@@ -10,6 +12,8 @@
       <itemPath>FechaHora.cpp</itemPath>
       <itemPath>FechaHora.h</itemPath>
       <itemPath>Genero.h</itemPath>
+      <itemPath>Representacion.cpp</itemPath>
+      <itemPath>Representacion.h</itemPath>
       <itemPath>Rol.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="Handlers" projectFiles="true">
@@ -57,7 +61,6 @@
       <itemPath>Diagnostico.h</itemPath>
       <itemPath>Farmaco.cpp</itemPath>
       <itemPath>Farmaco.h</itemPath>
-      <itemPath>Representacion.h</itemPath>
       <itemPath>Tratamiento.cpp</itemPath>
       <itemPath>Tratamiento.h</itemPath>
       <itemPath>TratamientoFarmacologico.cpp</itemPath>
@@ -101,6 +104,10 @@
           <warningLevel>3</warningLevel>
         </ccTool>
       </compileType>
+      <item path="Categoria.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Categoria.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Comando.h" ex="false" tool="3" flavor2="0">
@@ -194,6 +201,8 @@
       <item path="IControladorSesion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -238,6 +247,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Categoria.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Categoria.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Comando.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Comando.h" ex="false" tool="3" flavor2="0">
@@ -331,6 +344,8 @@
       <item path="IControladorSesion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
       </item>

@@ -86,9 +86,9 @@ void ControladorUsuario::reactivar(Usuario* usuario)
 	}
 }
 
-void ControladorUsuario::suscribir(Usuario* medico, Usuario* paciente, Fecha)
+void ControladorUsuario::suscribir(Usuario* medico, Usuario* paciente, Fecha fecha)
 {
-	
+	paciente->agregarSuscriptor(medico, fecha);
 }
 
 vector<Usuario*> ControladorUsuario::usuarios()
