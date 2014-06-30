@@ -3,12 +3,12 @@
 #include "Usuario.h"
 #include "Fecha.h"
 
-Reserva::Reserva(Usuario* Medico, Usuario* Paciente, Fecha fechaConsulta, Fecha fechaReserva)
+Reserva::Reserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
 {
-	_consulta = fechaConsulta;
-	_reserva  = fechaReserva;
 	_medico   = medico;
 	_paciente = paciente;
+	_consulta = fechaConsulta;
+	_reserva  = fechaReserva;
 }
 
 Usuario* Reserva::paciente()
@@ -28,5 +28,5 @@ Fecha Reserva::fechaConsulta()
         
 Fecha Reserva::fechaReserva()
 {
-    return reserva;
+    return _reserva;
 }

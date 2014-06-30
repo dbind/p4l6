@@ -7,11 +7,11 @@
 class Reserva 
 {
     public:
-        Reserva(Usuario* Medico, Usuario* Paciente, Fecha fechaConsulta, Fecha fechaReserva);
+        Reserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva);
         virtual ~Reserva(){};
         
-        Usuario* paciente();
         Usuario* medico();
+        Usuario* paciente();
         Fecha fechaConsulta();
         Fecha fechaReserva();
         
