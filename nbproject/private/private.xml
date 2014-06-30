@@ -16,10 +16,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/p4/lab6_d/main.cpp</file>
-            <file>file:/C:/p4/lab6_d/ControladorComando.cpp</file>
-            <file>file:/C:/p4/lab6_d/ComandosConsulta.h</file>
-            <file>file:/C:/p4/lab6_d/ControladorMenu.cpp</file>
+            <file>file:/C:/P4/ComandosConsulta.cpp</file>
+            <file>file:/C:/P4/ControladorConsulta.h</file>
+            <file>file:/C:/P4/ControladorConsulta.cpp</file>
+            <file>file:/C:/P4/ControladorUsuario.cpp</file>
+            <file>file:/C:/P4/Rol.h</file>
+            <file>file:/C:/P4/Usuario.h</file>
+            <file>file:/C:/P4/Genero.h</file>
         </group>
     </open-files>
 </project-private>
