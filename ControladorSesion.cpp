@@ -144,7 +144,7 @@ bool ControladorSesion::autenticar(Usuario* usuario)
 	if (usuario->esNuevo())
 	{
 		cout << "Usted ingresa por primera vez al sistema. ";
-		cout << "Escriba una contraseña alfanumérica de hasta 10 caracteres ";
+		cout << "Escriba una contraseña alfanumérica de entre 3 y 10 caracteres ";
 		cout << "(o escriba q para volver atrás):\n";
 	}
 	else if (usuario->esUn(Rol::master))
@@ -198,7 +198,7 @@ bool ControladorSesion::esValidaCi(string ci)
 
 bool ControladorSesion::esValidoPass(string pass)
 {
-	return true; // TODO
+	return ((pass.size() >= 3) && (pass.size() <= 10));
 }
 
 
