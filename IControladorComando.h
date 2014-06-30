@@ -19,12 +19,12 @@ public:
 	
 	/**
 	 * Retorna un vector de comandos habilitados para los roles especificados
-        */
+	 */
 	virtual vector<Comando> comandos(vector<Rol>)=0;
-	
+
 	/**
 	 * Deriva el comando especificado a quién le corresponda atenderlo
-        */
+	 */
 	virtual void ejecutar(Comando)=0;
 	
 protected:

@@ -6,15 +6,16 @@
 #include "Consulta.h"
 
 #include "Comando.h"
+#include "ControladorSistema.h"
 
 
 Usuario::Usuario(string ci, string nombre, string apellido,
-                 Genero sexo, Fecha fecha, Roles roles)
+                 Genero genero, Fecha fecha, Roles roles)
 {
 	_ci       = ci;
 	_nombre   = nombre;
 	_apellido = apellido;
-	_sexo     = sexo;
+	_genero   = genero;
 	_fechaNac = fecha;
 	_roles    = roles;
 
@@ -22,6 +23,9 @@ Usuario::Usuario(string ci, string nombre, string apellido,
 
 	// Cargar lista de comandos habilitados (dado el o los roles del usuario)
 	_comandos = FabricaControladores::instancia()->controladorComando()->comandos(_roles);
+
+	_alta         = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+	_reactivacion = Fecha();
 }
 
 
@@ -40,9 +44,9 @@ string Usuario::getApellido()
     return _apellido;
 }
 
-Genero Usuario::getSexo()
+Genero Usuario::getGenero()
 {
-    return _sexo;
+    return _genero;
 }
 
 Fecha Usuario::getFechaNac()
@@ -55,9 +59,21 @@ Roles Usuario::roles()
     return _roles;
 }
 
+
 vector<Comando> Usuario::comandos()
 {
     return _comandos;
+}
+
+
+Fecha Usuario::fechaAlta()
+{
+	return _alta;
+}
+
+Fecha Usuario::fechaReactivacion()
+{
+	return _reactivacion;
 }
 
 
@@ -71,9 +87,9 @@ void Usuario::setApellido(string apellido)
     _apellido = apellido;
 }
 
-void Usuario::setSexo(Genero sexo)
+void Usuario::setGenero(Genero genero)
 {
-    _sexo = sexo;
+    _genero = genero;
 }
 
 void Usuario::setFechaNac(Fecha fecha)
@@ -110,6 +126,11 @@ bool Usuario::validarPass(string pass)
 
 void Usuario::activar()
 {
+	if (_estado == EstadoUsuario::inactivo)
+	{
+		_reactivacion = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+	}
+
 	_estado = EstadoUsuario::activo;
 }
 
@@ -148,9 +169,15 @@ void Usuario::agregarSuscriptor(Usuario* medico, Fecha fecha)
 	}
 }
 
-void Usuario::notificarSujeto(Consulta*)
+void Usuario::notificarSujeto(Consulta* consulta)
 {
-	
+	vector<Usuario*>::iterator it;
+
+    for (it=_suscriptores.begin(); it != _suscriptores.end(); ++it)
+    {
+		Usuario* observer = *it;
+		observer->notificarObserver(consulta);
+    }
 }
 
 void Usuario::notificarObserver(Consulta*)
@@ -158,13 +185,28 @@ void Usuario::notificarObserver(Consulta*)
 	
 }
 
+vector<Usuario*> Usuario::dadosDeAlta()
+{
+	return _dadosDeAlta;
+}
 
-int Usuario::calcularEdad()
+vector<Usuario*> Usuario::reactivados()
+{
+	return _reactivados;
+}
+
+vector<Usuario*> Usuario::suscriptores()
+{
+	return _suscriptores;
+}
+
+
+int Usuario::edad()
 {
     return 0; // TODO
 }
 
-int Usuario::calcularInasistencias()
+int Usuario::inasistencias()
 {
     return 0; // TODO
 }

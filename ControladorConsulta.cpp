@@ -1,7 +1,9 @@
-#include <iostream>
 using namespace std;
 
+#include <vector>
+
 #include "ControladorConsulta.h"
+#include "Reserva.h"
 
 
 /**
@@ -24,18 +26,18 @@ vector<Reserva*> ControladorConsulta::getReservas()
     return reservas;
 }
 
-//void ControladorConsulta::removeReserva(FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente)
-//{
-//    int i = 0;
+void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
+{
 //    for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
 //	{
 //		Reserva* reserva = *it;
-//                i++;
 //
-//		if (reserva->getPaciente() == Paciente && reserva->getMedico() == Medico && reserva->getFechaConsulta()==fechaConsulta && reserva->getFechaReserva()==fechaReserva)
+//		if ((reserva->paciente()        == paciente)
+//		 && (reserva->medico()          == medico)
+//		 && (reserva->fechaConsulta()   == fechaConsulta
+//		 && (reserva->getFechaReserva() == fechaReserva))
 //		{
-//                        reservas.erase(reservas.begin()+i);
-//                        
+//			reservas.erase(it);
 //		}
 //	}
-//}
+}

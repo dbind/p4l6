@@ -6,8 +6,8 @@ FechaHora::FechaHora(int dia, int mes, int anyo, int hora=0, int minuto=0)
 	this->_dia    = dia;
 	this->_mes    = mes;
 	this->_anyo   = anyo;
-        this->_hora   = hora;
-        this->_minuto = minuto;
+	this->_hora   = hora;
+	this->_minuto = minuto;
 }
 
 

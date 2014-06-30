@@ -22,6 +22,7 @@ class IControladorConsulta
 public:
 	virtual ~IControladorConsulta(){};
         virtual vector<Reserva*> getReservas()=0;
+        virtual void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)=0;
 //	vector<Consulta*> getConsultas();
 //	vector<Diagnostico*> getDiagnosticos();
 //	vector<ConsultaAsistida> getConsultasAsistidas();

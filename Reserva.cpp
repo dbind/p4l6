@@ -1,42 +1,32 @@
-/* 
- * File:   Reserva.cpp
- * Author: User1
- * 
- * Created on 29 juin 2014, 15:58
- */
-
 #include "Reserva.h"
 
-Reserva::Reserva(FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente) 
-{
-    this->fechaConsulta = fechaConsulta;
-    this->fechaReserva = fechaReserva;
-    this->Medico = Medico;
-    this->Paciente = Paciente;
+#include "Usuario.h"
+#include "Fecha.h"
 
+Reserva::Reserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
+{
+	_medico   = medico;
+	_paciente = paciente;
+	_consulta = fechaConsulta;
+	_reserva  = fechaReserva;
 }
 
-
-Reserva::~Reserva() {}
-
-Usuario* Reserva::getPaciente()
+Usuario* Reserva::paciente()
 {
-    return Paciente;
+    return _paciente;
 }
 
-Usuario* Reserva::getMedico()
+Usuario* Reserva::medico()
 {
-    return Medico;
-}
-        
-FechaHora Reserva::getFechaConsulta()
-{
-    return fechaConsulta;
+    return _medico;
 }
         
-FechaHora Reserva::getFechaReserva()
+Fecha Reserva::fechaConsulta()
 {
-    return fechaReserva;
+    return _consulta;
 }
-
-
+        
+Fecha Reserva::fechaReserva()
+{
+    return _reserva;
+}

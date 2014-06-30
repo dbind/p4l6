@@ -1,6 +1,7 @@
 #ifndef FABRICACONTROLADORES_H
 #define	FABRICACONTROLADORES_H
 
+#include "ControladorSistema.h"
 #include "ControladorMenu.h"
 #include "ControladorComando.h"
 
@@ -22,6 +23,8 @@ private:
 public:
 	static FabricaControladores* instancia();
 	
+	ControladorSistema*     controladorSistema();
+
 	ControladorMenu*        controladorMenu();
 	ControladorComando*     controladorComando();
 

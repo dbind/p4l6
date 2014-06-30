@@ -6,6 +6,7 @@ using namespace std;
 #include "ControladorDiagnostico.h"
 
 #include "Diagnostico.h"
+#include "FabricaControladores.h"
 
 
 /**
@@ -71,7 +72,14 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 Diagnostico* ControladorDiagnostico::altaDiagnostico(Consulta* consulta, Representacion representacion,
                                                      string descripcion)
 {
-	consulta->agregarDiagnostico(new Diagnostico(representacion, descripcion));
+	Diagnostico* diagnostico = new Diagnostico(representacion, descripcion);
+	consulta->agregarDiagnostico(diagnostico);
+
+	// Notificar al paciente de la consulta que se le hizo diagnóstico
+	// (para que éste notifique a sus médicos suscriptores)
+	consulta->paciente()->notificarSujeto(consulta);
+
+	return diagnostico;
 }
 
 TratamientoFarmacologico* ControladorDiagnostico::agregarTratamientoFarmacologico(Diagnostico* diagnostico,

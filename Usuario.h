@@ -26,14 +26,18 @@ public:
 	string getCi();
 	string getNombre();
 	string getApellido();
-	Genero getSexo();
+	Genero getGenero();
 	Fecha getFechaNac();
 	Roles roles();
+
 	vector<Comando> comandos();
+
+	Fecha fechaAlta();
+	Fecha fechaReactivacion();
 
 	void setNombre(string);
 	void setApellido(string);
-	void setSexo(Genero);
+	void setGenero(Genero);
 	void setFechaNac(Fecha);
 	
 	bool esUn(Rol);
@@ -63,18 +67,25 @@ public:
 	void notificarSujeto(Consulta*);                // Consulta avisa a paciente
 	void notificarObserver(Consulta*);              // Paciente avisa a médico
 
-	int calcularEdad();
-	int calcularInasistencias();
+	vector<Usuario*> dadosDeAlta();
+	vector<Usuario*> reactivados();
+	vector<Usuario*> suscriptores();
+
+	int edad();
+	int inasistencias();
 
 private:
 	string _ci;
 	string _nombre;
 	string _apellido;
-	Genero _sexo;
+	Genero _genero;
 	Fecha _fechaNac;
 	string _pass;
 	EstadoUsuario _estado;
 	Roles _roles;
+
+	Fecha _alta;
+	Fecha _reactivacion;
 
 	vector<Comando> _comandos;
 

@@ -17,6 +17,11 @@ FabricaControladores* FabricaControladores::instancia()
 }
 
 
+ControladorSistema* FabricaControladores::controladorSistema()
+{
+	return ControladorSistema::instancia();
+}
+
 ControladorMenu* FabricaControladores::controladorMenu()
 {
 	return ControladorMenu::instancia();

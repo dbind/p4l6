@@ -68,14 +68,14 @@ void ComandosSistema::loadTestData()
 	Consulta* C2 = new ConsultaComun(DC, TM, Fecha(), Fecha());
 	Consulta* C3 = new ConsultaComun(DC, JM, Fecha(), Fecha());
 	Consulta* C4 = new ConsultaComun(AL, DP, Fecha(), Fecha());
-	Consulta* U1 = new ConsultaUrgencia(JM, TM, Fecha(), "Fiebre alta");
-	Consulta* U2 = new ConsultaUrgencia(DC, JM, Fecha(), "Asma");
-	Consulta* U3 = new ConsultaUrgencia(AL, JM, Fecha(), "Mareos");
+	Consulta* U1 = new ConsultaUrgencia(JM, TM, Fecha(23, 5, 2014), "Fiebre alta");
+	Consulta* U2 = new ConsultaUrgencia(DC, JM, Fecha(24, 5, 2014), "Asma");
+	Consulta* U3 = new ConsultaUrgencia(AL, JM, Fecha( 3, 3, 2014), "Mareos");
 
 
 	// Categorías (Código, Etiqueta)
 	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
-	Categoria X2 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
+	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato Digestivo");
 
 
 	// Representaciones (Categoría, Código, Descripción)
