@@ -158,6 +158,21 @@ void Usuario::notificarObserver(Consulta*)
 	
 }
 
+vector<Usuario*> Usuario::dadosDeAlta()
+{
+	return _dadosDeAlta;
+}
+
+vector<Usuario*> Usuario::reactivados()
+{
+	return _reactivados;
+}
+
+vector<Usuario*> Usuario::suscriptores()
+{
+	return _suscriptores;
+}
+
 
 int Usuario::calcularEdad()
 {

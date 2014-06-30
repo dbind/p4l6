@@ -63,6 +63,10 @@ public:
 	void notificarSujeto(Consulta*);                // Consulta avisa a paciente
 	void notificarObserver(Consulta*);              // Paciente avisa a médico
 
+	vector<Usuario*> dadosDeAlta();
+	vector<Usuario*> reactivados();
+	vector<Usuario*> suscriptores();
+
 	int calcularEdad();
 	int calcularInasistencias();
 
