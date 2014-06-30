@@ -141,6 +141,7 @@ void ComandosConsulta::cancelarReserva()
 
 void ComandosConsulta::registrarConsulta()
 {
+	
     IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
     IControladorConsulta* cc = FabricaControladores::instancia()->controladorConsulta();
     
@@ -221,7 +222,6 @@ void ComandosConsulta::registrarConsulta()
     }
     
     else {cout << "Tipo de consulta invalido." << endl;}
-
 }
 
 void ComandosConsulta::altaDiagnosticosConsulta()
