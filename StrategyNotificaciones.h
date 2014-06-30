@@ -1,6 +1,11 @@
 #ifndef STRATEGYNOTIFICACIONES_H
 #define	STRATEGYNOTIFICACIONES_H
 
+using namespace std;
+
+#include <string>
+#include <vector>
+
 #include "IStrategyNotificaciones.h"
 
 #include "Consulta.h"
@@ -16,6 +21,7 @@ public:
 	StrategyNotificaciones(){};
 
 	void notificar(Consulta*);
+	vector<string> notificaciones();
 
 };
 

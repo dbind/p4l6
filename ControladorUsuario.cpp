@@ -1,7 +1,8 @@
+using namespace std;
+
 #include <string>
 #include <vector>
 #include <iostream>
-using namespace std;
 
 #include "ControladorUsuario.h"
 

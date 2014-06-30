@@ -1,5 +1,5 @@
 #include <vector>
-#include <string> 
+#include <string>
 #include <sstream>
 #include <cstdlib>
 #include <cstring>

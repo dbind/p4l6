@@ -1,6 +1,7 @@
 using namespace std;
 
 #include <iostream>
+#include <sstream>
 
 #include "StrategyNotificaciones.h"
 
@@ -10,13 +11,22 @@ using namespace std;
 
 void StrategyNotificaciones::notificar(Consulta* consulta)
 {
+	stringstream notificacion;
+
 	string tipoConsulta = (consulta->tipo() == TipoConsulta::comun) ? "COMUN" : "URGENCIA";
 
 	Usuario* medico   = consulta->medico();
 	Usuario* paciente = consulta->paciente();
 
-	cout << "Paciente diagnosticado: " << paciente->getNombre() << " " << paciente->getApellido() << endl
-	     << "Médico notificado: " << medico->getNombre() << " " << medico->getApellido() << endl
-	     << "Tipo de consulta: " << tipoConsulta << endl
-	     << "Hora de consulta: " << consulta->fechaConsulta() << endl;
+	notificacion << "Paciente diagnosticado: " << paciente->getNombre() << " " << paciente->getApellido() << endl
+	             << "Médico notificado: " << medico->getNombre() << " " << medico->getApellido() << endl
+	             << "Tipo de consulta: " << tipoConsulta << endl
+	             << "Hora de consulta: " << consulta->fechaConsulta() << endl;
+
+	_notificaciones.push_back(notificacion.str());
+}
+
+vector<string> StrategyNotificaciones::notificaciones()
+{
+	return _notificaciones;
 }
