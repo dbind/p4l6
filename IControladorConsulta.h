@@ -26,7 +26,7 @@ public:
 
 	virtual vector<Reserva*> listarReservasDia(Fecha)=0;
 	virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
-        
+
 	virtual void removeReserva(Reserva*)=0;
 
 	virtual void reset()=0;
