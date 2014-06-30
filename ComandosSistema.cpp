@@ -154,7 +154,24 @@ void ComandosSistema::listarConsultas()
 
 void ComandosSistema::listarUsuarios()
 {
-	
+	vector<Usuario*> l = FabricaControladores::instancia()->controladorUsuario()->usuarios();
+	vector<Usuario*>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		Usuario* item = *it;
+		cout << item->getNombre() << " " << item->getApellido() << " (CI " << item->getCi() << ")" << endl;
+
+		cout << "Rol(es):";
+
+		Roles::iterator itr = item->roles().begin();
+		for (; itr != item->roles().end(); ++itr)
+		{
+			cout << " " << (*itr);
+		}
+
+		cout << endl << endl;
+	}
 }
 
 void ComandosSistema::listarFarmacos()
