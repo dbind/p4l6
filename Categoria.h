@@ -9,15 +9,17 @@ using namespace std;
 class Categoria
 {
 
-    public:
-		Categoria(char codigo, string etiqueta);
+public:
+	Categoria(){};
+	Categoria(char codigo, string etiqueta);
+	~Categoria(){};
 
-        char codigo();
-        string etiqueta();
+	char codigo();
+	string etiqueta();
 
-    private:
-        char _codigo;
-        string _etiqueta;
+private:
+	char _codigo;
+	string _etiqueta;
 
 };
 
