@@ -1,5 +1,6 @@
 using namespace std;
 
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -28,43 +29,40 @@ Categoria ControladorDiagnostico::agregarCategoria(char codigo, string etiqueta)
 {
 	Categoria categoria;
 
-	vector<Categoria>::iterator it;
+	vector<Categoria>::iterator it = _categorias.begin();
 
-    for (it=_categorias.begin(); it != _categorias.end(); ++it)
-    {
+    for (; it != _categorias.end() && (*it).codigo() < codigo ; ++it) {}
+
+	if ((it != _categorias.end()) && ((*it).codigo() == codigo))
+	{
 		categoria = *it;
-
-		if (categoria.codigo() == codigo)
-		{
-			return categoria;
-		}
-    }
-
-	categoria = Categoria(codigo, etiqueta);
-	_categorias.insert(_categorias.begin(), categoria);
+	}
+	else
+	{
+		categoria = Categoria(codigo, etiqueta);
+		_categorias.insert(it, categoria);
+	}
 
 	return categoria;
 }
 
 Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, string codigo, string etiqueta)
 {
-	Representacion representacion;
+	stringstream ss;
+	ss << categoria.codigo() << codigo;
+	codigo = ss.str();
 
-	vector<Representacion>::iterator it;
+	vector<Representacion>::iterator it = _representaciones.begin();
 
-    for (it=_representaciones.begin(); it != _representaciones.end(); ++it)
-    {
-		representacion = *it;
+    for (; it != _representaciones.end() && (*it).codigo() < codigo ; ++it) {}
 
-		if ((representacion.codigo() == codigo)
-		&& (representacion.categoria().codigo() == categoria.codigo()))
-		{
-			throw;
-		}
-    }
+	if (it != _representaciones.end() && ((*it).codigo() == codigo))
+	{
+		throw;
+	}
 
-	representacion = Representacion(categoria, codigo, etiqueta);
-	_representaciones.insert(_representaciones.begin(), representacion);
+	Representacion representacion = Representacion(categoria, codigo, etiqueta);
+	_representaciones.insert(it, representacion);
 
 	return representacion;
 }
