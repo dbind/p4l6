@@ -32,12 +32,12 @@ void ComandosConsulta::reservarConsulta()
 		cout << "Lista de los medicos:" << endl;
 		for(vector<Usuario*>::iterator it = vectMedicos.begin(); it != vectMedicos.end(); ++it)
 		{
-				Usuario* usuario = *it;
-				string nombre, apellido, ci;
-				nombre = usuario->getNombre();
-				apellido = usuario->getApellido();
-				ci = usuario->getCi();
-				cout << nombre << " " << apellido << " " << ci << endl;
+			Usuario* usuario = *it;
+			string nombre, apellido, ci;
+			nombre = usuario->getNombre();
+			apellido = usuario->getApellido();
+			ci = usuario->getCi();
+			cout << nombre << " " << apellido << " " << ci << endl;
 
 		}
 

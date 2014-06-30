@@ -20,12 +20,12 @@ public:
 
 	virtual vector<Consulta*> consultas()=0;
 	virtual vector<Reserva*> reservas()=0;
-        
-        virtual void altaReserva(Reserva* reserva)=0;
-        virtual void altaConsulta(Consulta* consulta)=0;
+
+	virtual void altaReserva(Reserva*)=0;
+	virtual void altaConsulta(Consulta*)=0;
 
 	virtual vector<Reserva*> listarReservasDia(Fecha)=0;
-        virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
+	virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
         
 	virtual void removeReserva(Reserva*)=0;
 
