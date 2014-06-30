@@ -14,20 +14,20 @@
 class Reserva 
 {
     public:
-        Reserva (FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Medico, Usuario* Paciente);
+        Reserva (FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente);
         virtual ~Reserva();
         
         Usuario* getPaciente();
         Usuario* getMedico();
-        FechaHora* getFechaConsulta();
-        FechaHora* getFechaReserva();
+        FechaHora getFechaConsulta();
+        FechaHora getFechaReserva();
         
         
     private:
         Usuario* Medico;
         Usuario* Paciente;
-        FechaHora* fechaConsulta;
-        FechaHora* fechaReserva;
+        FechaHora fechaConsulta;
+        FechaHora fechaReserva;
 };
 
 #endif	/* RESERVA_H */

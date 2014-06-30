@@ -7,7 +7,7 @@
 
 #include "Reserva.h"
 
-Reserva::Reserva(FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Medico, Usuario* Paciente) 
+Reserva::Reserva(FechaHora fechaConsulta, FechaHora fechaReserva, Usuario* Medico, Usuario* Paciente) 
 {
     this->fechaConsulta = fechaConsulta;
     this->fechaReserva = fechaReserva;
@@ -29,12 +29,12 @@ Usuario* Reserva::getMedico()
     return Medico;
 }
         
-FechaHora* Reserva::getFechaConsulta()
+FechaHora Reserva::getFechaConsulta()
 {
     return fechaConsulta;
 }
         
-FechaHora* Reserva::getFechaReserva()
+FechaHora Reserva::getFechaReserva()
 {
     return fechaReserva;
 }

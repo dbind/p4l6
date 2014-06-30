@@ -21,7 +21,7 @@ class IControladorConsulta
 
 public:
 	virtual ~IControladorConsulta(){};
-
+        virtual vector<Reserva*> getReservas()=0;
 //	vector<Consulta*> getConsultas();
 //	vector<Diagnostico*> getDiagnosticos();
 //	vector<ConsultaAsistida> getConsultasAsistidas();

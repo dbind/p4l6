@@ -10,6 +10,7 @@ FechaHora::FechaHora(int dia, int mes, int anyo, int hora=0, int minuto=0)
         this->_minuto = minuto;
 }
 
+
 int FechaHora::dia()    { return this->_dia;    }
 int FechaHora::mes()    { return this->_mes;    }
 int FechaHora::anyo()   { return this->_anyo;   }
