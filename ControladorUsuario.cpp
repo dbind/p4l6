@@ -43,7 +43,7 @@ ControladorUsuario::ControladorUsuario()
  */
 Usuario* ControladorUsuario::crearMaster(string ci, string pass, string nombre)
 {
-	Roles roles {Rol::master, Rol::admin};
+	Roles roles {Rol::master, Rol::admin, Rol::medico, Rol::socio};
 	Genero sexo = Genero::indeterminado;
 	Fecha fecha = Fecha(); // Fecha indefinida, no es relevante para Master
 
