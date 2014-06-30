@@ -54,6 +54,15 @@ Fecha Usuario::getFechaNac()
     return _fechaNac;
 }
 
+int Usuario::edad()
+{
+	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+	Fecha cumpleanyos = Fecha(_fechaNac.dia(), _fechaNac.mes(), fecha.anyo());
+
+    return fecha.anyo() - _fechaNac.anyo() - ((cumpleanyos < fecha) ? 1 : 0);
+}
+
+
 Roles &Usuario::roles()
 {
     return _roles;
@@ -215,14 +224,6 @@ vector<Usuario*> Usuario::suscriptores()
 }
 
 
-int Usuario::edad()
-{
-	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
-	Fecha cumpleanyos = Fecha(_fechaNac.dia(), _fechaNac.mes(), fecha.anyo());
-
-    return fecha.anyo() - _fechaNac.anyo() - ((cumpleanyos < fecha) ? 1 : 0);
-}
-
 int Usuario::inasistencias()
 {
     return _inasistencias;
@@ -236,4 +237,15 @@ void Usuario::faltoConsulta()
 	{
 		this->desactivar();
 	}
+}
+
+
+vector<Consulta*> Usuario::consultas()
+{
+	return _consultas;
+}
+
+void Usuario::registrarConsulta(Consulta* consulta)
+{
+	_consultas.push_back(consulta);
 }
