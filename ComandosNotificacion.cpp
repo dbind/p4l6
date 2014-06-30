@@ -12,7 +12,7 @@ void ComandosNotificacion::seguirPaciente()
 	
 }
 
-void ComandosNotificacion::notificarMedicos()
+void ComandosNotificacion::verNotificaciones()
 {
 	
 }

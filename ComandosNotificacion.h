@@ -15,9 +15,9 @@ public:
 	static void seguirPaciente();
 
 	/**
-	 * Caso de uso Notificar Médicos
+	 * Caso de uso Ver Notificaciones
      */
-	static void notificarMedicos();
+	static void verNotificaciones();
 
 };
 

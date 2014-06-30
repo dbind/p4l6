@@ -59,15 +59,12 @@ public:
 	/**
 	 * Notificaciones
 	 */
-	void agregarSuscriptor(Usuario* medico, Fecha); // Para pacientes
-	void notificar(Consulta*);                      // Para médicos
+	void agregarSuscriptor(Usuario* medico, Fecha); // Suscribir observers
+	void notificarSujeto(Consulta*);                // Consulta avisa a paciente
+	void notificarObserver(Consulta*);              // Paciente avisa a médico
 
 	int calcularEdad();
 	int calcularInasistencias();
-//	vector<Consulta> listarConsultas();
-//	vector<Consulta> listarConsultasComunes();
-//	vector<Consulta> getConsultasAtendidas();
-//	Consulta obtenerConsulta();
 
 private:
 	string _ci;

@@ -3,6 +3,8 @@
 #include "Usuario.h"
 
 #include "FabricaControladores.h"
+#include "Consulta.h"
+
 #include "Comando.h"
 
 
@@ -146,7 +148,12 @@ void Usuario::agregarSuscriptor(Usuario* medico, Fecha fecha)
 	}
 }
 
-void Usuario::notificar(Consulta*)
+void Usuario::notificarSujeto(Consulta*)
+{
+	
+}
+
+void Usuario::notificarObserver(Consulta*)
 {
 	
 }
@@ -161,23 +168,3 @@ int Usuario::calcularInasistencias()
 {
     return 0; // TODO
 }
-
-//vector<Consulta> Usuario::listarConsultas()
-//{
-//    // TODO
-//}
-//
-//vector<Consulta> Usuario::listarConsultasComunes()
-//{
-//    // TODO
-//}
-//
-//vector<Consulta> Usuario::getConsultasAtendidas()
-//{
-//    // TODO
-//}
-//
-//Consulta Usuario::obtenerConsulta()
-//{
-//    // TODO
-//}

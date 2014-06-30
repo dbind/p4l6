@@ -1,22 +1,17 @@
+using namespace std;
+
 #include "Diagnostico.h"
 
-//#include "Consulta.h"
-//#include "Representacion.h"
+#include "Representacion.h"
 
 
-Diagnostico::Diagnostico(Consulta* consulta, Representacion* representacion, string descripcion)
+Diagnostico::Diagnostico(Representacion representacion, string descripcion)
 {
-	_consulta = consulta;
 	_representacion = representacion;
 	_descripcion = descripcion;
 }
 
-Consulta* Diagnostico::consulta()
-{
-	return _consulta;
-}
-
-Representacion* Diagnostico::representacion()
+Representacion Diagnostico::representacion()
 {
 	return _representacion;
 }
@@ -24,4 +19,14 @@ Representacion* Diagnostico::representacion()
 string Diagnostico::descripcion()
 {
 	return _descripcion;
+}
+
+void Diagnostico::agregarTratamientoFarmacologico(TratamientoFarmacologico* tratamiento)
+{
+	_tratamientosFarmacologicos.insert(_tratamientosFarmacologicos.begin(), tratamiento);
+}
+
+void Diagnostico::agregarTratamientoQuirurgico(TratamientoQuirurgico* tratamiento)
+{
+	_tratamientosQuirurgicos.insert(_tratamientosQuirurgicos.begin(), tratamiento);
 }
