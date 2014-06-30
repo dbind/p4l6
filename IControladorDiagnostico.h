@@ -28,6 +28,7 @@ public:
 	virtual TratamientoQuirurgico* agregarTratamientoQuirurgico(Diagnostico*, Usuario* medico, Fecha, string descripcion)=0;
 	
 	virtual vector<Categoria> categorias()=0;
+        virtual vector<Representacion> representaciones()=0;
 
 	virtual void reset()=0;
 

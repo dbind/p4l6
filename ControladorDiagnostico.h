@@ -26,6 +26,7 @@ public:
 	TratamientoQuirurgico* agregarTratamientoQuirurgico(Diagnostico*, Usuario* medico, Fecha, string descripcion);
 
 	vector<Categoria> categorias();
+        vector<Representacion> representaciones();
 
 	void reset();
 
