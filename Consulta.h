@@ -5,10 +5,10 @@
 #include <vector>
 
 #include "Usuario.h"
-//#include "Diagnostico.h"
+#include "Diagnostico.h"
 #include "FechaHora.h"
-#include "Hora.h"
-#include "TipoAsis.h"
+//#include "Hora.h"
+//#include "TipoAsis.h"
 
 class Consulta
 {
@@ -18,7 +18,7 @@ class Consulta
 
         Usuario* Medico;
         Usuario* Paciente;
-        //vector<Diagnostico> Diagnosticos;
+        vector<Diagnostico> Diagnosticos;
 
 
     public:
