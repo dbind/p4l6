@@ -176,7 +176,13 @@ void ComandosSistema::listarUsuarios()
 
 void ComandosSistema::listarFarmacos()
 {
-	
+	vector<Farmaco*> l = FabricaControladores::instancia()->controladorFarmaco()->farmacos();
+	vector<Farmaco*>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		cout << (*it)->getNombre() << endl;
+	}
 }
 
 void ComandosSistema::listarCategorias()
