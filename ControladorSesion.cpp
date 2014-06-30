@@ -43,7 +43,7 @@ void ControladorSesion::iniciarSesion()
 
 		// Pido al usuario que verifique que es él (contraseña)
 		// Si falla tira una excepción, que forwardeamos implícitamente
-		if (this->autenticar(usuario))
+		if ((usuario != NULL) && this->autenticar(usuario))
 		{
 			// Logueo exitoso: mantener puntero al usuario identificado (sesión activa)
 			this->usuario = usuario;
