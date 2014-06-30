@@ -28,12 +28,34 @@ ostream& operator<<(ostream& os, const Fecha& fecha)
 
 bool operator== (const Fecha& f1, const Fecha& f2)
 {
-    return f1._dia  == f2._dia
-	    && f1._mes  == f2._mes
-	    && f1._anyo == f2._anyo;
+    return (f1._dia  == f2._dia)
+	    && (f1._mes  == f2._mes)
+	    && (f1._anyo == f2._anyo);
 }
 
 bool operator!= (const Fecha& f1, const Fecha& f2)
 {
     return !(f1 == f2);
+}
+
+bool operator<  (const Fecha& f1, const Fecha& f2)
+{
+    return (f1._anyo < f2._anyo)
+	   || ((f1._mes  < f2._mes) && (f1._anyo == f2._anyo))
+	   || ((f1._dia  < f2._dia) && (f1._anyo == f2._anyo) && (f1._mes  == f2._mes ));
+}
+
+bool operator<= (const Fecha& f1, const Fecha& f2)
+{
+    return (f1 == f2) || (f1 < f2);
+}
+ 
+bool operator>  (const Fecha& f1, const Fecha& f2)
+{
+    return !(f1 <= f2);
+}
+
+bool operator>= (const Fecha& f1, const Fecha& f2)
+{
+    return !(f1 < f2);
 }
