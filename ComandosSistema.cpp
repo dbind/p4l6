@@ -65,7 +65,7 @@ void ComandosSistema::loadTestData()
 	IControladorSistema*     cSistema     = Fabrica->controladorSistema();
 
 	cSistema    ->reset();
-	cUsuario    ->reset();
+//	cUsuario    ->reset();
 	cConsulta   ->reset();
 	cFarmaco    ->reset();
 	cDiagnostico->reset();
@@ -140,4 +140,34 @@ void ComandosSistema::loadTestData()
 	// Suscripciones
 	cUsuario->suscribir(JM, TM, Fecha(22, 3, 2013));
 	cUsuario->suscribir(JM, TM, Fecha(25, 6, 2014));
+}
+
+void ComandosSistema::listarReservas()
+{
+	
+}
+
+void ComandosSistema::listarConsultas()
+{
+	
+}
+
+void ComandosSistema::listarUsuarios()
+{
+	
+}
+
+void ComandosSistema::listarFarmacos()
+{
+	
+}
+
+void ComandosSistema::listarCategorias()
+{
+	
+}
+
+void ComandosSistema::listarRepresentaciones()
+{
+	
 }

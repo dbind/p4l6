@@ -24,6 +24,16 @@ public:
      */
 	static void loadTestData();
 
+	/**
+	 * Debug
+     */
+	static void listarReservas();
+	static void listarConsultas();
+	static void listarUsuarios();
+	static void listarFarmacos();
+	static void listarCategorias();
+	static void listarRepresentaciones();
+
 };
 
 #endif	/* COMANDOSSISTEMA_H */
