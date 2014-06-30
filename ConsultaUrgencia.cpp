@@ -17,6 +17,8 @@ ConsultaUrgencia::ConsultaUrgencia(Usuario* medico, Usuario* paciente, Fecha con
 	_descripcion = descripcion;
 
 	_tipo = TipoConsulta::urgencia;
+
+	_paciente->registrarConsulta(this);
 }
 
 

@@ -13,11 +13,12 @@ using namespace std;
 void ComandosUsuario::altaReactivacionUsuario()
 {
 	IControladorUsuario* cUsuario = FabricaControladores::instancia()->controladorUsuario()->instancia();
+	bool exito = true;
+	Usuario* newUser;
 	
 	do
 		
 	{
-	
 		string ci;
 		cout << "Ingrese la Cedula de Identidad del Usuario (o presione q para salir): " << endl;
 		cin >> ci;
@@ -27,6 +28,7 @@ void ComandosUsuario::altaReactivacionUsuario()
 
 		if (cUsuario->findUsuario(ci) != NULL)
 		{
+			cout << "El usuario ya existe en el sistema. " << endl;
 			Usuario* usuario = cUsuario->findUsuario(ci);
 			cout << "Nombre: "   << usuario->getNombre() << endl;
 			cout << "Apellido: " << usuario->getApellido() << endl;
@@ -71,7 +73,7 @@ void ComandosUsuario::altaReactivacionUsuario()
 				if (reactivar=="y")
 				{
 					usuario->activar();
-					cout << "El usuario ha sido reactivado" << endl;
+					cout << "El usuario ha sido reactivado." << endl;
 				}
 			}	
 		}
@@ -131,27 +133,40 @@ void ComandosUsuario::altaReactivacionUsuario()
 			
 			if (r2 == "a")
 			{
-				roles.push_back(Rol::admin);
+				if (r1 == "m")
+				{
+					cout << "Error, el usuario no puede ser medico y administrativo a la vez." << endl;
+					exito = false;
+				}
+				else
+					roles.push_back(Rol::admin);
 			}
 			else if (r2 == "m")
-			{
-				roles.push_back(Rol::medico);
+			{	if (r1 == "a")
+				{
+					cout << "Error, el usuario no puede ser medico y administrativo a la vez." << endl;
+					exito = false;
+				}
+				else
+					roles.push_back(Rol::medico);
 			}
 			else if (r2 != "n") // socio por defecto
 			{
 				roles.push_back(Rol::socio);
 			}
-
-			Usuario* newUser = cUsuario->altaUsuario(ci, nombre, apellido, genero, fechaNac, roles); // POR AHORA SOLO PUEDE INGRESAR UN ROL.
 			
-			if (newUser != NULL)
-				cout << "El usuario fue dado de alta con exito" << endl;
+			if (exito)
+			{
+				newUser = cUsuario->altaUsuario(ci, nombre, apellido, genero, fechaNac, roles); // POR AHORA SOLO PUEDE INGRESAR UN ROL.
+			}
+			
+			if ((newUser != NULL) && exito)
+				cout << "El usuario fue dado de alta con exito." << endl;
 			else
-				cout << "Ocurrió un error imprevisto" << endl;
+				cout << "Ocurrió un error imprevisto." << endl;
 		}
 	}
 	while (true);
-	
 }
 
 void ComandosUsuario::listarAltasReactivaciones()

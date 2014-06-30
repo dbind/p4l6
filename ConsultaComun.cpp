@@ -15,6 +15,8 @@ ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta,
 	_reserva  = reserva;
 
 	_tipo = TipoConsulta::comun;
+
+	_paciente->registrarConsulta(this);
 }
 
 ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta, Fecha reserva)
@@ -27,6 +29,8 @@ ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta,
 
 	_reserva = new Reserva(medico, paciente, consulta, reserva);
 	FabricaControladores::instancia()->controladorConsulta()->altaReserva(_reserva);
+
+	_paciente->registrarConsulta(this);
 }
 
 Reserva* ConsultaComun::reserva()
