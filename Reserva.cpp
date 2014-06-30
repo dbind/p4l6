@@ -19,5 +19,24 @@ Reserva::Reserva(FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Med
 
 Reserva::~Reserva() {}
 
+Usuario* Reserva::getPaciente()
+{
+    return Paciente;
+}
+
+Usuario* Reserva::getMedico()
+{
+    return Medico;
+}
+        
+FechaHora* Reserva::getFechaConsulta()
+{
+    return fechaConsulta;
+}
+        
+FechaHora* Reserva::getFechaReserva()
+{
+    return fechaReserva;
+}
 
 

@@ -16,6 +16,13 @@ class Reserva
     public:
         Reserva (FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Medico, Usuario* Paciente);
         virtual ~Reserva();
+        
+        Usuario* getPaciente();
+        Usuario* getMedico();
+        FechaHora* getFechaConsulta();
+        FechaHora* getFechaReserva();
+        
+        
     private:
         Usuario* Medico;
         Usuario* Paciente;
