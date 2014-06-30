@@ -36,7 +36,7 @@ public:
         
 	vector<Usuario*> usuarios();
 	Usuario* findUsuario(string ci);
-        vector<Usuario*> listarMedicos();
+	vector<Usuario*> listarMedicos();
 
 private:
 	static ControladorUsuario* _instancia;

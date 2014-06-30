@@ -4,28 +4,34 @@
 using namespace std;
 
 #include <string>
+#include <vector>
 
-
-class Consulta;
-class Representacion;
+#include "Representacion.h"
+#include "TratamientoFarmacologico.h"
+#include "TratamientoQuirurgico.h"
 
 
 class Diagnostico
 {
 
 public:
-	Diagnostico(Consulta*, Representacion*, string descripcion);
-	Diagnostico(string descripcion);
-        virtual ~Diagnostico(){};
+	Diagnostico(Representacion, string descripcion);
+	virtual ~Diagnostico(){};
 
-	Consulta* consulta();
-	Representacion* representacion();
+	Representacion representacion();
 	string descripcion();
+	
+	vector<TratamientoFarmacologico*> tratamientosFarmacologicos();
+
+	void agregarTratamientoFarmacologico(TratamientoFarmacologico*);
+	void agregarTratamientoQuirurgico(TratamientoQuirurgico*);
 
 private:
-	Consulta* _consulta;
-	Representacion* _representacion;
+	Representacion _representacion;
 	string _descripcion;
+
+	vector<TratamientoFarmacologico*> _tratamientosFarmacologicos {};
+	vector<TratamientoQuirurgico*>    _tratamientosQuirurgicos {};
 
 };
 

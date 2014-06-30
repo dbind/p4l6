@@ -5,6 +5,8 @@ using namespace std;
 
 #include "ControladorDiagnostico.h"
 
+#include "Diagnostico.h"
+
 
 /**
  * Instanciación de singleton
@@ -56,7 +58,7 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 		if ((representacion.codigo() == codigo)
 		&& (representacion.categoria().codigo() == categoria.codigo()))
 		{
-			return representacion;
+			throw;
 		}
     }
 
@@ -65,8 +67,39 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 
 	return representacion;
 }
+
+Diagnostico* ControladorDiagnostico::altaDiagnostico(Consulta* consulta, Representacion representacion,
+                                                     string descripcion)
+{
+	Diagnostico* diagnostico = new Diagnostico(representacion, descripcion);
+	consulta->agregarDiagnostico(diagnostico);
+
+	return diagnostico;
+}
+
+TratamientoFarmacologico* ControladorDiagnostico::agregarTratamientoFarmacologico(Diagnostico* diagnostico,
+                                                                                  Farmaco* farmaco,
+                                                                                  string descripcion)
+{
+	TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmaco, descripcion);
+	diagnostico->agregarTratamientoFarmacologico(tratamiento);
+
+	return tratamiento;
+}
+
+TratamientoQuirurgico* ControladorDiagnostico::agregarTratamientoQuirurgico(Diagnostico* diagnostico,
+                                                                            Usuario* medico, Fecha fecha,
+                                                                            string descripcion)
+{
+	TratamientoQuirurgico* tratamiento = new TratamientoQuirurgico(medico, fecha, descripcion);
+	diagnostico->agregarTratamientoQuirurgico(tratamiento);
+
+	return tratamiento;
+}
+	
+
 vector<Categoria> ControladorDiagnostico::categorias()
 {
 	return _categorias;
-}		
+}
 
