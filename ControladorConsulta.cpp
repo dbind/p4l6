@@ -23,6 +23,15 @@ ControladorConsulta* ControladorConsulta::instancia()
 	return _instancia;
 }
 
+void ControladorConsulta::altaReserva(Reserva* reserva)
+{
+	_reservas.insert(_reservas.begin(), reserva);
+}
+
+void ControladorConsulta::altaConsulta(Consulta* consulta)
+{
+	_consultas.insert(_consultas.begin(), consulta);
+}
 
 vector<Consulta*> ControladorConsulta::consultas()
 {

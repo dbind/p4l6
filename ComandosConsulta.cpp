@@ -59,9 +59,9 @@ void ComandosConsulta::reservarConsulta()
 		Fecha fechaReserva = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
 		Fecha fechaConsulta =  Fecha(diaConsulta, mesConsulta, anoConsulta);
 		medico = cu->findUsuario(cedula);
-
+		
 		Reserva* reserva = new Reserva(medico, paciente, fechaConsulta, fechaReserva);
-		cc->reservas().push_back(reserva);
+		cc->altaReserva(reserva);
 		
 		cout << "La consulta fue reservada con exito!" << endl;
 	}
@@ -103,7 +103,7 @@ void ComandosConsulta::cancelarReserva()
 			{	
 				cout << contador << "- ";
 				cout << "Medico: " << nombreMedico << " " << apellidoMedico << endl;
-				cout << "Fecha de consulta: " << fechaConsulta << 
+				cout << "Fecha de consulta: " << fechaConsulta << endl;
 				cout << "Fecha de reserva: " << fechaReserva <<  endl;
 				contador++;				
 			}
@@ -118,7 +118,7 @@ void ComandosConsulta::cancelarReserva()
 		int i = atoi(cstr);
 		delete [] cstr;
 		
-		Reserva* aDevolver = reservas.at(i);
+		Reserva* aDevolver = reservas.at(i-1);
 		cc->removeReserva(aDevolver);
 		
 //        cc->removeReserva(medico, paciente, fechaConsulta, fechaReserva);
