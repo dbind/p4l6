@@ -86,6 +86,11 @@ void ControladorUsuario::reactivar(Usuario* usuario)
 	}
 }
 
+void ControladorUsuario::suscribir(Usuario* medico, Usuario* paciente, Fecha)
+{
+	
+}
+
 vector<Usuario*> ControladorUsuario::usuarios()
 {
 	return _usuarios;

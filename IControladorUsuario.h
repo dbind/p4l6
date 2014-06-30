@@ -28,6 +28,11 @@ public:
 
 	virtual void reactivar(Usuario*)=0;
 
+	/**
+	 * Suscribir un médico a diagnósticos de un paciente
+     */
+	virtual void suscribir(Usuario* medico, Usuario* paciente, Fecha)=0;
+
 	virtual vector<Usuario*> usuarios()=0;
 	virtual Usuario* findUsuario(string ci)=0;
         virtual vector<Usuario*> listarMedicos()=0;
