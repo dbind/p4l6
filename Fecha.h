@@ -13,6 +13,10 @@ public:
 	Fecha(); // Fecha vacía, indeterminada
 	Fecha(int dia, int mes, int anyo);
 
+	int dia()  const;
+	int mes()  const;
+	int anyo() const;
+
     friend ostream& operator<<(ostream& os, const Fecha& fecha);
 
 	friend bool operator== (const Fecha&, const Fecha&);

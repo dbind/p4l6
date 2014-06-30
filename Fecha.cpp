@@ -19,6 +19,10 @@ Fecha::Fecha(int dia, int mes, int anyo)
 	_anyo = anyo;
 }
 
+int Fecha::dia()  const { return _dia;  }
+int Fecha::mes()  const { return _mes;  }
+int Fecha::anyo() const { return _anyo; }
+
 
 ostream& operator<<(ostream& os, const Fecha& fecha)
 {
