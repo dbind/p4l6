@@ -187,10 +187,23 @@ void ComandosSistema::listarFarmacos()
 
 void ComandosSistema::listarCategorias()
 {
-	
+	vector<Categoria> l = FabricaControladores::instancia()->controladorDiagnostico()->categorias();
+	vector<Categoria>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		cout << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
+	}
 }
 
 void ComandosSistema::listarRepresentaciones()
 {
-	
+	vector<Representacion> l = FabricaControladores::instancia()->controladorDiagnostico()->representaciones();
+	vector<Representacion>::iterator it = l.begin();
+
+	for (; it != l.end(); ++it)
+	{
+		cout << "[" << (*it).categoria().codigo() << "] "
+		     << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
+	}
 }

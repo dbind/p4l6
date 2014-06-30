@@ -76,7 +76,7 @@ void ControladorComando::registrarComandos()
 	agregar("listar_categorias", "Debug: Listar Categorias",
 		     Roles{Rol::master});
 	
-	agregar("listar_representaciones", "Debug: Listar Representaciones",
+	agregar("listar_representaciones_debug", "Debug: Listar Representaciones",
 		     Roles{Rol::master});
 
 	// Solo para Master (debug, tests)
@@ -179,9 +179,9 @@ void ControladorComando::ejecutar(Comando cmd)
 	{
 		ComandosSistema::listarCategorias();
 	}
-	else if (opcion == "listar_representaciones")
+	else if (opcion == "listar_representaciones_debug")
 	{
-		ComandosSistema::listarCategorias();
+		ComandosSistema::listarRepresentaciones();
 	}
 	
 	else if (opcion == "load_test_data")
