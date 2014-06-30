@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
-CND_DLIB_EXT=so
+CND_PLATFORM=MinGW_TDM-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -36,14 +36,24 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Comando.o \
+	${OBJECTDIR}/ComandosConsulta.o \
+	${OBJECTDIR}/ComandosDiagnostico.o \
+	${OBJECTDIR}/ComandosFarmaco.o \
+	${OBJECTDIR}/ComandosNotificacion.o \
+	${OBJECTDIR}/ComandosSistema.o \
+	${OBJECTDIR}/ComandosUsuario.o \
+	${OBJECTDIR}/ControladorComando.o \
 	${OBJECTDIR}/ControladorConsulta.o \
 	${OBJECTDIR}/ControladorDiagnostico.o \
+	${OBJECTDIR}/ControladorFarmaco.o \
 	${OBJECTDIR}/ControladorMenu.o \
 	${OBJECTDIR}/ControladorSesion.o \
 	${OBJECTDIR}/ControladorUsuario.o \
 	${OBJECTDIR}/FabricaControladores.o \
+	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
+	${OBJECTDIR}/Reserva.o \
 	${OBJECTDIR}/Usuario.o \
 	${OBJECTDIR}/main.o
 
@@ -66,16 +76,51 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Comando.o: Comando.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Comando.o Comando.cpp
+
+${OBJECTDIR}/ComandosConsulta.o: ComandosConsulta.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosConsulta.o ComandosConsulta.cpp
+
+${OBJECTDIR}/ComandosDiagnostico.o: ComandosDiagnostico.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosDiagnostico.o ComandosDiagnostico.cpp
+
+${OBJECTDIR}/ComandosFarmaco.o: ComandosFarmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosFarmaco.o ComandosFarmaco.cpp
+
+${OBJECTDIR}/ComandosNotificacion.o: ComandosNotificacion.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosNotificacion.o ComandosNotificacion.cpp
+
+${OBJECTDIR}/ComandosSistema.o: ComandosSistema.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosSistema.o ComandosSistema.cpp
+
+${OBJECTDIR}/ComandosUsuario.o: ComandosUsuario.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosUsuario.o ComandosUsuario.cpp
+
+${OBJECTDIR}/ControladorComando.o: ControladorComando.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorComando.o ControladorComando.cpp
 
 ${OBJECTDIR}/ControladorConsulta.o: ControladorConsulta.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -86,6 +131,11 @@ ${OBJECTDIR}/ControladorDiagnostico.o: ControladorDiagnostico.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorDiagnostico.o ControladorDiagnostico.cpp
+
+${OBJECTDIR}/ControladorFarmaco.o: ControladorFarmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ControladorFarmaco.o ControladorFarmaco.cpp
 
 ${OBJECTDIR}/ControladorMenu.o: ControladorMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -107,6 +157,11 @@ ${OBJECTDIR}/FabricaControladores.o: FabricaControladores.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FabricaControladores.o FabricaControladores.cpp
 
+${OBJECTDIR}/Farmaco.o: Farmaco.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Farmaco.o Farmaco.cpp
+
 ${OBJECTDIR}/Fecha.o: Fecha.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -116,6 +171,11 @@ ${OBJECTDIR}/FechaHora.o: FechaHora.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FechaHora.o FechaHora.cpp
+
+${OBJECTDIR}/Reserva.o: Reserva.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Reserva.o Reserva.cpp
 
 ${OBJECTDIR}/Usuario.o: Usuario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -133,7 +193,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 
 # Subprojects
 .clean-subprojects:

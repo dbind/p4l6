@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW-Windows
+CND_PLATFORM=MinGW_TDM-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -58,11 +58,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/Farmaco.o \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
+<<<<<<< HEAD
 	${OBJECTDIR}/Representacion.o \
 	${OBJECTDIR}/Reserva.o \
 	${OBJECTDIR}/Tratamiento.o \
 	${OBJECTDIR}/TratamientoFarmacologico.o \
 	${OBJECTDIR}/TratamientoQuirurgico.o \
+=======
+	${OBJECTDIR}/Reserva.o \
+>>>>>>> 2e95918eab2554a63b43ba45dc03e398102423ce
 	${OBJECTDIR}/Usuario.o \
 	${OBJECTDIR}/main.o
 
@@ -85,11 +89,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Categoria.o: Categoria.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -206,9 +210,10 @@ ${OBJECTDIR}/FechaHora.o: FechaHora.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FechaHora.o FechaHora.cpp
 
-${OBJECTDIR}/Representacion.o: Representacion.cpp 
+${OBJECTDIR}/Reserva.o: Reserva.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
+<<<<<<< HEAD
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Representacion.o Representacion.cpp
 
 ${OBJECTDIR}/Reserva.o: Reserva.cpp 
@@ -230,6 +235,9 @@ ${OBJECTDIR}/TratamientoQuirurgico.o: TratamientoQuirurgico.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TratamientoQuirurgico.o TratamientoQuirurgico.cpp
+=======
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Reserva.o Reserva.cpp
+>>>>>>> 2e95918eab2554a63b43ba45dc03e398102423ce
 
 ${OBJECTDIR}/Usuario.o: Usuario.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -247,6 +255,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/p4.exe
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/lab6.exe
 
 # Subprojects

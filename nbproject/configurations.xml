@@ -68,6 +68,10 @@
       <itemPath>Farmaco.h</itemPath>
       <itemPath>Reserva.cpp</itemPath>
       <itemPath>Reserva.h</itemPath>
+<<<<<<< HEAD
+=======
+      <itemPath>Representacion.h</itemPath>
+>>>>>>> 2e95918eab2554a63b43ba45dc03e398102423ce
       <itemPath>Tratamiento.cpp</itemPath>
       <itemPath>Tratamiento.h</itemPath>
       <itemPath>TratamientoFarmacologico.cpp</itemPath>
@@ -219,8 +223,11 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rol.h" ex="false" tool="3" flavor2="0">
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
@@ -376,8 +383,21 @@
       </item>
       <item path="IControladorUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Usuario.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rol.h" ex="false" tool="3" flavor2="0">
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
@@ -397,13 +417,3 @@
       <item path="TratamientoQuirurgico.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="TratamientoQuirurgico.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Usuario.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Usuario.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-    </conf>
-  </confs>
-</configurationDescriptor>

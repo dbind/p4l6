@@ -7,6 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
+CND_PLATFORM_Debug=MinGW_TDM-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW_TDM-Windows
+CND_ARTIFACT_NAME_Debug=p4
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW_TDM-Windows/p4
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_TDM-Windows/package
+CND_PACKAGE_NAME_Debug=p4.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_TDM-Windows/package/p4.tar
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
 CND_ARTIFACT_NAME_Debug=lab6
@@ -15,13 +22,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
 CND_PACKAGE_NAME_Debug=lab6.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/lab6.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-Linux-x86
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=lab6
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/lab6
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=lab6.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/lab6.tar
+CND_PLATFORM_Release=MinGW_TDM-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/MinGW_TDM-Windows
+CND_ARTIFACT_NAME_Release=p4
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW_TDM-Windows/p4
+CND_PACKAGE_DIR_Release=dist/Release/MinGW_TDM-Windows/package
+CND_PACKAGE_NAME_Release=p4.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW_TDM-Windows/package/p4.tar
 #
 # include compiler specific variables
 #

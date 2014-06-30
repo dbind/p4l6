@@ -3,6 +3,7 @@
 
 #include "IControladorConsulta.h"
 #include "Reserva.h"
+#include "Fecha.h"
 
 /**
  * Realiza IControladorConsulta como Singleton
@@ -14,6 +15,7 @@ public:
 	static ControladorConsulta* instancia();
 
 	vector<Reserva*> getReservas();
+	void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva);
 
 private:
 	static ControladorConsulta* _instancia;

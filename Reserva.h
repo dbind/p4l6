@@ -1,26 +1,26 @@
-/* 
- * File:   Reserva.h
- * Author: User1
- *
- * Created on 29 juin 2014, 15:58
- */
-
 #ifndef RESERVA_H
 #define	RESERVA_H
 
-#include "FechaHora.h"
+#include "Fecha.h"
 #include "Usuario.h"
 
 class Reserva 
 {
     public:
-        Reserva (FechaHora* fechaConsulta, FechaHora* fechaReserva, Usuario* Medico, Usuario* Paciente);
-        virtual ~Reserva();
+        Reserva(Usuario* Medico, Usuario* Paciente, Fecha fechaConsulta, Fecha fechaReserva);
+        virtual ~Reserva(){};
+        
+        Usuario* paciente();
+        Usuario* medico();
+        Fecha fechaConsulta();
+        Fecha fechaReserva();
+        
+        
     private:
-        Usuario* Medico;
-        Usuario* Paciente;
-        FechaHora* fechaConsulta;
-        FechaHora* fechaReserva;
+        Usuario* _medico;
+        Usuario* _paciente;
+        Fecha _consulta;
+        Fecha _reserva;
 };
 
 #endif	/* RESERVA_H */

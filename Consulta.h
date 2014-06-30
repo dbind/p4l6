@@ -14,8 +14,7 @@ class Usuario;
 
 class Consulta
 {
-
-public:
+ public:
 	Consulta(){};
 	virtual ~Consulta(){};
 
@@ -35,4 +34,4 @@ protected:
 
 };
 
-#endif // CONSULTA_H
+#endif // CO
