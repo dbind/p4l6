@@ -14,26 +14,7 @@ class Usuario;
 
 class Consulta
 {
-    private:
-        FechaHora fecha;
-        TipoAsis asistio;
-
-        Usuario* Medico;
-        Usuario* Paciente;
-        vector<Diagnostico> Diagnosticos;
-
-
-    public:
-        Consulta();
-        virtual ~Consulta();
-
-        FechaHora getFecha();
-        TipoAsis getAsistio();
-
-        setFecha(FechaHora fecha);
-        setAsistio(TipoAsis asis);
-
-public:
+ public:
 	Consulta(){};
 	virtual ~Consulta(){};
 
