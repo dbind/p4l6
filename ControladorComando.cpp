@@ -175,7 +175,7 @@ ControladorComando* ControladorComando::instancia()
 ControladorComando::ControladorComando()
 {
 	// Registrar comandos reconocidos por el controlador
-	this->_comandos = vector<Comando> {};
+	_comandos = vector<Comando> {};
 	this->registrarComandos();
 }
 
@@ -196,11 +196,17 @@ vector<Comando> ControladorComando::comandos(Roles roles)
 }
 
 
+void ControladorComando::reset()
+{
+}
+
+
+
 /******************************************************************************/
 /******************************** P R I V A T E *******************************/
 /******************************************************************************/
 
 void ControladorComando::agregar(string codigo, string nombre, Roles roles)
 {
-	this->_comandos.insert(this->_comandos.end(), Comando(codigo, nombre, roles));
+	_comandos.insert(_comandos.end(), Comando(codigo, nombre, roles));
 }

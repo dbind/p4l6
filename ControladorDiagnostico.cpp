@@ -108,3 +108,9 @@ vector<Categoria> ControladorDiagnostico::categorias()
 	return _categorias;
 }
 
+
+void ControladorDiagnostico::reset()
+{
+	_categorias = vector<Categoria> {};
+	_representaciones = vector<Representacion> {};
+}

@@ -21,6 +21,8 @@ public:
 	void iniciar();
 	void ejecutar(Comando);
 
+	void reset();
+
 private:
 	static ControladorMenu* _instancia;
 	ControladorMenu();

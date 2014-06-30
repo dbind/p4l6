@@ -62,6 +62,13 @@ void ComandosSistema::loadTestData()
 	IControladorConsulta*    cConsulta    = Fabrica->controladorConsulta();
 	IControladorFarmaco*     cFarmaco     = Fabrica->controladorFarmaco();
 	IControladorDiagnostico* cDiagnostico = Fabrica->controladorDiagnostico();
+	IControladorSistema*     cSistema     = Fabrica->controladorSistema();
+
+	cSistema    ->reset();
+	cUsuario    ->reset();
+	cConsulta   ->reset();
+	cFarmaco    ->reset();
+	cDiagnostico->reset();
 
 	// Usuarios
 	Genero M = Genero::masculino;

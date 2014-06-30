@@ -38,6 +38,8 @@ public:
 	Usuario* findUsuario(string ci);
 	vector<Usuario*> listarMedicos();
 
+	void reset();
+
 private:
 	static ControladorUsuario* _instancia;
 	ControladorUsuario();

@@ -34,3 +34,8 @@ void ControladorSistema::setFechaDelSistema(Fecha fecha)
 {
 	_fecha = fecha;
 }
+
+void ControladorSistema::reset()
+{
+	_fecha = Fecha();
+}

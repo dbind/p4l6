@@ -67,7 +67,7 @@ void ComandosConsulta::reservarConsulta()
 //            paciente = FabricaControladores::instancia()->controladorSesion()::usuarioActivo();
 //            
 //            Reserva reserva = new Reserva(fechaConsulta, fechaReserva, medico, paciente);
-//            FabricaControladores::instancia()->controladorConsulta()::getReservas().push_back(reserva);
+//            FabricaControladores::instancia()->controladorConsulta()::reservas().push_back(reserva);
 //          
 //           cout << "La consuta fue reservada con exito!";
 //        }
