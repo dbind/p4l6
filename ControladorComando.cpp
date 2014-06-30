@@ -158,8 +158,7 @@ void ControladorComando::ejecutar(Comando cmd)
 
 	
 	// Solo para Master (debug, tests)
-	
-		else if (opcion == "listar_reservas")
+	else if (opcion == "listar_reservas")
 	{
 		ComandosSistema::listarReservas();
 	}
@@ -183,7 +182,7 @@ void ControladorComando::ejecutar(Comando cmd)
 	{
 		ComandosSistema::listarRepresentaciones();
 	}
-	
+
 	else if (opcion == "load_test_data")
 	{
 		ComandosSistema::loadTestData();
