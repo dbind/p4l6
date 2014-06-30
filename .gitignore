@@ -1,6 +1,7 @@
 build/**
 dist/**
 nbproject/**
+dep.inc
 
 # Compiled source #
 ###################
