@@ -201,6 +201,7 @@ void ComandosConsulta::altaDiagnosticosConsulta()
     IControladorSistema* cs = FabricaControladores::instancia()->controladorSistema();
     IControladorDiagnostico* cd = FabricaControladores::instancia()->controladorDiagnostico();
     IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
+    IControladorFarmaco* cf = FabricaControladores::instancia()->controladorFarmaco();
     
     string ci;
     Consulta* consultaSeleccionada;
@@ -327,17 +328,48 @@ void ComandosConsulta::altaDiagnosticosConsulta()
         
                         if(tipoTratamiento == "farmacologico")
                         {
-                            string nombreFarmaco;
-                            cout << "Entrega el nombre del Farmaco" << endl;
-                            cin >> nombreFarmaco;
-                            Farmaco* farmaco = new Farmaco(nombreFarmaco);
+                            vector<Farmaco*> farmacos = cf->farmacos();
+                            if (farmacos.empty())
+                            {
+                                cout << "No hay farmacos. Da de alta farmacos antes." << endl;
+                            }
+                            else
+                            {    
+                                cout << "Lista de los farmacos :" << endl;
+                                for(vector<Farmaco*>::iterator it = farmacos.begin(); it != farmacos.end(); ++it)
+                                {
+                                        Farmaco* farmaco = *it;
+                                        string nombre;
+                                        nombre = farmaco->getNombre();
+                                        cout << nombre << endl;
+
+                                }
+                                
+                                string nombreFarmaco;
+                                cout << "Entrega el nombre del Farmaco deseado" << endl;
+                                cin >> nombreFarmaco;
+                                
+                                Farmaco* farmacoTrat;
+                                
+                                for(vector<Farmaco*>::iterator it = farmacos.begin(); it != farmacos.end(); ++it)
+                                {
+                                        Farmaco* farmaco = *it;
+                                        if (farmaco->getNombre() == nombreFarmaco)
+                                        {
+                                            farmacoTrat = farmaco;
+                                        }
+
+                                }
+                                
+ 
+                                TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmacoTrat, descripcionTratamiento);
+                                diagnostico->agregarTratamientoFarmacologico(tratamiento);
+                                cout << "El tratamiento farmacologico fue agregado con exito."<< endl;
                         
-                        
-                        
-                            TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmaco, descripcionTratamiento);
-                            diagnostico->agregarTratamientoFarmacologico(tratamiento);
-                            cout << "El tratamiento farmacologico fue agregado con exito."<< endl;
-                      
+                                
+                            }
+                            
+                                                 
                         }
         
                         else if(tipoTratamiento == "quirurgico")
