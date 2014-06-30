@@ -32,6 +32,8 @@ public:
         */
 	void ejecutar(Comando);
 
+	void reset();
+
 private:
 	static ControladorComando* _instancia;
 	ControladorComando();

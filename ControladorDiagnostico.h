@@ -27,6 +27,8 @@ public:
 
 	vector<Categoria> categorias();
 
+	void reset();
+
 private:
 	static ControladorDiagnostico* _instancia;
 	ControladorDiagnostico(){};

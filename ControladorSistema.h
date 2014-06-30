@@ -17,6 +17,8 @@ public:
 	Fecha getFechaDelSistema();
 	void setFechaDelSistema(Fecha);
 
+	void reset();
+
 private:
 	static ControladorSistema* _instancia;
 	ControladorSistema();

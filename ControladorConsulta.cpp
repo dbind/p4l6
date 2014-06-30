@@ -21,14 +21,14 @@ ControladorConsulta* ControladorConsulta::instancia()
 	return _instancia;
 }
 
-vector<Reserva*> ControladorConsulta::getReservas()
+vector<Reserva*> ControladorConsulta::reservas()
 {
-    return reservas;
+    return _reservas;
 }
 
 void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
 {
-//    for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
+//    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
 //	{
 //		Reserva* reserva = *it;
 //
@@ -37,7 +37,18 @@ void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fech
 //		 && (reserva->fechaConsulta()   == fechaConsulta
 //		 && (reserva->getFechaReserva() == fechaReserva))
 //		{
-//			reservas.erase(it);
+//			_reservas.erase(it);
 //		}
 //	}
+}
+
+
+void ControladorConsulta::reset()
+{
+	for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
+	{
+		delete *it;
+	}
+
+	_reservas = vector<Reserva*> {};
 }

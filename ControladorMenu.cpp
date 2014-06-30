@@ -192,3 +192,6 @@ void ControladorMenu::ejecutar(Comando cmd)
 		cout << ex.what() << '\n';
 	}
 }
+
+
+void ControladorMenu::reset(){}

@@ -14,8 +14,10 @@ class ControladorConsulta : public IControladorConsulta
 public:
 	static ControladorConsulta* instancia();
 
-	vector<Reserva*> getReservas();
+	vector<Reserva*> reservas();
 	void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva);
+
+	void reset();
 
 private:
 	static ControladorConsulta* _instancia;

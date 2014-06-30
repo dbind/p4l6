@@ -113,15 +113,30 @@ Usuario* ControladorUsuario::findUsuario(string ci)
 
 vector<Usuario*> ControladorUsuario::listarMedicos()
 {
-        for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
+	vector<Usuario*> medicos {};
+
+	for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
 	{
-		vector<Usuario*> medicos;
-                Usuario* usuario = *it;
-                if (usuario->esUn(Rol::medico))
+		Usuario* usuario = *it;
+
+		if (usuario->esUn(Rol::medico))
 		{
-                        medicos.push_back(usuario);
-                }
-                return medicos;
-        }
-    
+			medicos.push_back(usuario);
+		}
+	}
+
+	return medicos;
+}
+
+
+void ControladorUsuario::reset()
+{
+	_usuarioActivo = NULL;
+
+	for(vector<Usuario*>::iterator it = _usuarios.begin(); it != _usuarios.end(); ++it)
+	{
+		delete *it;
+	}
+
+	_usuarios = vector<Usuario*> {this->crearMaster(MASTER_CI, MASTER_PASS, "Master")};
 }

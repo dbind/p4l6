@@ -24,6 +24,8 @@ protected:
 	virtual void menuDeOpciones()=0;
 	virtual void imprimirMenu()=0;
 
+	virtual void reset()=0;
+
 };
 
 #endif	/* ICONTROLADORMENU_H */

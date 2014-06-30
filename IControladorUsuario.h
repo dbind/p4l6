@@ -35,11 +35,13 @@ public:
 
 	virtual vector<Usuario*> usuarios()=0;
 	virtual Usuario* findUsuario(string ci)=0;
-        virtual vector<Usuario*> listarMedicos()=0;
+	virtual vector<Usuario*> listarMedicos()=0;
+
+	virtual void reset()=0;
 
 protected:
-	Usuario* usuarioActivo;
-	vector<Usuario*> _usuarios;
+	Usuario* _usuarioActivo;
+	vector<Usuario*> _usuarios {};
 
 };
 

@@ -60,3 +60,14 @@ bool ControladorFarmaco::memberFarmaco(string nombre)
 
     return false;
 }
+
+
+void ControladorFarmaco::reset()
+{
+	for(vector<Farmaco*>::iterator it = _farmacos.begin(); it != _farmacos.end(); ++it)
+	{
+		delete *it;
+	}
+
+	_farmacos = vector<Farmaco*> {};
+}

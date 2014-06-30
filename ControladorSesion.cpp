@@ -200,3 +200,9 @@ bool ControladorSesion::esValidoPass(string pass)
 {
 	return true; // TODO
 }
+
+
+void ControladorSesion::reset()
+{
+	this->cerrarSesion();
+}

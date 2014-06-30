@@ -28,6 +28,8 @@ public:
 
 	void iniciarSesionInterno(Usuario*);
 
+	void reset();
+
 private:
 
 	static ControladorSesion* _instancia;

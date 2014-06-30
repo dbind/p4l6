@@ -7,14 +7,6 @@ using namespace std;
 #include <string>
 #include "Reserva.h"
 
-//#include "Consulta.h"
-//#include "ConsultaAsistida.h"
-//#include "Diagnostico.h"
-//#include "Fecha.h"
-//#include "FechaHora.h"
-//#include "Usuario.h"
-//#include "Historial.h"
-
 
 class IControladorConsulta
 {
@@ -22,35 +14,13 @@ class IControladorConsulta
 public:
 	virtual ~IControladorConsulta(){};
 
-//	vector<Consulta*> getConsultas();
-//	vector<Diagnostico*> getDiagnosticos();
-//	vector<ConsultaAsistida> getConsultasAsistidas();
-//	Consulta getConsultaSeleccionada();
-//	setConsultas(vector<Consulta*> consultas);
-//	setDiagnosticos(vector<Diagnostico*> diagnosticos);
-//	setConsultasAsistidas(vector<ConsultaAsistida> consultasAsistidas);
-//	setConsultaSeleccionada(Consulta consultaSeleccionada);
-//
-//	vector<string> listarCiPacientesConsultasPorFecha(Fecha dia);
-//	seleccionarConsulta(string ci);
-//	aceptarDiagnostico();
-//	guardarDiagnosticosAceptados();
-//	cancelarDiagnosticosConsulta();
-//	cancelarEdicionConsulta();
-//	vector<Consulta*> listarConsultasActivas(vector<Consulta,> FechaHora fecha);
-//	borrarReserva(FechaHora fecha);
-//	vector<string> obtenerListaCiPacientes(vector<Consulta*> consultas);
-//	Historial crearHistorial(Usuario paciente, vector<Consulta*> consultas);
-//	ingresarPacienteMedico(string ciPaciente, string ciMedico);
-//	registrarConsultaComun(FechaHora fechaReserva, FechaHora fechaConsulta);
-//	registrarConsultaEmergencia(string motivo, FechaHora fechaConsulta);
+	virtual vector<Reserva*> reservas()=0;
+	virtual void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)=0;
+
+	virtual void reset()=0;
 
 protected:
-//	vector<Consulta*> consultas;
-//	vector<Diagnostico*> diagnosticos;
-//	vector<ConsultaAsistida> consultasAsistidas;
-//	Consulta consultaSeleccionada;
-        vector<Reserva*> reservas;
+	vector<Reserva*> _reservas;
 
 };
 

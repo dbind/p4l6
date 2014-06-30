@@ -13,6 +13,8 @@ public:
 	virtual Fecha getFechaDelSistema()=0;
 	virtual void setFechaDelSistema(Fecha)=0;
 
+	virtual void reset()=0;
+
 protected:
 	Fecha _fecha;
 

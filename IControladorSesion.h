@@ -35,6 +35,8 @@ public:
 	 * Forzar inicio de sesión directo (para tests y debugging)
      */
 	virtual void iniciarSesionInterno(Usuario*)=0;
+
+	virtual void reset()=0;
 	
 protected:
 	Usuario* usuario;              // Usuario con sesión actualmente activa
