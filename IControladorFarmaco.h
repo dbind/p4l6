@@ -7,7 +7,7 @@ using namespace std;
 #include <vector>
 
 
-class Farmaco;
+#include "Farmaco.h"
 
 
 class IControladorFarmaco
