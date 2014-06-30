@@ -8,8 +8,7 @@ using namespace std;
 
 #include "FabricaControladores.h"
 #include "Usuario.h"
-//#include "Categoria.h"
-//#include "Representacion.h"
+#include "Representacion.h"
 //#include "Diagnostico.h"
 //#include "Consulta.h"
 #include "Farmaco.h"
@@ -17,6 +16,7 @@ using namespace std;
 #include "TratamientoFarmacologico.h"
 #include "TratamientoQuirurgico.h"
 
+#include "Categoria.h"
 #include "Genero.h"
 #include "Rol.h"
 
@@ -66,16 +66,14 @@ void ComandosSistema::loadTestData()
 
 
 	// Categorías (Código, Etiqueta)
-//	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
-//	Categoria X2 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
-//	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
-//	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato digestivo");
+	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
+	Categoria X2 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
 
 
 	// Representaciones (Categoría, Código, Descripción)
-//	Representacion* R1 = cDiagnostico->altaRepresentacion(X1, "01", "Asma");
-//	Representacion* R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestión");
-//	Representacion* R3 = cDiagnostico->altaRepresentacion(X2, "01", "Nauseas");
+	Representacion R1 = cDiagnostico->altaRepresentacion(X1, "01", "Asma");
+	Representacion R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestión");
+	Representacion R3 = cDiagnostico->altaRepresentacion(X2, "01", "Nauseas");
 	
 
 	// Diagnósticos (Consulta, Representación, Descripción)
