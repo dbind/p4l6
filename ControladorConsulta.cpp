@@ -51,7 +51,6 @@ void ControladorConsulta::removeReserva(Reserva* reserva)
 		if (reserva = (*it))
 		{
 			_reservas.erase(it);
-			delete reserva;
 		}
 	}
 }

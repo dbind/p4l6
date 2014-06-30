@@ -54,7 +54,7 @@ Fecha Usuario::getFechaNac()
     return _fechaNac;
 }
 
-Roles Usuario::roles()
+Roles &Usuario::roles()
 {
     return _roles;
 }
@@ -217,7 +217,10 @@ vector<Usuario*> Usuario::suscriptores()
 
 int Usuario::edad()
 {
-    return 0; // TODO
+	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+	Fecha cumpleanyos = Fecha(_fechaNac.dia(), _fechaNac.mes(), fecha.anyo());
+
+    return fecha.anyo() - _fechaNac.anyo() - ((cumpleanyos < fecha) ? 1 : 0);
 }
 
 int Usuario::inasistencias()
