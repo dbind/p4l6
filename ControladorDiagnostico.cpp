@@ -71,7 +71,10 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 Diagnostico* ControladorDiagnostico::altaDiagnostico(Consulta* consulta, Representacion representacion,
                                                      string descripcion)
 {
-	consulta->agregarDiagnostico(new Diagnostico(representacion, descripcion));
+	Diagnostico* diagnostico = new Diagnostico(representacion, descripcion);
+	consulta->agregarDiagnostico(diagnostico);
+
+	return diagnostico;
 }
 
 TratamientoFarmacologico* ControladorDiagnostico::agregarTratamientoFarmacologico(Diagnostico* diagnostico,

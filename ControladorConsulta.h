@@ -12,7 +12,8 @@ class ControladorConsulta : public IControladorConsulta
 
 public:
 	static ControladorConsulta* instancia();
-        vector<Reserva*> getReservas();
+
+	vector<Reserva*> getReservas();
 
 private:
 	static ControladorConsulta* _instancia;

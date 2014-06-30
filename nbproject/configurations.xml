@@ -56,11 +56,18 @@
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles" displayName="Objects" projectFiles="true">
+      <itemPath>Consulta.cpp</itemPath>
       <itemPath>Consulta.h</itemPath>
+      <itemPath>ConsultaComun.cpp</itemPath>
+      <itemPath>ConsultaComun.h</itemPath>
+      <itemPath>ConsultaUrgencia.cpp</itemPath>
+      <itemPath>ConsultaUrgencia.h</itemPath>
       <itemPath>Diagnostico.cpp</itemPath>
       <itemPath>Diagnostico.h</itemPath>
       <itemPath>Farmaco.cpp</itemPath>
       <itemPath>Farmaco.h</itemPath>
+      <itemPath>Reserva.cpp</itemPath>
+      <itemPath>Reserva.h</itemPath>
       <itemPath>Tratamiento.cpp</itemPath>
       <itemPath>Tratamiento.h</itemPath>
       <itemPath>TratamientoFarmacologico.cpp</itemPath>
@@ -136,7 +143,17 @@
       </item>
       <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Consulta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Consulta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConsultaComun.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConsultaComun.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConsultaUrgencia.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConsultaUrgencia.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -205,6 +222,10 @@
       <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -279,7 +300,17 @@
       </item>
       <item path="ComandosUsuario.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Consulta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="Consulta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConsultaComun.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConsultaComun.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConsultaUrgencia.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ConsultaUrgencia.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ControladorComando.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -348,6 +379,10 @@
       <item path="Representacion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Representacion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Reserva.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Reserva.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Rol.h" ex="false" tool="3" flavor2="0">
       </item>

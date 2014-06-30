@@ -43,6 +43,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/ComandosNotificacion.o \
 	${OBJECTDIR}/ComandosSistema.o \
 	${OBJECTDIR}/ComandosUsuario.o \
+	${OBJECTDIR}/Consulta.o \
+	${OBJECTDIR}/ConsultaComun.o \
+	${OBJECTDIR}/ConsultaUrgencia.o \
 	${OBJECTDIR}/ControladorComando.o \
 	${OBJECTDIR}/ControladorConsulta.o \
 	${OBJECTDIR}/ControladorDiagnostico.o \
@@ -56,6 +59,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Fecha.o \
 	${OBJECTDIR}/FechaHora.o \
 	${OBJECTDIR}/Representacion.o \
+	${OBJECTDIR}/Reserva.o \
 	${OBJECTDIR}/Tratamiento.o \
 	${OBJECTDIR}/TratamientoFarmacologico.o \
 	${OBJECTDIR}/TratamientoQuirurgico.o \
@@ -127,6 +131,21 @@ ${OBJECTDIR}/ComandosUsuario.o: ComandosUsuario.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ComandosUsuario.o ComandosUsuario.cpp
 
+${OBJECTDIR}/Consulta.o: Consulta.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Consulta.o Consulta.cpp
+
+${OBJECTDIR}/ConsultaComun.o: ConsultaComun.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConsultaComun.o ConsultaComun.cpp
+
+${OBJECTDIR}/ConsultaUrgencia.o: ConsultaUrgencia.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ConsultaUrgencia.o ConsultaUrgencia.cpp
+
 ${OBJECTDIR}/ControladorComando.o: ControladorComando.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -191,6 +210,11 @@ ${OBJECTDIR}/Representacion.o: Representacion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Representacion.o Representacion.cpp
+
+${OBJECTDIR}/Reserva.o: Reserva.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Werror -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Reserva.o Reserva.cpp
 
 ${OBJECTDIR}/Tratamiento.o: Tratamiento.cpp 
 	${MKDIR} -p ${OBJECTDIR}
