@@ -4,6 +4,9 @@ using namespace std;
 #include <vector>
 #include <string>
 #include <bits/stl_vector.h>
+#include <sstream>
+#include <cstdlib>
+#include <cstring>
 
 #include "ComandosConsulta.h"
 #include "FabricaControladores.h"
@@ -42,37 +45,25 @@ void ComandosConsulta::reservarConsulta()
 		Usuario* paciente = cs->usuarioActivo();
 		Usuario* medico;
 		int diaConsulta, mesConsulta, anoConsulta; 
-		int diaReserva, mesReserva, anoReserva;
-		cout << "Escribe la cedula del medico que va a atender la consulta" << endl;
-		cout << "Cedula:" << endl;
-		cin >> cedula ;
+		cout << "Escribe la cedula del medico que va a atender la consulta: " << endl;
+		cin >> cedula;
 
-		cout << "Ahora elige la fecha y hora de la consulta" << endl;
-		cout << "Dia :"<< endl;
-		cin >> diaConsulta ;
-		cout << "Mes :"<< endl;
-		cin >> mesConsulta ;            
-		cout << "Ano :" << endl;
-		cin >> anoConsulta ;
+		cout << "Ahora elige la fecha de la consulta:" << endl;
+		cout << "Dia: ";
+		cin >> diaConsulta;
+		cout << "Mes: ";
+		cin >> mesConsulta;            
+		cout << "Ano: ";
+		cin >> anoConsulta;
 
-		cout << "Ahora elige la fecha y hora de la consulta" << endl;
-		cout << "Dia :" << endl;
-		cin >> diaReserva ;
-		cout << "Mes :" << endl;
-		cin >> mesReserva ;            
-		cout << "Ano :" << endl;
-		cin >> anoReserva ;
-
-
+		Fecha fechaReserva = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
 		Fecha fechaConsulta =  Fecha(diaConsulta, mesConsulta, anoConsulta);
-		Fecha fechaReserva =  Fecha(diaReserva, mesReserva, anoReserva);
 		medico = cu->findUsuario(cedula);
 
-
-		Reserva* reserva = new Reserva(medico, paciente,fechaConsulta, fechaReserva);
+		Reserva* reserva = new Reserva(medico, paciente, fechaConsulta, fechaReserva);
 		cc->reservas().push_back(reserva);
-
-		cout << "La consulta fue reservada con exito!";
+		
+		cout << "La consulta fue reservada con exito!" << endl;
 	}
 }
 
@@ -80,6 +71,7 @@ void ComandosConsulta::cancelarReserva()
 {
     IControladorConsulta* cc = FabricaControladores::instancia()->controladorConsulta();
     IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
+	Usuario* userActivo = FabricaControladores::instancia()->controladorSesion()->usuarioActivo();
     vector<Reserva*> reservas = cc->reservas();
     
     if (reservas.empty())
@@ -88,7 +80,8 @@ void ComandosConsulta::cancelarReserva()
 	}
     else
     {
-		cout << "Lista de las reservas" << endl;
+		int contador = 1;
+		cout << "Lista de las reservas: " << endl;
 		for(vector<Reserva*>::iterator it = reservas.begin(); it != reservas.end(); ++it)
 		{
 			Reserva* reserva = *it;
@@ -101,61 +94,37 @@ void ComandosConsulta::cancelarReserva()
 			medico = reserva->medico();
 			fechaConsulta = reserva->fechaConsulta();
 			fechaReserva = reserva->fechaReserva();
-
-			nombrePaciente = paciente->getNombre();
-			apellidoPaciente = paciente->getApellido();
 			ciPaciente = paciente->getCi();
 			nombreMedico = medico->getNombre();
 			apellidoMedico = medico->getApellido();
 			ciMedico = medico->getCi();
-
-			cout << "Paciente :" << nombrePaciente << " " << apellidoPaciente
-			     << ", Medico :" << nombreMedico << " " << apellidoMedico
-			     << ", Fecha de consulta :" << fechaConsulta
-			     <<  ", Fecha de reserva :" << fechaReserva
-			     <<  endl;
+			
+			if (ciPaciente == userActivo->getCi())
+			{	
+				cout << contador << "- ";
+				cout << "Medico: " << nombreMedico << " " << apellidoMedico << endl;
+				cout << "Fecha de consulta: " << fechaConsulta << 
+				cout << "Fecha de reserva: " << fechaReserva <<  endl;
+				contador++;				
+			}
 		}
        
-        cout << "Elige la consulta a devolver:" << endl;
-        Usuario* paciente;
-        Usuario* medico;
-        string ciPaciente, ciMedico ;
-        int diaConsulta, mesConsulta, anoConsulta;
-        int diaReserva, mesReserva, anoReserva;
-        
-        cout << "Cedula del paciente :" ;
-        cin >> ciPaciente ;
-        
-        cout << "Cedula del medico :" ;
-        cin >> ciMedico ;
-        
-        
-        cout << "Dia de la consulta :" ;
-        cin >> diaConsulta ;
-        cout << "Mes de la consulta :" ;
-        cin >> mesConsulta ;
-        cout << "Ano de la consulta :" ;
-        cin >> anoConsulta ;
-        
-        
-        cout << "Dia de la reserva :" ;
-        cin >> diaReserva ;
-        cout << "Mes de la reserva :" ;
-        cin >> mesReserva ;
-        cout << "Ano de la reserva :" ;
-        cin >> anoReserva ;
-        
-
-        Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
-        Fecha fechaReserva = Fecha(diaReserva, mesReserva, anoReserva);
-        medico = cu->findUsuario(ciMedico);
-        paciente = cu->findUsuario(ciPaciente);
-        
+        cout << "Escribe el numero correspondiente a la consulta a devolver: " << endl;
+		string s;
+		cin >> s;
+		
+		char *cstr = new char[s.length() + 1];
+		strcpy(cstr, s.c_str());
+		int i = atoi(cstr);
+		delete [] cstr;
+		
+		Reserva* aDevolver = reservas.at(i);
+		cc->removeReserva(aDevolver);
+		
 //        cc->removeReserva(medico, paciente, fechaConsulta, fechaReserva);
 //        reserva::~Reserva();
+		cout << "La reserva de la consulta fue cancelada con exito!" << endl;
     }
-
-    cout << "La consulta fue devuelta con exito!";
 }
 
 void ComandosConsulta::registrarConsulta()
@@ -196,7 +165,7 @@ void ComandosConsulta::registrarConsulta()
         Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
         Fecha fechaReserva = Fecha(diaReserva, mesReserva, anoReserva);
         
-        ConsultaComun comun = ConsultaComun(medico, paciente, fechaConsulta, fechaReserva);
+        ConsultaComun* comun = new ConsultaComun(medico, paciente, fechaConsulta, fechaReserva);
         cc->consultas().push_back(comun);
         
         cout << "La consulta comun fue registrada con exito." << endl;
@@ -216,7 +185,7 @@ void ComandosConsulta::registrarConsulta()
         
         Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
         
-        ConsultaUrgencia emergencia = ConsultaUrgencia(medico, paciente, fechaConsulta, motivo);
+        ConsultaUrgencia* emergencia = new ConsultaUrgencia(medico, paciente, fechaConsulta, motivo);
         cc->consultas().push_back(emergencia);
         
         cout << "La consulta de emergencia fue registrada con exito." << endl;
