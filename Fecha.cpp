@@ -1,20 +1,27 @@
+using namespace std;
+
+#include <iostream>
+
 #include "Fecha.h"
 
 
 Fecha::Fecha()
 {
-	this->_dia  = 0;
-	this->_mes  = 0;
-	this->_anyo = 0;
+	_dia  = 0;
+	_mes  = 0;
+	_anyo = 0;
 }
 
 Fecha::Fecha(int dia, int mes, int anyo)
 {
-	this->_dia  = dia;
-	this->_mes  = mes;
-	this->_anyo = anyo;
+	_dia  = dia;
+	_mes  = mes;
+	_anyo = anyo;
 }
 
-int Fecha::dia()  { return this->_dia;  }
-int Fecha::mes()  { return this->_mes;  }
-int Fecha::anyo() { return this->_anyo; }
+
+ostream& operator<<(ostream& os, const Fecha& fecha)
+{
+    os << fecha._dia << '/' << fecha._mes << '/' << fecha._anyo;
+    return os;
+}
