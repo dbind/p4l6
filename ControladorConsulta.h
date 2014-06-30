@@ -25,13 +25,13 @@ public:
 
 	vector<Consulta*> consultas();
 	vector<Reserva*> reservas();
-        
-        void altaReserva (Reserva* reserva);
-        void altaConsulta (Consulta* consulta);
+
+	void altaReserva (Reserva*);
+	void altaConsulta (Consulta*);
 
 	vector<Consulta*> listarConsultasDia(Fecha);
 
-	void removeReserva(Reserva* reserva);
+	void removeReserva(Reserva*);
 
 	void reset();
 
@@ -42,4 +42,3 @@ private:
 };
 
 #endif	/* CONTROLADORCONSULTA_H */
-
