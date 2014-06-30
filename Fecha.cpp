@@ -25,3 +25,15 @@ ostream& operator<<(ostream& os, const Fecha& fecha)
     os << fecha._dia << '/' << fecha._mes << '/' << fecha._anyo;
     return os;
 }
+
+bool operator== (const Fecha& f1, const Fecha& f2)
+{
+    return f1._dia  == f2._dia
+	    && f1._mes  == f2._mes
+	    && f1._anyo == f2._anyo;
+}
+
+bool operator!= (const Fecha& f1, const Fecha& f2)
+{
+    return !(f1 == f2);
+}

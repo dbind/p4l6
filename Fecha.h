@@ -14,6 +14,8 @@ public:
 	Fecha(int dia, int mes, int anyo);
 
     friend ostream& operator<<(ostream& os, const Fecha& fecha);
+	friend bool operator== (const Fecha&, const Fecha&);
+	friend bool operator!= (const Fecha&, const Fecha&);
 
 private:
 	int _dia, _mes, _anyo;
