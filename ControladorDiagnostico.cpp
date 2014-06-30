@@ -65,3 +65,8 @@ Representacion ControladorDiagnostico::altaRepresentacion(Categoria categoria, s
 
 	return representacion;
 }
+vector<Categoria> ControladorDiagnostico::categorias()
+{
+	return _categorias;
+}		
+

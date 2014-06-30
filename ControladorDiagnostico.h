@@ -21,6 +21,7 @@ public:
 
 	Categoria agregarCategoria(char codigo, string etiqueta);
 	Representacion altaRepresentacion(Categoria, string codigo, string etiqueta);
+        vector<Categoria> categorias();
 
 private:
 	static ControladorDiagnostico* _instancia;
