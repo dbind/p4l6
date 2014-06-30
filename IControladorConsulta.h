@@ -15,6 +15,7 @@ public:
 	virtual ~IControladorConsulta(){};
         
         virtual vector<Consulta> consultas()=0;
+        virtual vector<Consulta> listarConsultasDia(Fecha fecha)=0;
         
 	virtual vector<Reserva*> reservas()=0;
 	virtual void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)=0;
