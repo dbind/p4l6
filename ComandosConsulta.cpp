@@ -197,5 +197,218 @@ void ComandosConsulta::registrarConsulta()
 
 void ComandosConsulta::altaDiagnosticosConsulta()
 {
-	
+    IControladorConsulta* cc = FabricaControladores::instancia()->controladorConsulta();
+    IControladorSistema* cs = FabricaControladores::instancia()->controladorSistema();
+    IControladorDiagnostico* cd = FabricaControladores::instancia()->controladorDiagnostico();
+    IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
+    
+    string ci;
+    Consulta* consultaSeleccionada;
+    
+    Fecha fecha = cs->getFechaDelSistema();
+    vector<Consulta*> consultas = cc->listarConsultasDia(fecha);
+    do
+    {
+        if (consultas.empty())
+	{
+		cout << "No hay consultas." << endl;
+                return;
+	}
+        
+        else 
+        {
+            cout << "Lista de las consultas del dia. Cada numero corresponda a la cedula del paciente de la consulta." << endl;
+            for(vector<Consulta*>::iterator it = consultas.begin(); it != consultas.end(); ++it)
+            {
+                        Consulta* consulta = *it;
+                        Usuario* paciente = consulta->paciente();
+                        string ciPaciente = paciente->getCi();
+                        cout << ciPaciente << endl;        
+            }
+        
+        
+            cout << "Entrega la cedula del paciente de la consulta cuya diagnosticos quiere dar de alta (o pulsa q para salir)."<< endl;
+            cin >> ci;
+        
+            if (ci == "q")
+            {
+                return;
+            }
+        
+            else 
+            {
+                for(vector<Consulta*>::iterator it = consultas.begin(); it != consultas.end(); ++it)
+                {
+                        Consulta* consulta = *it;
+                        if (consulta->paciente()->getCi() == ci)
+                        {
+                            consultaSeleccionada = consulta;
+                        }
+                }   
+    
+                cout << "Lista de las categorias";
+                vector<Categoria> categorias = cd->categorias();
+                for(vector<Categoria>::iterator it = categorias.begin(); it != categorias.end(); ++it)
+                {
+                        Categoria categoria = *it;
+                        char codigo = categoria.codigo();
+                        string etiqueta = categoria.etiqueta();
+                        cout << codigo << " " << etiqueta << endl;        
+                }
+    
+                char cod;
+                cout << "Entrega la letra de la categoria del diagnostico que desea dar de alta" << endl;
+                cin >> cod;
+    
+                cout << "Lista de los diagnosticos asociados a la categoria elegida" << endl;
+                vector<Representacion> representaciones = cd->representaciones();
+                vector<Representacion> diagnosticosAsociados;
+    
+                for(vector<Representacion>::iterator it = representaciones.begin(); it != representaciones.end(); ++it)
+                {
+                        Representacion representacion = *it;
+                                
+                        if (representacion.codigo().at(0) == cod)
+                        {
+                            diagnosticosAsociados.push_back(representacion);
+                            cout << representacion.codigo() << " " << representacion.etiqueta() << endl;
+                    
+                        }
+                }      
+    
+                cout << "Entrega el codigo (letra + numero) de la etiqueta del diagnostico que quieres dar de alta" << endl;
+                string codDiag;
+                cin >> codDiag;
+                Representacion representacionElegida;
+                for(vector<Representacion>::iterator it = representaciones.begin(); it != representaciones.end(); ++it)
+                {
+                        Representacion representacion = *it;
+                                
+                        if (representacion.codigo() == codDiag)
+                        {
+                            representacionElegida = representacion;
+                    
+                        }
+                }
+    
+                char l;
+                cout << "¿Quiere anadir descripcion? (y/n)" << endl;
+                cin >> l;
+                Diagnostico* diagnostico;
+    
+                if (l == 'y')
+                {
+                    string descripcion;
+                    cout << "Entrega la descripcion del diagnostico." << endl;
+                    cin >> descripcion;
+        
+                    diagnostico = new Diagnostico(representacionElegida, descripcion);
+                }
+    
+                else
+                {
+                    diagnostico = new Diagnostico(representacionElegida);
+                }
+    
+                char t;
+                cout << "¿Quiere anadir tratamiento(s)? (y/n)" << endl,
+                cin >> t;
+    
+                if (t == 'y')
+                {
+                    do
+            
+                    {
+                        string tipoTratamiento, descripcionTratamiento;
+                        cout << "Entrega el tipo del tratamiento (farmacologico o quirurgico) o q para salir" << endl;
+                        cin >> tipoTratamiento;
+                        cout << "Entrega la descripcion del tratamiento" << endl;
+                        cin >> descripcionTratamiento;
+        
+                        if(tipoTratamiento == "farmacologico")
+                        {
+                            string nombreFarmaco;
+                            cout << "Entrega el nombre del Farmaco" << endl;
+                            cin >> nombreFarmaco;
+                            Farmaco* farmaco = new Farmaco(nombreFarmaco);
+                        
+                        
+                        
+                            TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmaco, descripcionTratamiento);
+                            diagnostico->agregarTratamientoFarmacologico(tratamiento);
+                            cout << "El tratamiento farmacologico fue agregado con exito."<< endl;
+                      
+                        }
+        
+                        else if(tipoTratamiento == "quirurgico")
+                        {
+                            int diaOperacion, mesOperacion, anoOperacion;
+                            cout << "Entrega la fecha de la operacion" << endl;
+                            cout << "Dia :"<< endl;
+                            cin >> diaOperacion;
+                            cout << "Mes :" << endl;
+                            cin >> mesOperacion;
+                            cout << "Ano :" << endl;
+                            cin>> anoOperacion;
+                        
+                            Fecha fechaOperacion = Fecha(diaOperacion, mesOperacion, anoOperacion);
+                        
+                            vector<Usuario*> vectMedicos;
+                            vectMedicos = cu->listarMedicos();
+
+                            if (vectMedicos.empty())
+                            {
+                                cout << "No hay medicos." << endl;
+                            }
+                            else
+                            {    
+                                cout << "Lista de los medicos:" << endl;
+                                for(vector<Usuario*>::iterator it = vectMedicos.begin(); it != vectMedicos.end(); ++it)
+                                {
+                                        Usuario* usuario = *it;
+                                        string nombre, apellido, ci;
+                                        nombre = usuario->getNombre();
+                                        apellido = usuario->getApellido();
+                                        ci = usuario->getCi();
+                                        cout << nombre << " " << apellido << " " << ci << endl;
+
+                                }
+
+                                string cedula; 
+                                Usuario* medico;
+                                cout << "Escribe la cedula del medico de la operacion : " << endl;
+                                cin >> cedula;
+                                medico = cu->findUsuario(cedula);
+                        
+                                TratamientoQuirurgico* tratamiento = new TratamientoQuirurgico(medico, fechaOperacion, descripcionTratamiento);
+                                diagnostico->agregarTratamientoQuirurgico(tratamiento);
+                                cout << "El tratamiento quirurgico fue agregado con exito."<< endl;
+                            }
+                        }   
+            
+                        else if(tipoTratamiento == "quirurgico")
+                        {
+                            return;
+                        }
+            
+                        else 
+                        {
+                            cout << "Tipo de tratamiento invalido.";
+                        }
+                    }
+        
+                    while (true);
+    
+                }
+    
+                else if (t == 'n')
+                {
+                    cout << "El diagnostico fue dado de alta con exito.";
+                }
+            }
+        }
+    }
+    
+    while(true);
+    
 }
