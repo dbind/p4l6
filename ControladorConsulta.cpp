@@ -33,18 +33,18 @@ vector<Consulta> ControladorConsulta::consultas()
 
 void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
 {
-//    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
-//	{
-//		Reserva* reserva = *it;
-//
-//		if ((reserva->paciente()        == paciente)
-//		 && (reserva->medico()          == medico)
-//		 && (reserva->fechaConsulta()   == fechaConsulta
-//		 && (reserva->getFechaReserva() == fechaReserva))
-//		{
-//			_reservas.erase(it);
-//		}
-//	}
+    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
+	{
+		Reserva* reserva = *it;
+
+		if ((reserva->paciente()        == paciente)
+		 && (reserva->medico()          == medico)
+		 && (reserva->fechaConsulta()   == fechaConsulta)
+		 && (reserva->fechaReserva()    == fechaReserva))
+		{
+			_reservas.erase(it);
+		}
+	}
 }
 
 
@@ -56,4 +56,19 @@ void ControladorConsulta::reset()
 	}
 
 	_reservas = vector<Reserva*> {};
+}
+
+vector<Consulta> ControladorConsulta::listarConsultasDia(Fecha fecha)
+{
+    for(vector<Consulta>::iterator it = _consultas.begin(); it != _consultas.end(); ++it)
+	{
+		Consulta consulta = *it;
+                vector<Consulta> consultasDia;
+
+		if (consulta.fechaConsulta()   == fecha)
+		{
+			consultasDia.push_back(consulta);
+		}
+                return consultasDia;
+        }
 }
