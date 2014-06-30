@@ -26,6 +26,11 @@ vector<Reserva*> ControladorConsulta::reservas()
     return _reservas;
 }
 
+vector<Consulta> ControladorConsulta::consultas()
+{
+    return _consultas;
+}
+
 void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
 {
 //    for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)

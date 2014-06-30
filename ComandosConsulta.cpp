@@ -8,7 +8,8 @@ using namespace std;
 #include "ComandosConsulta.h"
 #include "FabricaControladores.h"
 #include "Fecha.h"
-
+#include "ConsultaComun.h"
+#include "ConsultaUrgencia.h"
 
 void ComandosConsulta::reservarConsulta()
 {
@@ -159,7 +160,70 @@ void ComandosConsulta::cancelarReserva()
 
 void ComandosConsulta::registrarConsulta()
 {
-	
+    IControladorUsuario* cu = FabricaControladores::instancia()->controladorUsuario();
+    IControladorConsulta* cc = FabricaControladores::instancia()->controladorConsulta();
+    
+    string ciMedico, ciPaciente, tipoConsulta, motivo;
+    int diaReserva, diaConsulta, mesReserva, mesConsulta, anoReserva, anoConsulta;
+    
+    cout << "Ingresa la cedula del medico de la consulta :";
+    cin >> ciMedico;
+    cout << endl << "Ingresa la cedula del paciente de la consulta :";
+    cin >> ciPaciente;
+    
+    Usuario* medico = cu->findUsuario(ciMedico);
+    Usuario* paciente = cu->findUsuario(ciPaciente);
+    
+    cout << "Ingresa el tipo de consulta a registrar (comun o emergencia)" << endl;
+    cin >> tipoConsulta;
+    
+    if (tipoConsulta == "comun")
+    {
+        cout << "Ingresa el dia de la reserva" << endl;
+        cin >> diaReserva;
+        cout << "Ingresa el mes de la reserva" << endl;
+        cin >> mesReserva;
+        cout << "Ingresa el ano de la reserva" << endl;
+        cin >> anoReserva;
+         
+        cout << "Ingresa el dia de la consulta" << endl;
+        cin >> diaConsulta;
+        cout << "Ingresa el mes de la consulta" << endl;
+        cin >> mesConsulta;
+        cout << "Ingresa el ano de la consulta" << endl;
+        cin >> anoConsulta;
+        
+        Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
+        Fecha fechaReserva = Fecha(diaReserva, mesReserva, anoReserva);
+        
+        ConsultaComun comun = ConsultaComun(medico, paciente, fechaConsulta, fechaReserva);
+        cc->consultas().push_back(comun);
+        
+        cout << "La consulta comun fue registrada con exito." << endl;
+    }
+    
+    else if (tipoConsulta == "emergencia")
+    {
+        cout << "Ingresa el dia de la consulta" << endl;
+        cin >> diaConsulta;
+        cout << "Ingresa el mes de la consulta" << endl;
+        cin >> mesConsulta;
+        cout << "Ingresa el ano de la consulta" << endl;
+        cin >> anoConsulta;
+        
+        cout << "Ingresa el motivo de la emergencia";
+        cin >> motivo;
+        
+        Fecha fechaConsulta = Fecha(diaConsulta, mesConsulta, anoConsulta);
+        
+        ConsultaUrgencia emergencia = ConsultaUrgencia(medico, paciente, fechaConsulta, motivo);
+        cc->consultas().push_back(emergencia);
+        
+        cout << "La consulta de emergencia fue registrada con exito." << endl;
+    }
+    
+    else {cout << "Tipo de consulta invalido." << endl;}
+
 }
 
 void ComandosConsulta::altaDiagnosticosConsulta()
