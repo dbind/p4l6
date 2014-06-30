@@ -1,3 +1,7 @@
+using namespace std;
+
+#include <string>
+
 #include "ConsultaUrgencia.h"
 
 #include "Diagnostico.h"
@@ -11,4 +15,12 @@ ConsultaUrgencia::ConsultaUrgencia(Usuario* medico, Usuario* paciente, Fecha con
 	_paciente    = paciente;
 	_consulta    = consulta;
 	_descripcion = descripcion;
+
+	_tipo = TipoConsulta::urgencia;
+}
+
+
+string ConsultaUrgencia::descripcion()
+{
+	return _descripcion;
 }

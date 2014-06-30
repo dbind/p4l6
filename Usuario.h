@@ -14,6 +14,8 @@ using namespace std;
 #include "Rol.h"
 #include "EstadoUsuario.h"
 
+#include "IStrategyNotificaciones.h"
+
 
 class Usuario
 {
@@ -63,6 +65,7 @@ public:
 	/**
 	 * Notificaciones
 	 */
+	void setNotificador(IStrategyNotificaciones*);  // Setear estrategia
 	void agregarSuscriptor(Usuario* medico, Fecha); // Suscribir observers
 	void notificarSujeto(Consulta*);                // Consulta avisa a paciente
 	void notificarObserver(Consulta*);              // Paciente avisa a médico
@@ -93,6 +96,7 @@ private:
 	vector<Usuario*> _reactivados {};
 
 	vector<Usuario*> _suscriptores {};
+	IStrategyNotificaciones* _notificador;
 };
 
 #endif // USUARIO_H

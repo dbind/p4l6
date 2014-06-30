@@ -161,6 +161,11 @@ void Usuario::agregarReactivado(Usuario* usuario)
 }
 
 
+void Usuario::setNotificador(IStrategyNotificaciones* notificador)
+{
+	_notificador = notificador;
+}
+
 void Usuario::agregarSuscriptor(Usuario* medico, Fecha fecha)
 {
 	if (find(_suscriptores.begin(), _suscriptores.end(), medico) != _suscriptores.end())
@@ -180,9 +185,9 @@ void Usuario::notificarSujeto(Consulta* consulta)
     }
 }
 
-void Usuario::notificarObserver(Consulta*)
+void Usuario::notificarObserver(Consulta* consulta)
 {
-	
+	_notificador->notificar(consulta);
 }
 
 vector<Usuario*> Usuario::dadosDeAlta()

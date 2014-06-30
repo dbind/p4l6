@@ -6,6 +6,7 @@ using namespace std;
 #include <vector>
 
 #include "Fecha.h"
+#include "TipoConsulta.h"
 
 
 class Diagnostico;
@@ -18,6 +19,7 @@ class Consulta
 	Consulta(){};
 	virtual ~Consulta(){};
 
+	TipoConsulta tipo();
 	Usuario* medico();
 	Usuario* paciente();
 	Fecha fechaConsulta();
@@ -26,6 +28,8 @@ class Consulta
 	void agregarDiagnostico(Diagnostico*);
 
 protected:
+	TipoConsulta _tipo;
+
 	Usuario* _medico;
 	Usuario* _paciente;
 	Fecha _consulta;

@@ -9,6 +9,8 @@ using namespace std;
 #include "FabricaControladores.h"
 #include "Usuario.h"
 
+#include "StrategyNotificaciones.h"
+
 
 const string MASTER_CI   = "0";
 const string MASTER_PASS = "p4";
@@ -69,6 +71,12 @@ Usuario* ControladorUsuario::altaUsuario(string ci, string nombre, string apelli
 	{
 		FabricaControladores::instancia()->controladorSesion()->usuarioActivo()
 		                                 ->agregarDadoDeAlta(usuario);
+	}
+
+	// Si es médico, setear estrategia de notificaciones
+	if (usuario->esUn(Rol::medico))
+	{
+		usuario->setNotificador(new StrategyNotificaciones());
 	}
 
 	return usuario;

@@ -3,6 +3,11 @@
 #include "Diagnostico.h"
 
 
+TipoConsulta Consulta::tipo()
+{
+	return _tipo;
+}
+
 Usuario* Consulta::medico()
 {
 	return _medico;

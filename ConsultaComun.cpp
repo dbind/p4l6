@@ -12,7 +12,10 @@ ConsultaComun::ConsultaComun(Usuario* medico, Usuario* paciente, Fecha consulta,
 	_paciente = paciente;
 	_consulta = consulta;
 	_reserva  = reserva;
+
+	_tipo = TipoConsulta::comun;
 }
+
 
 Fecha ConsultaComun::fechaReserva()
 {
