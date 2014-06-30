@@ -131,11 +131,16 @@ void ComandosUsuario::altaReactivacionUsuario()
 			
 			if (r2 == "a")
 			{
-				roles.push_back(Rol::admin);
+				if (r1 == "m")
+					cout << "El usuario no puede ser medico y administrativo a la vez." << endl;
+				else
+					roles.push_back(Rol::admin);
 			}
 			else if (r2 == "m")
-			{
-				roles.push_back(Rol::medico);
+			{	if (r1 == "a")
+					cout << "El usuario no puede ser medico y administrativo a la vez." << endl;
+				else
+					roles.push_back(Rol::medico);
 			}
 			else if (r2 != "n") // socio por defecto
 			{
@@ -151,7 +156,6 @@ void ComandosUsuario::altaReactivacionUsuario()
 		}
 	}
 	while (true);
-	
 }
 
 void ComandosUsuario::listarAltasReactivaciones()
