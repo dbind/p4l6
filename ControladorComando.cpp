@@ -60,6 +60,24 @@ void ControladorComando::registrarComandos()
 	        Roles{Rol::master});
 	agregar("get_time", "Consultar fecha del sistema",
 	        Roles{Rol::admin, Rol::medico, Rol::socio});
+			
+	agregar("listar_reservas", "Debug: Listar Reservas",
+		     Roles{Rol::master});
+			 
+	agregar("listar_consultas", "Debug: Listar Consultas",
+		     Roles{Rol::master});
+			 
+	agregar("listar_usuarios", "Debug: Listar Usuarios",
+		     Roles{Rol::master});
+			 
+	agregar("listar_farmacos", "Debug: Listar Farmacos",
+		     Roles{Rol::master});
+	
+	agregar("listar_categorias", "Debug: Listar Categorias",
+		     Roles{Rol::master});
+	
+	agregar("listar_representaciones", "Debug: Listar Representaciones",
+		     Roles{Rol::master});
 
 	// Solo para Master (debug, tests)
 	agregar("load_test_data", "Cargar datos de prueba",
@@ -138,7 +156,34 @@ void ControladorComando::ejecutar(Comando cmd)
 		ComandosSistema::getTime();
 	}
 
+	
 	// Solo para Master (debug, tests)
+	
+		else if (opcion == "listar_reservas")
+	{
+		ComandosSistema::listarReservas();
+	}
+	else if (opcion == "listar_consultas")
+	{
+		ComandosSistema::listarConsultas();
+	}
+	else if (opcion == "listar_usuarios")
+	{
+		ComandosSistema::listarUsuarios();
+	}
+	else if (opcion == "listar_farmacos")
+	{
+		ComandosSistema::listarFarmacos();
+	}
+	else if (opcion == "listar_categorias")
+	{
+		ComandosSistema::listarCategorias();
+	}
+	else if (opcion == "listar_representaciones")
+	{
+		ComandosSistema::listarCategorias();
+	}
+	
 	else if (opcion == "load_test_data")
 	{
 		ComandosSistema::loadTestData();
