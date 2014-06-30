@@ -3,7 +3,9 @@ using namespace std;
 #include <vector>
 
 #include "ControladorSistema.h"
+
 #include "FabricaControladores.h"
+#include "Reserva.h"
 
 /**
  * Instanciación de singleton
@@ -36,7 +38,10 @@ void ControladorSistema::setFechaDelSistema(Fecha fecha)
 	_fecha = fecha;
 
 	// Triggers del cambio de hora
-	FabricaControladores::instancia()->controladorConsulta()->consultas();
+	vector<Reserva*> reservas = FabricaControladores::instancia()->controladorConsulta()
+	                                                             ->reservas();
+
+	
 	
 }
 

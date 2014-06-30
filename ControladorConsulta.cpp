@@ -35,19 +35,14 @@ vector<Reserva*> ControladorConsulta::reservas()
 }
 
 
-void ControladorConsulta::removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva)
+void ControladorConsulta::removeReserva(Reserva* reserva)
 {
     for(vector<Reserva*>::iterator it = _reservas.begin(); it != _reservas.end(); ++it)
 	{
-		Reserva* reserva = *it;
-
-		if ((reserva->medico()        == medico)
-		 && (reserva->paciente()      == paciente)
-		 && (reserva->fechaConsulta() == fechaConsulta)
-		 && (reserva->fechaReserva()  == fechaReserva))
+		if (reserva = (*it))
 		{
-			delete reserva;
 			_reservas.erase(it);
+			delete reserva;
 		}
 	}
 }

@@ -23,7 +23,7 @@ public:
 
 	virtual vector<Consulta*> listarConsultasDia(Fecha)=0;
 
-	virtual void removeReserva(Usuario* medico, Usuario* paciente, Fecha consulta, Fecha reserva)=0;
+	virtual void removeReserva(Reserva*)=0;
 
 	virtual void reset()=0;
 

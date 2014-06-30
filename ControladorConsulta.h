@@ -28,7 +28,7 @@ public:
 
 	vector<Consulta*> listarConsultasDia(Fecha);
 
-	void removeReserva(Usuario* medico, Usuario* paciente, Fecha fechaConsulta, Fecha fechaReserva);
+	void removeReserva(Reserva* reserva);
 
 	void reset();
 
