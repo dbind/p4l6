@@ -44,6 +44,7 @@ public:
 	void setApellido(string);
 	void setGenero(Genero);
 	void setFechaNac(Fecha);
+	int edad();
 	
 	bool esUn(Rol);
 	bool esNuevo();
@@ -78,9 +79,11 @@ public:
 	vector<Usuario*> reactivados();
 	vector<Usuario*> suscriptores();
 
-	int edad();
 	int inasistencias();
 	void faltoConsulta();
+
+	vector<Consulta*> consultas();
+	void registrarConsulta(Consulta*);
 
 private:
 	string _ci;
@@ -104,6 +107,8 @@ private:
 
 	vector<Usuario*> _suscriptores {};
 	IStrategyNotificaciones* _notificador = NULL;
+
+	vector<Consulta*> _consultas;
 };
 
 #endif // USUARIO_H
