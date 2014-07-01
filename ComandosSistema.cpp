@@ -1,4 +1,4 @@
-gitusing namespace std;
+namespace std;
 
 #include <sstream>
 #include <iostream>
@@ -30,7 +30,7 @@ void ComandosSistema::setTime()
 	string s_dia, s_mes, s_anyo;
 	int i_dia, i_mes, i_anyo;
 
-	cout << "Ingrese el día:" << endl;
+	cout << "Ingrese el dï¿½a:" << endl;
 	cin >> s_dia;
 	istringstream(s_dia) >> i_dia;
 
@@ -86,7 +86,7 @@ void ComandosSistema::loadTestData()
 	Usuario* DC = cUsuario->altaUsuario("43521343", "Debora", "Corral"  , F, Fecha(13,  7, 1993), Roles{Rol::medico});
 	Usuario* AL = cUsuario->altaUsuario("98056743", "Ana"   , "Lopez"   , F, Fecha(24,  9, 1981), Roles{Rol::medico});
 
-	cSesion->iniciarSesionInterno(uLogueado); // Restaurar sesión previa
+	cSesion->iniciarSesionInterno(uLogueado); // Restaurar sesiï¿½n previa
 
 
 	// Consultas
@@ -107,18 +107,18 @@ void ComandosSistema::loadTestData()
 	cConsulta->altaConsulta(U3);
 
 
-	// Categorías (Código, Etiqueta)
+	// Categorï¿½as (Cï¿½digo, Etiqueta)
 	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
 	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato Digestivo");
 
 
-	// Representaciones (Categoría, Código, Descripción)
+	// Representaciones (Categorï¿½a, Cï¿½digo, Descripciï¿½n)
 	Representacion R1 = cDiagnostico->altaRepresentacion(X1, "01", "Asma");
-	Representacion R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestión");
+	Representacion R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestiï¿½n");
 	Representacion R3 = cDiagnostico->altaRepresentacion(X2, "01", "Nauseas");
 	
 
-	// Diagnósticos (Consulta, Representación, Descripción)
+	// Diagnï¿½sticos (Consulta, Representaciï¿½n, Descripciï¿½n)
 	Diagnostico* D1 = cDiagnostico->altaDiagnostico(C1, R2, "Desc 1");
 	Diagnostico* D2 = cDiagnostico->altaDiagnostico(C1, R3, "Desc 2");
 	Diagnostico* D3 = cDiagnostico->altaDiagnostico(C3, R2, "Desc 3");
@@ -127,13 +127,13 @@ void ComandosSistema::loadTestData()
 	Diagnostico* D6 = cDiagnostico->altaDiagnostico(U2, R2, "Desc 6");
 
 
-	// Fármacos (Nombre)
+	// Fï¿½rmacos (Nombre)
 	Farmaco* M1 = cFarmaco->darDeAltaFarmaco("M1");
 	Farmaco* M2 = cFarmaco->darDeAltaFarmaco("M2");
 	Farmaco* M3 = cFarmaco->darDeAltaFarmaco("M3");
 
 
-	// Tratamientos (Diagnóstico, Fármaco, Descripción)
+	// Tratamientos (Diagnï¿½stico, Fï¿½rmaco, Descripciï¿½n)
 	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M1}, "Desc 1");
 	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M2}, "Desc 2");
 	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M3}, "Desc 3");
@@ -164,11 +164,11 @@ void ComandosSistema::listarReservas()
 			? ((*it)->asistio() ? "Si" : "No")
 			: "No corresponde (reserva pendiente)";
 
-		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		cout << "Mï¿½dico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
 		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
 		     << "Fecha Reserva: " << (*it)->fechaReserva() << endl
 		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
-		     << "Asistió: " << asistencia << endl << endl;
+		     << "Asistiï¿½: " << asistencia << endl << endl;
 	}
 }
 
@@ -183,7 +183,7 @@ void ComandosSistema::listarConsultas()
 	{
 		string tipo = ((*it)->tipo() == TipoConsulta::comun) ? "Comun" : "Urgencia";
 			
-		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		cout << "Mï¿½dico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
 		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
 		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
 		     << "Tipo de Consulta: " << tipo << endl;
@@ -197,14 +197,14 @@ void ComandosSistema::listarConsultas()
 				: "No corresponde (reserva pendiente)";
 
 			cout << "Fecha Reserva: " << comun->reserva()->fechaReserva() << endl
-			     << "Asistió: " << asistencia << endl << endl;
+			     << "Asistiï¿½: " << asistencia << endl << endl;
 
 		}
 		else
 		{
 			ConsultaUrgencia* urgente = (ConsultaUrgencia*)*it;
 
-			cout << "Descripción: " << urgente->descripcion() << endl << endl;
+			cout << "Descripciï¿½n: " << urgente->descripcion() << endl << endl;
 		}
 	}	
 }
@@ -218,7 +218,7 @@ void ComandosSistema::listarUsuarios()
 	{
 		Usuario* item = *it;
 		cout << item->getNombre() << " " << item->getApellido()
-		     << ", " << item->edad() << " años"
+		     << ", " << item->edad() << " aï¿½os"
 		     << " (CI " << item->getCi() << ")" << endl;
 
 		cout << "Rol(es):";
@@ -264,4 +264,4 @@ void ComandosSistema::listarRepresentaciones()
 		cout << "[" << (*it).categoria().codigo() << "] "
 		     << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
 	}
-}
+}}

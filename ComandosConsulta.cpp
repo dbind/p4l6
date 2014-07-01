@@ -113,7 +113,7 @@ void ComandosConsulta::cancelarReserva()
 	}
 	else
 	{
-		cout << "Escriba el número correspondiente a la consulta a devolver (q para volver atrás)" << endl;
+		cout << "Escriba el nï¿½mero correspondiente a la consulta a devolver (q para volver atrï¿½s)" << endl;
 		string s;
 		cin >> s;
 
@@ -134,7 +134,7 @@ void ComandosConsulta::cancelarReserva()
 		}
 		else
 		{
-			cout << "No existe una reserva con ese índice" << endl;
+			cout << "No existe una reserva con ese ï¿½ndice" << endl;
 		}
 	}
 }
@@ -322,7 +322,7 @@ void ComandosConsulta::altaDiagnosticosConsulta()
                 }
     
                 char l;
-                cout << "¿Quiere anadir descripcion? (y/n)" << endl;
+                cout << "Quiere anadir descripcion? (y/n)" << endl;
                 cin >> l;
                 Diagnostico* diagnostico;
     
@@ -341,7 +341,7 @@ void ComandosConsulta::altaDiagnosticosConsulta()
                 }
     
                 char t;
-                cout << "¿Quiere anadir tratamiento(s)? (y/n)" << endl,
+                cout << "Quiere anadir tratamiento(s)? (y/n)" << endl,
                 cin >> t;
     
                 if (t == 'y')
@@ -374,24 +374,36 @@ void ComandosConsulta::altaDiagnosticosConsulta()
 
                                 }
                                 
-                                string nombreFarmaco;
-                                cout << "Entrega el nombre del Farmaco deseado" << endl;
-                                cin >> nombreFarmaco;
+                                int numeroFarmacos;
+                                cout << "Cuantos farmacos quiere anadir?" << endl;
+                                cin >> numeroFarmacos;
                                 
-                                Farmaco* farmacoTrat;
-                                
-                                for(vector<Farmaco*>::iterator it = farmacos.begin(); it != farmacos.end(); ++it)
+                                vector<Farmaco*> vectFarmaco;
+                                int i;
+                                for ( i=1; i<=numeroFarmacos; i++)
                                 {
+                                    string nombreFarmaco;
+                                    cout << "Entrega el nombre de un farmaco todavia no entregado" << endl;
+                                    cin >> nombreFarmaco;
+                                    
+                                    Farmaco* farmacoTrat;
+                                    
+                                
+                                    for(vector<Farmaco*>::iterator it = farmacos.begin(); it != farmacos.end(); ++it)
+                                    {
                                         Farmaco* farmaco = *it;
                                         if (farmaco->getNombre() == nombreFarmaco)
                                         {
                                             farmacoTrat = farmaco;
+                                            vectFarmaco.push_back(farmacoTrat);
                                         }
 
+                                    }
+                                    
                                 }
-                                
- 
-                                TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmacoTrat, descripcionTratamiento);
+                                                                                                                                                                                          
+                             
+                                TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(vectFarmaco, descripcionTratamiento);
                                 diagnostico->agregarTratamientoFarmacologico(tratamiento);
                                 cout << "El tratamiento farmacologico fue agregado con exito."<< endl;
                         
