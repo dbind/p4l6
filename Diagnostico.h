@@ -16,13 +16,14 @@ class Diagnostico
 
 public:
 	Diagnostico(Representacion representacion, string descripcion);
-        Diagnostico(Representacion representacion);
+	Diagnostico(Representacion representacion);
 	virtual ~Diagnostico(){};
 
 	Representacion representacion();
 	string descripcion();
-	
+
 	vector<TratamientoFarmacologico*> tratamientosFarmacologicos();
+	vector<TratamientoQuirurgico*> tratamientosQuirurgicos();
 
 	void agregarTratamientoFarmacologico(TratamientoFarmacologico*);
 	void agregarTratamientoQuirurgico(TratamientoQuirurgico*);
