@@ -157,7 +157,7 @@ void ComandosDiagnostico::listarRepresentaciones() // Listar representaciones es
 						
 			if (s1 == s)// Si la representacion tiene la misma categoria que la categoria. 
 			{
-				cout << "         " <<representacion.codigo() << " " << representacion.etiqueta() << endl;
+				cout << "      " <<representacion.codigo() << " " << representacion.etiqueta() << endl;
 			}
 			ss1.str(string());
 		}

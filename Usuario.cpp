@@ -156,7 +156,7 @@ void Usuario::cambiarPass(string pass)
 
 void Usuario::agregarDadoDeAlta(Usuario* usuario)
 {
-	if (find(_dadosDeAlta.begin(), _dadosDeAlta.end(), usuario) != _dadosDeAlta.end())
+	if (find(_dadosDeAlta.begin(), _dadosDeAlta.end(), usuario) == _dadosDeAlta.end())
 	{
 		_dadosDeAlta.insert(_dadosDeAlta.begin(), usuario);
 	}
@@ -164,7 +164,7 @@ void Usuario::agregarDadoDeAlta(Usuario* usuario)
 
 void Usuario::agregarReactivado(Usuario* usuario)
 {
-	if (find(_reactivados.begin(), _reactivados.end(), usuario) != _reactivados.end())
+	if (find(_reactivados.begin(), _reactivados.end(), usuario) == _reactivados.end())
 	{
 		_reactivados.insert(_reactivados.begin(), usuario);
 	}
@@ -178,7 +178,7 @@ void Usuario::setNotificador(IStrategyNotificaciones* notificador)
 
 void Usuario::agregarSuscriptor(Usuario* medico, Fecha fecha)
 {
-	if (find(_suscriptores.begin(), _suscriptores.end(), medico) != _suscriptores.end())
+	if (find(_suscriptores.begin(), _suscriptores.end(), medico) == _suscriptores.end())
 	{
 		_suscriptores.insert(_suscriptores.begin(), medico);
 	}

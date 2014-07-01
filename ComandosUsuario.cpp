@@ -16,12 +16,13 @@ using namespace std;
 void ComandosUsuario::altaReactivacionUsuario()
 {
 	IControladorUsuario* cUsuario = FabricaControladores::instancia()->controladorUsuario()->instancia();
-	bool exito = true;
+	bool exito;
 	Usuario* newUser;
 	
 	do
 		
 	{
+		exito = true;
 		string ci;
 		cout << "Ingrese la Cedula de Identidad del Usuario (o presione q para salir): " << endl;
 		cin >> ci;
@@ -160,11 +161,9 @@ void ComandosUsuario::altaReactivacionUsuario()
 			
 			if (exito)
 			{
-				newUser = cUsuario->altaUsuario(ci, nombre, apellido, genero, fechaNac, roles); // POR AHORA SOLO PUEDE INGRESAR UN ROL.
-			}
-			
-			if ((newUser != NULL) && exito)
+				newUser = cUsuario->altaUsuario(ci, nombre, apellido, genero, fechaNac, roles);
 				cout << "El usuario fue dado de alta con exito." << endl;
+			}
 			else
 				cout << "Ocurrió un error imprevisto." << endl;
 		}
@@ -176,16 +175,15 @@ void ComandosUsuario::listarAltasReactivaciones()
 {
 	Usuario* userActivo = FabricaControladores::instancia()->controladorSesion()->usuarioActivo();
 	
-	
 	vector<Usuario*> dadosDeAlta = userActivo->dadosDeAlta();
 	vector<Usuario*> reactivados = userActivo->reactivados();
 	
 	vector<Usuario*>::iterator it;
-
+	
     for (it=dadosDeAlta.begin(); it != dadosDeAlta.end(); ++it)
     {
 		Usuario* usuario = *it;
-		
+		cout << "--------------------------------------------------------------------" << endl;
 		cout << "Fecha del Alta: " << usuario->fechaAlta() << endl;
 		
 		cout << "Tipo de Operación: Alta" << endl;
