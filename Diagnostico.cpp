@@ -27,6 +27,17 @@ string Diagnostico::descripcion()
 	return _descripcion;
 }
 
+vector<TratamientoFarmacologico*> Diagnostico::tratamientosFarmacologicos()
+{
+	return _tratamientosFarmacologicos;
+}
+
+vector<TratamientoQuirurgico*> Diagnostico::tratamientosQuirurgicos()
+{
+	return _tratamientosQuirurgicos;
+}
+
+
 void Diagnostico::agregarTratamientoFarmacologico(TratamientoFarmacologico* tratamiento)
 {
 	_tratamientosFarmacologicos.insert(_tratamientosFarmacologicos.begin(), tratamiento);

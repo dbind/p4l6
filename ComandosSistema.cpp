@@ -174,7 +174,39 @@ void ComandosSistema::listarReservas()
 
 void ComandosSistema::listarConsultas()
 {
-	
+	vector<Consulta*> l = FabricaControladores::instancia()->controladorConsulta()->consultas();
+	vector<Consulta*>::iterator it = l.begin();
+
+	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
+
+	for (; it != l.end(); ++it)
+	{
+		string tipo = ((*it)->tipo() == TipoConsulta::comun) ? "Comun" : "Urgencia";
+			
+		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
+		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
+		     << "Tipo de Consulta: " << tipo << endl;
+
+		if ((*it)->tipo() == TipoConsulta::comun)
+		{
+			ConsultaComun* comun = (ConsultaComun*)*it;
+
+			string asistencia = (comun->fechaConsulta() < fecha)
+				? (comun->reserva()->asistio() ? "Si" : "No")
+				: "No corresponde (reserva pendiente)";
+
+			cout << "Fecha Reserva: " << comun->reserva()->fechaReserva() << endl
+			     << "Asistió: " << asistencia << endl << endl;
+
+		}
+		else
+		{
+			ConsultaUrgencia* urgente = (ConsultaUrgencia*)*it;
+
+			cout << "Descripción: " << urgente->descripcion() << endl << endl;
+		}
+	}	
 }
 
 void ComandosSistema::listarUsuarios()
