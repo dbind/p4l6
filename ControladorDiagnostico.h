@@ -22,7 +22,7 @@ public:
 	Categoria agregarCategoria(char codigo, string etiqueta);
 	Representacion altaRepresentacion(Categoria, string codigo, string etiqueta);
 	Diagnostico* altaDiagnostico(Consulta*, Representacion, string descripcion);
-	TratamientoFarmacologico* agregarTratamientoFarmacologico(Diagnostico*, Farmaco*, string descripcion);
+	TratamientoFarmacologico* agregarTratamientoFarmacologico(Diagnostico*, vector<Farmaco*>, string descripcion);
 	TratamientoQuirurgico* agregarTratamientoQuirurgico(Diagnostico*, Usuario* medico, Fecha, string descripcion);
 
 	vector<Categoria> categorias();

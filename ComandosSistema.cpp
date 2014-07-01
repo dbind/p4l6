@@ -134,12 +134,12 @@ void ComandosSistema::loadTestData()
 
 
 	// Tratamientos (Diagnóstico, Fármaco, Descripción)
-	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, M1, "Desc 1");
-	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, M2, "Desc 2");
-	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, M3, "Desc 3");
-	TratamientoFarmacologico* F4 = cDiagnostico->agregarTratamientoFarmacologico(D4, M1, "Desc 4");
-	TratamientoFarmacologico* F5 = cDiagnostico->agregarTratamientoFarmacologico(D5, M2, "Desc 5");
-	TratamientoFarmacologico* F6 = cDiagnostico->agregarTratamientoFarmacologico(D6, M3, "Desc 6");
+	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M1}, "Desc 1");
+	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M2}, "Desc 2");
+	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M3}, "Desc 3");
+	TratamientoFarmacologico* F4 = cDiagnostico->agregarTratamientoFarmacologico(D4, vector<Farmaco*>{M1}, "Desc 4");
+	TratamientoFarmacologico* F5 = cDiagnostico->agregarTratamientoFarmacologico(D5, vector<Farmaco*>{M2}, "Desc 5");
+	TratamientoFarmacologico* F6 = cDiagnostico->agregarTratamientoFarmacologico(D6, vector<Farmaco*>{M3}, "Desc 6");
 
 	TratamientoQuirurgico* Q1 = cDiagnostico->agregarTratamientoQuirurgico(D2, JM, Fecha(25, 7, 2014), "Desc 11");
 	TratamientoQuirurgico* Q2 = cDiagnostico->agregarTratamientoQuirurgico(D3, DC, Fecha( 1, 2, 2015), "Desc 22");
