@@ -1,4 +1,4 @@
-namespace std;
+using namespace std;
 
 #include <sstream>
 #include <iostream>
@@ -30,7 +30,7 @@ void ComandosSistema::setTime()
 	string s_dia, s_mes, s_anyo;
 	int i_dia, i_mes, i_anyo;
 
-	cout << "Ingrese el dï¿½a:" << endl;
+	cout << "Ingrese el día:" << endl;
 	cin >> s_dia;
 	istringstream(s_dia) >> i_dia;
 
@@ -56,7 +56,7 @@ void ComandosSistema::getTime()
 void ComandosSistema::loadTestData()
 {
 	FabricaControladores* Fabrica = FabricaControladores::instancia();
-	
+
 	IControladorSesion*      cSesion      = Fabrica->controladorSesion();
 	IControladorUsuario*     cUsuario     = Fabrica->controladorUsuario();
 	IControladorConsulta*    cConsulta    = Fabrica->controladorConsulta();
@@ -86,7 +86,7 @@ void ComandosSistema::loadTestData()
 	Usuario* DC = cUsuario->altaUsuario("43521343", "Debora", "Corral"  , F, Fecha(13,  7, 1993), Roles{Rol::medico});
 	Usuario* AL = cUsuario->altaUsuario("98056743", "Ana"   , "Lopez"   , F, Fecha(24,  9, 1981), Roles{Rol::medico});
 
-	cSesion->iniciarSesionInterno(uLogueado); // Restaurar sesiï¿½n previa
+	cSesion->iniciarSesionInterno(uLogueado); // Restaurar sesión previa
 
 
 	// Consultas
@@ -107,18 +107,18 @@ void ComandosSistema::loadTestData()
 	cConsulta->altaConsulta(U3);
 
 
-	// Categorï¿½as (Cï¿½digo, Etiqueta)
+	// Categorías (Código, Etiqueta)
 	Categoria X1 = cDiagnostico->agregarCategoria('A', "Afecciones pulmonares");
 	Categoria X2 = cDiagnostico->agregarCategoria('B', "Aparato Digestivo");
 
 
-	// Representaciones (Categorï¿½a, Cï¿½digo, Descripciï¿½n)
+	// Representaciones (Categoría, Código, Descripción)
 	Representacion R1 = cDiagnostico->altaRepresentacion(X1, "01", "Asma");
-	Representacion R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestiï¿½n");
+	Representacion R2 = cDiagnostico->altaRepresentacion(X1, "02", "Congestión");
 	Representacion R3 = cDiagnostico->altaRepresentacion(X2, "01", "Nauseas");
-	
 
-	// Diagnï¿½sticos (Consulta, Representaciï¿½n, Descripciï¿½n)
+
+	// Diagnósticos (Consulta, Representación, Descripción)
 	Diagnostico* D1 = cDiagnostico->altaDiagnostico(C1, R2, "Desc 1");
 	Diagnostico* D2 = cDiagnostico->altaDiagnostico(C1, R3, "Desc 2");
 	Diagnostico* D3 = cDiagnostico->altaDiagnostico(C3, R2, "Desc 3");
@@ -127,13 +127,13 @@ void ComandosSistema::loadTestData()
 	Diagnostico* D6 = cDiagnostico->altaDiagnostico(U2, R2, "Desc 6");
 
 
-	// Fï¿½rmacos (Nombre)
+	// Fármacos (Nombre)
 	Farmaco* M1 = cFarmaco->darDeAltaFarmaco("M1");
 	Farmaco* M2 = cFarmaco->darDeAltaFarmaco("M2");
 	Farmaco* M3 = cFarmaco->darDeAltaFarmaco("M3");
 
 
-	// Tratamientos (Diagnï¿½stico, Fï¿½rmaco, Descripciï¿½n)
+	// Tratamientos (Diagnóstico, Fármaco, Descripción)
 	TratamientoFarmacologico* F1 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M1}, "Desc 1");
 	TratamientoFarmacologico* F2 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M2}, "Desc 2");
 	TratamientoFarmacologico* F3 = cDiagnostico->agregarTratamientoFarmacologico(D1, vector<Farmaco*>{M3}, "Desc 3");
@@ -155,7 +155,7 @@ void ComandosSistema::listarReservas()
 {
 	vector<Reserva*> l = FabricaControladores::instancia()->controladorConsulta()->reservas();
 	vector<Reserva*>::iterator it = l.begin();
-	
+
 	Fecha fecha = FabricaControladores::instancia()->controladorSistema()->getFechaDelSistema();
 
 	for (; it != l.end(); ++it)
@@ -164,11 +164,11 @@ void ComandosSistema::listarReservas()
 			? ((*it)->asistio() ? "Si" : "No")
 			: "No corresponde (reserva pendiente)";
 
-		cout << "Mï¿½dico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
 		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
 		     << "Fecha Reserva: " << (*it)->fechaReserva() << endl
 		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
-		     << "Asistiï¿½: " << asistencia << endl << endl;
+		     << "Asistió: " << asistencia << endl << endl;
 	}
 }
 
@@ -182,8 +182,8 @@ void ComandosSistema::listarConsultas()
 	for (; it != l.end(); ++it)
 	{
 		string tipo = ((*it)->tipo() == TipoConsulta::comun) ? "Comun" : "Urgencia";
-			
-		cout << "Mï¿½dico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
+
+		cout << "Médico: " << (*it)->medico()->getNombre() << " " << (*it)->medico()->getApellido() << endl
 		     << "Paciente: " << (*it)->paciente()->getNombre() << " " << (*it)->paciente()->getApellido() << endl
 		     << "Fecha Consulta: " << (*it)->fechaConsulta() << endl
 		     << "Tipo de Consulta: " << tipo << endl;
@@ -197,14 +197,14 @@ void ComandosSistema::listarConsultas()
 				: "No corresponde (reserva pendiente)";
 
 			cout << "Fecha Reserva: " << comun->reserva()->fechaReserva() << endl
-			     << "Asistiï¿½: " << asistencia << endl << endl;
+			     << "Asistió: " << asistencia << endl << endl;
 
 		}
 		else
 		{
 			ConsultaUrgencia* urgente = (ConsultaUrgencia*)*it;
 
-			cout << "Descripciï¿½n: " << urgente->descripcion() << endl << endl;
+			cout << "Descripción: " << urgente->descripcion() << endl << endl;
 		}
 	}	
 }
@@ -218,7 +218,7 @@ void ComandosSistema::listarUsuarios()
 	{
 		Usuario* item = *it;
 		cout << item->getNombre() << " " << item->getApellido()
-		     << ", " << item->edad() << " aï¿½os"
+		     << ", " << item->edad() << " años"
 		     << " (CI " << item->getCi() << ")" << endl;
 
 		cout << "Rol(es):";
@@ -264,4 +264,4 @@ void ComandosSistema::listarRepresentaciones()
 		cout << "[" << (*it).categoria().codigo() << "] "
 		     << (*it).codigo() << " (" << (*it).etiqueta() << ")" << endl;
 	}
-}}
+}
