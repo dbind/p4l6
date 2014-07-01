@@ -8,6 +8,9 @@ using namespace std;
 #include "Usuario.h"
 #include "FabricaControladores.h"
 #include "Fecha.h"
+#include "Tratamiento.h"
+#include "TratamientoFarmacologico.h"
+#include "TratamientoQuirurgico.h"
 
 
 void ComandosUsuario::altaReactivacionUsuario()
@@ -224,5 +227,69 @@ void ComandosUsuario::listarAltasReactivaciones()
 
 void ComandosUsuario::verHistorial()
 {
-	// TODO
+	string ci;
+	cout << "Ingrese la Cedula de Identidad del Usuario (o presione q para salir): " << endl;
+	cin >> ci;
+	
+	
+	IControladorUsuario* cUsuario = FabricaControladores::instancia()->controladorUsuario()->instancia();
+	
+	if (ci=="q")
+		return;
+	
+	if (cUsuario->findUsuario(ci) != NULL)
+	{
+		Usuario* usuario = cUsuario->findUsuario(ci);
+		cout << "Nombre: "   << usuario->getNombre() << endl;
+		cout << "Apellido: " << usuario->getApellido() << endl;
+		cout << "Fecha de nacimiento: " << usuario->getFechaNac() <<endl;
+		
+		vector<Consulta*> consultas = usuario->consultas();
+		for(vector<Consulta*>::iterator it = consultas.begin(); it != consultas.end(); ++it)
+		{
+			cout << "-------------------------------------------------------------------------------" << endl;
+			Consulta* consulta = *it;
+			cout << "Fecha de la consulta: " << consulta->fechaConsulta() << endl;
+			if (consulta->tipo() == TipoConsulta::comun)
+				cout << "Tipo de la consulta: Comun" << endl;
+			else
+				cout << "Tipo de la consulta: Emergencia" << endl;
+			cout << "Nombre y apellido del medico: " << consulta->medico()->getNombre() 
+				 << " " << consulta->medico()->getApellido() << endl;
+			// REPRESENTACIONES ESTANDARIZADAS Y TRATAMIENTOS.
+			vector<Diagnostico*> diagnosticos = consulta->diagnosticos();
+			for(vector<Diagnostico*>::iterator it1 = diagnosticos.begin(); it1 != diagnosticos.end(); ++it1)
+			{
+				Diagnostico* diagnostico = *it1;
+				cout << "Representacion estandarizada de diagnostico: " << diagnostico->representacion().codigo() <<
+						" " << diagnostico->representacion().etiqueta() << endl;
+				cout << "Descripcion del diagnostico: " << diagnostico->descripcion() << endl;
+				
+				//TRATAMIENTOS FARMACOLOGICOS.
+				vector<TratamientoFarmacologico*> tratamientosFar = diagnostico->tratamientosFarmacologicos();
+				for(vector<TratamientoFarmacologico*>::iterator it2 = tratamientosFar.begin(); it2 != tratamientosFar.end(); it2++)
+				{
+					TratamientoFarmacologico* tratamientoFar = *it2;
+					cout << "Descripcion del tratamiento: " << tratamientoFar->descripcion() << endl;
+					//FARMACOS ASIGNADOS. 
+					vector<Farmaco*> farmacos = tratamientoFar->farmacos();
+					cout << "Farmacos asignados: " << endl;
+					for(vector<Farmaco*>::iterator it3 = farmacos.begin(); it3 != farmacos.end(); ++it3)
+					{
+						Farmaco* farmaco = *it3;
+						cout << farmaco->getNombre() << endl;
+					}					
+				}
+				//TRATAMIENTOS QUIRURGICOS.
+				vector<TratamientoQuirurgico*> tratamientosQuir = diagnostico->tratamientosQuirurgicos();
+				for(vector<TratamientoQuirurgico*>::iterator it4 = tratamientosQuir.begin(); it4 != tratamientosQuir.end(); ++it4)
+				{
+					TratamientoQuirurgico* tratamientoQuir = *it4;
+					cout << "Descripcion del tratamiento: " << tratamientoQuir->descripcion() << endl;
+				}			
+			}			
+		}
+	}
+	else
+		cout << "El usuario no se enuentra en el sistema." << endl;
 }
