@@ -1,17 +1,19 @@
 using namespace std;
 
+#include <vector>
+
 #include "TratamientoFarmacologico.h"
 
 #include "Farmaco.h"
 
 
-TratamientoFarmacologico::TratamientoFarmacologico(Farmaco* farmaco, string descripcion)
+TratamientoFarmacologico::TratamientoFarmacologico(vector<Farmaco*> farmacos, string descripcion)
 {
-	_farmaco     = farmaco;
+	_farmacos     = farmacos;
 	_descripcion = descripcion;
 }
 
-Farmaco* TratamientoFarmacologico::farmaco()
+vector<Farmaco*> TratamientoFarmacologico::farmacos()
 {
-	return _farmaco;
+	return _farmacos;
 }

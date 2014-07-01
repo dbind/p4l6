@@ -81,10 +81,10 @@ Diagnostico* ControladorDiagnostico::altaDiagnostico(Consulta* consulta, Represe
 }
 
 TratamientoFarmacologico* ControladorDiagnostico::agregarTratamientoFarmacologico(Diagnostico* diagnostico,
-                                                                                  Farmaco* farmaco,
+                                                                                  vector<Farmaco*> farmacos,
                                                                                   string descripcion)
 {
-	TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmaco, descripcion);
+	TratamientoFarmacologico* tratamiento = new TratamientoFarmacologico(farmacos, descripcion);
 	diagnostico->agregarTratamientoFarmacologico(tratamiento);
 
 	return tratamiento;

@@ -39,7 +39,7 @@ Farmaco* ControladorFarmaco::darDeAltaFarmaco(string nombre)
 	}
 
 	Farmaco* farmaco = new Farmaco(nombre);
-	_farmacos.insert(_farmacos.begin(), farmaco);
+	_farmacos.push_back(farmaco);
 
 	return farmaco;
 }

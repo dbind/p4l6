@@ -4,6 +4,7 @@
 using namespace std;
 
 #include <string>
+#include <vector>
 
 #include "Tratamiento.h"
 
@@ -15,13 +16,13 @@ class TratamientoFarmacologico : public Tratamiento
 {
 
     public:
-        TratamientoFarmacologico(Farmaco*, string descripcion);
+        TratamientoFarmacologico(vector<Farmaco*>, string descripcion);
         virtual ~TratamientoFarmacologico(){};
 
-        Farmaco* farmaco();
+        vector<Farmaco*> farmacos();
 
     private:
-        Farmaco* _farmaco;
+        vector<Farmaco*> _farmacos;
 
 };
 
